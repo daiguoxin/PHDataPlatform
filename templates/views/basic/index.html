@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>字典管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">字典类型列表
+                    <div class="layui-inline" style="float:right; display:none;">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                onclick="newTab('','')">返回列表
+                        </button>
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">字典编码</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="drug_name" placeholder="请输入" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">字典类型</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="drug_name" placeholder="名称或拼音首字母" autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">状态</label>
+                                <div class="layui-input-inline" style="width:100px;">
+                                    <select name="interest" lay-filter="aihao">
+                                        <option value=""></option>
+                                        <option value="0">停用</option>
+                                        <option value="1" selected="">启用</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn layuiadmin-btn-list layui-btn-sm" lay-submit=""
+                                        lay-filter="LAY-app-contlist-search">
+                                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                </button>
+                                <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                        id="btn_search_more" style=" display:none;">更多
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="layui-form layui-border-box layui-table-view"
+                         lay-filter="LAY-table-1" lay-id="data_list"
+                         style=" border-bottom-width:0px;">
+                        <div class="layui-table-tool">
+                            <div class="layui-table-tool-temp">
+                                <div class="layui-btn-container">
+                                    <button class="layui-btn layui-btn-sm">新增字典类型
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
+                    <script type="text/html" id="barDemo">
+                        <a class="layui-btn layui-btn-xs" lay-event="">管理字典内容</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use(['table','form'], function () {
+        var table = layui.table;
+        var $ = layui.jquery;
+        var form = layui.form;
+
+        var drugs_tb = table.render({
+            elem: '#data_list'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '字典编码', title: '字典编码', width: 150, fixed: 'left', unresize: true, sort: true}
+                , {field: '字典名称', title: '字典名称', fixed: 'left', sort: true}
+                , {field: '数据版本', title: '数据版本', fixed: 'left', sort: true}
+                , {field: '状态', title: '状态', width: 100, sort: true}
+                , {field: '操作人', title: '操作人', width: 200, sort: true}
+                , {field: '操作时间', title: '操作时间', width: 200, sort: true}
+                , {field: '审批人', title: '审批人', width: 200, sort: true}
+                , {field: '审批时间', title: '审批时间', width: 200, sort: true}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 180}
+            ]]
+            ,data:[
+                    {"字典编码":"PrescriptionType", "字典名称":"科室类型", "状态":"启用", "操作人":"daigx", "操作时间":"2021-04-30", "审批人":"admin", "审批时间":"2021-04-30"}
+                    ,{"字典编码":"medication_route", "字典名称":"给药途径", "状态":"启用", "操作人":"daigx", "操作时间":"2021-04-30", "审批人":"admin", "审批时间":"2021-04-30"}
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //监听提交
+      form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+      });
+
+
+          $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+            var index = $(this).attr('data-index');
+            var tableBox = $(this).parents('.layui-table-box');
+            //存在固定列
+            if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+                tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+            } else {
+                tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+            }
+            var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+            if (checkCell.length > 0) {
+                checkCell.click();
+            }
+        });
+
+        //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+        $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+            e.stopPropagation();
+        });
+    });
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+</script>
+</body>
+</html>

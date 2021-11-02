@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    相互作用查询结果（前提：作用部位相同）
+                    <div class="layui-inline" style="float:right">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                onclick="window.history.go(-1);">返回
+                        </button>
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-inline">
+                        <div class="layui-btn-container">
+                            <button class="layui-btn layui-btn-sm" style=" margin-bottom: 0px;"
+                                    lay-event="batch_add"
+                                    onclick="newTab('/customer_data/cus_rules/rules_add_group', '')">
+                                新增规则
+                            </button>
+                            <button class="layui-btn layui-btn-sm" style=" margin-bottom: 0px;">
+                                设置停用
+                            </button>
+                            <button class="layui-btn layui-btn-sm" style=" margin-bottom: 0px;">
+                                设置启用
+                            </button>
+                            <button class="layui-btn layui-btn-sm" style=" margin-bottom: 0px;">
+                                设置提示级别
+                            </button>
+                            <button class="layui-btn layui-btn-danger layui-btn-sm" style=" margin-bottom: 0px;">
+                                删除
+                            </button>
+                        </div>
+                    </div>
+                    <div class="phhc-collapse">
+                        <div class="phhc-colla-item">
+                            <div class="phhc-colla-title">
+                                <input type="checkbox" name="like1[write]" lay-skin="primary" title="">
+                                【HISID】0101001【通用名】阿司匹林肠溶片...--【HISID】0101001【通用名】布洛芬缓释胶囊...<span style="color:red;">存在相互作用</span>
+                            </div>
+                            <div class="phhc-colla-content layui-show">
+                                <table class="layui-hide" id="data_list6"
+                                       lay-filter="data_list"></table>
+                            </div>
+                        </div>
+                        <div class="phhc-colla-item">
+                            <div class="phhc-colla-title">
+                                <input type="checkbox" name="like1[write]" lay-skin="primary" title="">
+                                【HISID】0101001【通用名】阿司匹林肠溶片...--【HISID】0101001【通用名】布洛芬缓释胶囊...<span style="color:red;">存在相互作用</span>
+                            </div>
+                            <div class="phhc-colla-content layui-show">
+                                <table class="layui-hide" id="data_list7"
+                                       lay-filter="data_list"></table>
+                            </div>
+                        </div>
+                        <div class="phhc-colla-item">
+                            <div class="phhc-colla-title">
+                                <input type="checkbox" name="like1[write]" lay-skin="primary" title="">
+                                【HISID】0101001【通用名】阿司匹林肠溶片...--【HISID】0101001【通用名】布洛芬缓释胶囊...<span style="color:green;">无相互作用</span>
+                            </div>
+                            <div class="phhc-colla-content layui-show">
+                                <table class="layui-hide" id="data_list2"
+                                       lay-filter="data_list"></table>
+                            </div>
+                        </div>
+                        <div class="phhc-colla-item">
+                            <div class="phhc-colla-title">
+                                <input type="checkbox" name="like1[write]" lay-skin="primary" title="">
+                                【HISID】0101001【通用名】阿司匹林肠溶片...--【HISID】0101001【通用名】布洛芬缓释胶囊...<span style="color:green;">无相互作用</span>
+                            </div>
+                            <div class="phhc-colla-content layui-show">
+                                无规则
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+    layui.use(['table','element','jquery','form'], function(){
+        var $ = layui.$;
+        var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+        var table = layui.table;
+        var form = layui.form;
+
+        var drugs_tb = table.render({
+            elem: '#data_list'
+<!--            , even:true-->
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书", "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司", "审核结果":"不适宜", "备注":"123123123", "状态":"启用","最后操作时间":"2020-02-01","最后操作人":"张三",
+                    "提示级别":"警告"}
+                    ,{"生产者":"系统规则", "依据":"说明书", "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司", "审核结果":"不适宜", "备注":"123123123", "状态":"启用","最后操作时间":"2020-02-01","最后操作人":"张三",
+                    "提示级别":"警告"}
+            ]
+            , page: false
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'rules') {
+                newTab('/customer_data/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')
+            } else if (obj.event === 'manual') {
+
+            }
+        });
+
+        $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+            var index = $(this).attr('data-index');
+            var tableBox = $(this).parents('.layui-table-box');
+            //存在固定列
+            if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+                tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+            } else {
+                tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+            }
+            var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+            if (checkCell.length > 0) {
+                checkCell.click();
+            }
+        });
+
+        //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+        $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+            e.stopPropagation();
+        });
+
+        $(".phhc-colla-title").click(function(){
+            $(this).children(':checkbox').click();
+        });
+
+        $(".phhc-colla-title :checkbox").click(function(e){
+            e.stopPropagation();
+        });
+
+        var drugs_tb2 = table.render({
+            elem: '#data_list2'
+            , title: '用户数据表'
+           , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书", "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司", "审核结果":"不适宜", "备注":"123123123", "状态":"启用","最后操作时间":"2020-02-01","最后操作人":"张三",
+                    "提示级别":"警告"}
+                    ,{"生产者":"系统规则", "依据":"说明书", "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司", "审核结果":"不适宜", "备注":"123123123", "状态":"启用","最后操作时间":"2020-02-01","最后操作人":"张三",
+                    "提示级别":"警告"}
+            ]
+            , page: false
+        });
+
+
+        var drugs_tb3 = table.render({
+            elem: '#data_list3'
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '药品A', title: '药品A', width: 550}
+                , {field: '药品B', title: '药品B', width:550}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"药品A":"【HISID】0202020202【通用名】同仁大活络丸【规格】20mg【包装】20片/盒【厂家】北京***厂"
+                        , "药品B":"【HISID】0202020202【通用名】同仁大活络丸【规格】20mg【包装】20片/盒【厂家】北京***厂"}
+                     ,{"药品A":"【HISID】0202020202【通用名】同仁大活络丸【规格】20mg【包装】20片/盒【厂家】北京***厂"
+                        , "药品B":"【HISID】0202020202【通用名】同仁大活络丸【规格】20mg【包装】20片/盒【厂家】北京***厂"}
+            ]
+            , page: false
+        });
+
+
+        var drugs_tb4 = table.render({
+            elem: '#data_list4'
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+            ]
+            , page: false
+        });
+
+        var drugs_tb5 = table.render({
+            elem: '#data_list5'
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+            ]
+            , page: false
+        });
+
+        var drugs_tb6 = table.render({
+            elem: '#data_list6'
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+            ]
+            , page: false
+        });
+
+        var drugs_tb7 = table.render({
+            elem: '#data_list7'
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '生产者', title: '生产者', width: 90}
+                , {field: '依据', title: '依据', width: 80}
+                , {field: '规则条件', title: '规则条件', width:200}
+                , {field: '审核结果', title: '结果', width: 80}
+                , {field: '提示级别', title: '提示级别', width:90}
+                , {field: '状态', title: '状态', width: 60}
+                , {field: '原因', title: '原因', width: 239}
+                , {field: '最后操作时间', title: '操作时间', width: 120, sort: true}
+                , {field: '最后操作人', title: '操作人', width: 120, sort: true}
+<!--                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}-->
+            ]]
+            ,data:[
+                     {"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+                    ,{"生产者":"医院规则", "依据":"说明书"
+                        , "规则条件":"【科室】（除外）西药药房（0000001）、急诊科（2345810960）、医学影像科（2345810951） <br>【性别】男、女 <br>【年龄】1岁-15岁、1岁（不含）以上、15岁（不含）以下 <br>【特殊人群】哺乳期 <br>【诊断】（组0、除外）红皮病型药疹、梅毒性喉炎、多虑平中毒 <br>【诊断】（组1、除外）干燥闭塞性龟头炎、痰浊瘀阻证、急性淋巴细胞性白血病、L1型 <br>【生理指标】（组0、除外）血小板1mg/L-2mg/L <br>【生理指标】（组1）收缩压3μl-4μl <br>【预防药品不良反应】ba6f2c91-9df0-4500-be7b-2178f5f60f86 格列齐特片(Ⅱ) 达美康 80mg60片 盒 天津华津制药有限公司、51D14D5A-B805-4BF9-A090-11E4F987DDF9 玻璃酸钠注射液 施沛特 2ml:20mg 1支 山东博士伦福瑞达制药有限公司"
+                        , "审核结果":"不适宜", "备注":"123123123", "状态":"停用","最后操作时间":"2020-02-01","最后操作人":"张三","提示级别":"警告"}
+            ]
+            , page: false
+        });
+    });
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+</script>
+</body>
+</html>

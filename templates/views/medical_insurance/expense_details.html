@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>客户数据表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+
+   <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+   <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <style>
+        .layui-inline {
+            margin-bottom: 0px;
+        }
+
+        .layui-form-label {
+            width: auto;
+        }
+
+        <!--官网选项列表的样式-->
+       .autocomplete-suggestions { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #999; background: #FFF; cursor: default; overflow: auto; -webkit-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); -moz-box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); box-shadow: 1px 4px 3px rgba(50, 50, 50, 0.64); z-index: 29891015 !important;}
+        .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+        .autocomplete-no-suggestion { padding: 2px 5px;}
+        .autocomplete-selected { background: #F0F0F0; }
+        .autocomplete-suggestions strong { font-weight: bold; color: #000; }
+        .autocomplete-group { padding: 2px 5px; font-weight: bold; font-size: 16px; color: #000; display: block; border-bottom: 1px solid #000; }
+
+        .autocomplete-suggestions {z-index: 29891015 !important;}
+    </style>
+</head>
+<body>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>组件</cite></a>
+        <a><cite>静态表格</cite></a>
+    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card layui-form">
+                <div class="layui-card-header">默认风格</div>
+                <div class="layui-card-body layui-row layui-col-space10">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col width="60">
+                            <col>
+                            <col>
+                            <col width="200">
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>项目名称（原始描述）</th>
+                            <th>项目名称（关联后）</th>
+                            <th>规格</th>
+                            <th>单位</th>
+                            <th>单价</th>
+                            <th>数量</th>
+                            <th>金额</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <input type="text" lay-verify="required" placeholder="" autocomplete="off" class="layui-input autocomplete-ajax">
+                            </td>
+                            <td>
+                                <select name="quiz" lay-search>
+                                    <option value="">请选择</option>
+                                    <optgroup label="呼吸功能检查收费标准">
+                                        <option value="常规肺容量检查（国产）">常规肺容量检查（国产）</option>
+                                        <option value="常规肺容量检查（进口）">常规肺容量检查（进口）</option>
+                                        <option value="肺残气功能测定（国产机）">肺残气功能测定（国产机）</option>
+                                        <option value="肺残气功能测定（进口机）">肺残气功能测定（进口机）</option>
+                                        <option value="肺弥散功能测定（国产机）">肺弥散功能测定（国产机）</option>
+                                        <option value="肺弥散功能测定（进口机）">肺弥散功能测定（进口机）</option>
+                                    </optgroup>
+                                    <optgroup label="空">
+                                        <option value="经皮穿刺插管左心室造影术">经皮穿刺插管左心室造影术</option>
+                                        <option value="经皮穿刺插管右心室造影术">经皮穿刺插管右心室造影术</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><input type="text" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input autocomplete-ajax"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><input type="text" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input autocomplete-ajax"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                            <td><input type="text" name="fullname" lay-verify="required" placeholder=""
+                                       autocomplete="off" class="layui-input"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+
+<script src="/static/phhc/js/jquery-1.8.2.min.js" charset="utf-8"></script>
+<script src="/static/phhc/js/jquery.autocomplete.js" charset="utf-8"></script>
+<script src="/static/phhc/js/countries.js" charset="utf-8"></script>
+<script src="/static/phhc/js/jquery.mockjax.js" charset="utf-8"></script>
+
+
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+    });
+
+
+
+
+
+</script>
+
+<script>
+    function newTab(url, tit) {
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+
+
+
+
+
+</script>
+
+<!--<script>-->
+<!--$(function () {-->
+<!--    'use strict';-->
+
+<!--    var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });-->
+
+<!--    // Initialize ajax autocomplete:-->
+<!--    $('.autocomplete-ajax').autocomplete({-->
+<!--        // serviceUrl: '/autosuggest/service/url',-->
+<!--        lookup: countriesArray,-->
+<!--        lookupFilter: function(suggestion, originalQuery, queryLowerCase) {-->
+<!--            var re = new RegExp('\\b' + $.Autocomplete.utils.escapeRegExChars(queryLowerCase), 'gi');-->
+<!--            return re.test(suggestion.value);-->
+<!--        },-->
+<!--        onSelect: function(suggestion) {-->
+<!--&lt;!&ndash;            alert('onSelect');&ndash;&gt;-->
+<!--&lt;!&ndash;            alert(suggestion.value+':'+suggestion.data);&ndash;&gt;-->
+<!--            $(this).parent().next().find("input").val(suggestion.data);-->
+<!--        },-->
+<!--        onHint: function (hint) {-->
+<!--&lt;!&ndash;            alert('onHint');&ndash;&gt;-->
+<!--&lt;!&ndash;            alert(hint);&ndash;&gt;-->
+<!--        },-->
+<!--        onInvalidateSelection: function() {-->
+<!--&lt;!&ndash;            alert('onInvalidateSelection');&ndash;&gt;-->
+<!--        }-->
+<!--    });-->
+<!--});-->
+
+<!--</script>-->
+
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+<script>
+  $( function() {
+
+    $( ".autocomplete-ajax" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax( {
+          url: "/mi/getstandarddict/",
+          dataType: "json",
+          data: {
+            term: request.term
+          },
+          success: function( data ) {
+<!--            alert(data[0].value);-->
+            response( data );
+          }
+        } );
+      },
+      minLength: 2,
+      select: function( event, ui ) {
+        $(this).parent().next().find("input").val(ui.item.value);
+        log( "Selected: " + ui.item.value + " aka " + ui.item.id );
+      }
+    } );
+  } );
+</script>
+<script>
+    function myFunction(){
+
+    alert("保存成功");
+
+}
+
+document.addEventListener('keydown', function(e) {
+
+    if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+
+        e.preventDefault();
+
+       myFunction();
+
+    }
+
+});
+
+</script>
+</body>
+</html>

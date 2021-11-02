@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid" id="LAY-component-grid-list">
+    <div class="layui-row layui-col-space10" style="margin:0px;">
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">适宜性</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">规范性</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list2" lay-filter="data_list2"></table>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">提醒类</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list3" lay-filter="data_list3"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="manage">维护</a>
+</script>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.use(['table','form'], function () {
+        var table = layui.table;
+
+        var t1 = table.render({
+            elem: '#data_list'
+            , title: '用户数据表'
+            , cols: [[
+                {field: 'audit_item', title: '审核项目'}
+<!--                , {field: 'audit_item_code', title: '审核项目编码', width: 120}-->
+<!--                , {field: 'count', title: '规则数量', width: 120}-->
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"audit_item":"适应证", "audit_item_code":"001", "count":"123"}
+                ,{"audit_item":"人群禁忌", "audit_item_code":"001", "count":"123"}
+                ,{"audit_item":"禁忌症", "audit_item_code":"001", "count":"123"}
+                ,{"audit_item":"过敏禁忌", "audit_item_code":"001", "count":"123"}
+                ,{"audit_item":"用法用量", "audit_item_code":"002", "count":"123"}
+                ,{"audit_item":"相互作用", "audit_item_code":"003", "count":"123"}
+                ,{"audit_item":"重复用药", "audit_item_code":"003", "count":"123"}
+                ,{"audit_item":"配伍禁忌", "audit_item_code":"003", "count":"123"}
+                ,{"audit_item":"溶媒适宜性", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"疗程", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"连续用药天数", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"全静脉营养液（TPN）", "audit_item_code":"005", "count":"123"}
+            ]
+            , page: false
+        });
+
+        var t2 = table.render({
+            elem: '#data_list2'
+            , title: '用户数据表'
+            , cols: [[
+                {field: 'audit_item', title: '审核项目'}
+<!--                , {field: 'audit_item_code', title: '审核项目编码', width: 120}-->
+<!--                , {field: 'count', title: '规则数量', width: 120}-->
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"audit_item":"门七急三", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"毒麻精放开药量", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"发药量", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"抗菌药物天数", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"药品使用权限", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"医生月度开药量限制", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"医生月度开药金额限制", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"科室月度开药量限制", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"科室月度开药金额限制", "audit_item_code":"005", "count":"123"}
+            ]
+            , page: false
+        });
+
+    var t3 = table.render({
+            elem: '#data_list3'
+            , title: '用户数据表'
+            , cols: [[
+                {field: 'audit_item', title: '审核项目'}
+<!--                , {field: 'audit_item_code', title: '审核项目编码', width: 120}-->
+<!--                , {field: 'count', title: '规则数量', width: 120}-->
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"audit_item":"累计用量提醒", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"超说明书用药", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"过敏提醒", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"医保限适应症", "audit_item_code":"005", "count":"123"}
+                ,{"audit_item":"过敏风险提醒", "audit_item_code":"005", "count":"123"}
+            ]
+            , page: false
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                if (data.audit_item === '适应证'){
+                    newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+                }else if (data.audit_item === '人群禁忌' || data.audit_item === '禁忌症' || data.audit_item === '过敏禁忌'){
+                    newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+                }else if (data.audit_item === '用法用量' || data.audit_item === '溶媒适宜性'){
+                    newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+                }else if (data.audit_item === '相互作用' || data.audit_item === '重复用药' || data.audit_item === '配伍禁忌'){
+                    newTab('/customer_data/cus_rules/two_obj_condi', data.audit_item+'-药品列表');
+                }else{
+                    newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+                }
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list2)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                if (data.audit_item === '门七急三'){
+                    newTab('/customer_data/cus_rules/many_obj_condi_conclu', data.audit_item+'-药品列表');
+                }else{
+                    newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+                }
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list3)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                newTab('/customer_data/cus_rules/one_obj', data.audit_item+'-药品列表');
+            }
+        });
+    });
+
+
+
+</script>
+<script>
+        function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

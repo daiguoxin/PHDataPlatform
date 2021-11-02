@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid" style=" min-width:400px; min-height:200px;">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                        <ul class="layui-tab-title">
+                            <li class="layui-this">人工记录日志</li>
+                            <li class="layui-item">系统记录日志</li>
+                        </ul>
+                        <div class="layui-tab-content">
+                            <div class="layui-tab-item layui-show">
+                                <div class="layui-form layui-border-box layui-table-view"
+                                     lay-filter="LAY-table-1" lay-id="data_list"
+                                     style=" border-bottom-width:0px;">
+                                    <div class="layui-table-tool">
+                                        <div class="layui-table-tool-temp">
+                                            <div class="layui-btn-container">
+                                                <button class="layui-btn layui-btn-sm" onclick="showdiff()">添加运营日志
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>人工记录日志</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，<b>daigx</b><br>医院提供了药品目录，提供目录数据错误，删除处理。</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="layui-tab-item">
+                                <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>系统记录日志</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>2021-02-15 14:52:23，由<b>daigx</b>上传医院药品<b>2000</b>。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-14 14:52:23，由<b>daigx</b>上传诊断<b>70000</b>。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-13 14:52:23，由<b>daigx</b>上传给药途径字典<b>200</b>。</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2021-02-12 14:52:23，由<b>daigx</b>修改医院药品<b>2000</b>。</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<script>
+layui.use(['form', 'layedit', 'laydate', 'layer', 'element','jquery', 'table'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate
+  , $=layui.$;
+
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //表单赋值
+  layui.$('#LAY-component-form-setval').on('click', function(){
+    form.val('example', {
+      "username": "" // "name": "value"
+      ,"password": "123456"
+      ,"interest": 1
+      ,"like[write]": true //复选框选中状态
+      ,"close": true //开关状态
+      ,"sex": ""
+      ,"desc": ""
+    });
+  });
+
+  //表单取值
+  layui.$('#LAY-component-form-getval').on('click', function(){
+    var data = form.val('example');
+    alert(JSON.stringify(data));
+  });
+
+  form.on('select(item_sel)', function(data){
+    if (data.value == 6){
+        $('#div_selected_item').show();
+    }    else{
+        $('#div_selected_item').hide();
+    }
+  });
+
+
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+<script>
+function showdiff(){
+    //多窗口模式，层叠置顶
+    layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '添加运营日志'
+        ,area: ['800px', '400px']
+        ,shadeClose: false
+        ,maxmin: false
+        ,offset: 'auto'
+        ,scrollbar: false
+        ,content: '/opt/add_opt_log/'
+        ,btn: ['保存','取消'] //只是为了演示
+        ,yes: function(){
+            layer.closeAll();
+        }
+        ,btn2: function(){
+            layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+            layer.setTop(layero); //重点2
+        }
+    });
+}
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

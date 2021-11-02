@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">导入适应症规则
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                        <div class="layui-form-item">
+                        </div>
+                    </div>
+                    <div class="layui-form layui-border-box layui-table-view"
+                         lay-filter="LAY-table-1" lay-id="data_list"
+                         style=" border-bottom-width:0px;">
+                        <div class="layui-table-tool">
+                            <div class="layui-table-tool-temp">
+                                <div class="layui-btn-container">
+                                    <button class="layui-btn layui-btn-sm">校验必填项、格式、字典</button>
+<!--                                    <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="newTab('/cus_rules/rules_add2', '')">删除</button>-->
+<!--                                    <button class="layui-btn layui-btn-sm layui-btn-danger" onclick="newTab('/cus_rules/rules_add2', '')">全部删除</button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
+                    <script type="text/html" id="barDemo">
+
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+
+<script>
+    layui.use(['table','form'], function () {
+        var table = layui.table;
+        var $ = layui.jquery;
+        var form = layui.form;
+
+        var drugs_tb = table.render({
+            elem: '#data_list'
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '商品药物ID', title: '商品药物ID', width: 200, sort: true}
+                , {field: '依据', title: '依据', width: 200, sort: true}
+                , {field: '结果', title: '结果', width: 200, sort: true}
+                , {field: '备注', title: '备注', width: 200, sort: true}
+                , {field: '性別', title: '性別', width: 150, sort: true}
+                , {field: '年齡', title: '年齡', width: 150, sort: true}
+                , {field: '年齡min', title: '年齡min', width: 150, sort: true}
+                , {field: '年齡max', title: '年齡max', width: 150, sort: true}
+                , {field: '年齡单位', title: '年齡单位', width: 150, sort: true}
+                , {field: '特殊人群', title: '特殊人群', width: 150, sort: true}
+                , {field: '诊断', title: '诊断', width: 150, sort: true}
+                , {field: '诊断2', title: '诊断2', width: 150, sort: true}
+                , {field: '指标1', title: '指标1', width: 150, sort: true}
+                , {field: '指标1min', title: '指标1min', width: 150, sort: true}
+                , {field: '指标1max', title: '指标1max', width: 150, sort: true}
+                , {field: '指标1单位', title: '指标1单位', width: 150, sort: true}
+                , {field: '指标2', title: '指标2', width: 150, sort: true}
+                , {field: '指标2min', title: '指标2min', width: 150, sort: true}
+                , {field: '指标2max', title: '指标2max', width: 150, sort: true}
+                , {field: '指标2单位', title: '指标2单位', width: 150, sort: true}
+                , {field: '科室', title: '科室', width: 150, sort: true}
+            ]]
+            ,data:[
+                    {"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+                    ,{"商品药物ID":"22718115-7A58-FE10-E050-10AC02016A78" ,"说明书ID":"22718115-7A58-FE10-E050-10AC02016A78"}
+
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'rules') {
+
+            }
+        });
+
+        //监听提交
+      form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+      });
+
+
+          $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+            var index = $(this).attr('data-index');
+            var tableBox = $(this).parents('.layui-table-box');
+            //存在固定列
+            if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+                tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+            } else {
+                tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+            }
+            var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+            if (checkCell.length > 0) {
+                checkCell.click();
+            }
+        });
+
+        //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+        $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+            e.stopPropagation();
+        });
+
+
+        $("#btn_search_more").click(function(){
+            $("#div_search_more").toggle();
+        });
+
+
+        $("#import_data").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '数据导入向导'
+            ,area: ['80%', '90%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['下一步', '上一步'] //只是为了演示
+            ,yes: function(){
+              localtion.href='';
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

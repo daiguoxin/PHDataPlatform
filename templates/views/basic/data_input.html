@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>字典管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/chunk-vendors.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/app.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/axios.min.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/chunk.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/chunk-vendors.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/cos-js-sdk-v5.min.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/dy-ele.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/dy-jy.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/font.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/hm.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/TCaptcha.js" media="all">
+
+    <link rel="stylesheet" href="/static/phhc/js/tcaptcha-frame.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/tinymce.min.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/UrlChangeTracker.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/vue.min.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/vue-router.min.js" media="all">
+    <link rel="stylesheet" href="/static/phhc/js/vuex.min.js" media="all">
+</head>
+<body>
+<div id="app">
+    <section class="ant-layout ant-layout-has-sider layout desktop">
+        <section class="ant-layout sidemenu content-width-Fixed" style="min-height: 100vh;">
+            <main class="ant-layout-content" style="height: 100%; margin: 16px 8px 0px;">
+
+                <div data-v-7af46b62="" data-v-06054248="" style="margin: -16px -8px 0px;">
+                    <div data-v-59055fb7="" data-v-7af46b62="" class="page-header">
+                        <div data-v-59055fb7="" class="page-header-index-wide">
+                            <div data-v-59055fb7="" class="detail">
+                                <div data-v-59055fb7="" class="main">
+                                    <div data-v-59055fb7="" class="row"><!----><h1 data-v-59055fb7=""
+                                                                                   class="title">销售预订<!---->
+                                        <!----><!----></h1>
+                                        <div data-v-59055fb7="" class="action">
+                                            <button data-v-06054248="" type="button" class="ant-btn"
+                                                    data-v-59055fb7=""><span>历史单据</span></button>
+                                        </div>
+                                    </div>
+                                    <div data-v-59055fb7="" class="row"><!---->
+                                        <div data-v-59055fb7="" class="headerContent">
+                                            <div data-v-745c64a4="" data-v-06054248=""
+                                                 class="detail-layout description-list small horizontal"
+                                                 data-v-59055fb7=""><!---->
+                                                <div data-v-745c64a4="" class="ant-row">
+                                                    <form data-v-06054248=""
+                                                          class="form ant-form ant-form-horizontal">
+                                                        <div data-v-06054248="" class="form-row ant-row"
+                                                             style="margin-left: -8px; margin-right: -8px;">
+                                                            <div data-v-06054248=""
+                                                                 class="ant-col ant-col-4"
+                                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                                <div data-v-06054248=""
+                                                                     class="ant-row ant-form-item">
+                                                                    <div class="ant-col ant-form-item-label">
+                                                                        <label title="客户"
+                                                                               class="">客户</label></div>
+                                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                                        <div class="ant-form-item-control">
+                                                                                        <span class="ant-form-item-children"><div
+                                                                                                data-v-06054248=""
+                                                                                                class="global-search-wrapper"
+                                                                                                yydirection="direction_0_0"
+                                                                                                value="[object Object]"><div
+                                                                                                class="global-search ant-select ant-select-combobox ant-select-enabled ant-select-show-search ant-select-auto-complete"
+                                                                                                id="txtClientName"
+                                                                                                add-event="true"
+                                                                                                style="width: 100%;"><div
+                                                                                                role="combobox"
+                                                                                                aria-autocomplete="list"
+                                                                                                aria-haspopup="true"
+                                                                                                aria-controls="5cb14a6b-08ac-4941-ddad-a575fe911399"
+                                                                                                class="ant-select-selection ant-select-selection--single"><div
+                                                                                                class="ant-select-selection__rendered"><ul><li
+                                                                                                class="ant-select-search ant-select-search--inline"><div
+                                                                                                class="ant-select-search__field__wrap"><span
+                                                                                                class="ant-input-group-wrapper ant-select-search__field"><span
+                                                                                                class="ant-input-wrapper ant-input-group"><input
+                                                                                                placeholder="请选择客户"
+                                                                                                type="text" value=""
+                                                                                                class="ant-input"
+                                                                                                add-event="true"><span
+                                                                                                class="ant-input-group-addon"><i
+                                                                                                aria-label="图标: usergroup-add"
+                                                                                                tabindex="-1"
+                                                                                                class="anticon anticon-usergroup-add"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="usergroup-add"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M892 772h-80v-80c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v80h-80c-4.4 0-8 3.6-8 8v48c0 4.4 3.6 8 8 8h80v80c0 4.4 3.6 8 8 8h48c4.4 0 8-3.6 8-8v-80h80c4.4 0 8-3.6 8-8v-48c0-4.4-3.6-8-8-8zM373.5 498.4c-.9-8.7-1.4-17.5-1.4-26.4 0-15.9 1.5-31.4 4.3-46.5.7-3.6-1.2-7.3-4.5-8.8-13.6-6.1-26.1-14.5-36.9-25.1a127.54 127.54 0 0 1-38.7-95.4c.9-32.1 13.8-62.6 36.3-85.6 24.7-25.3 57.9-39.1 93.2-38.7 31.9.3 62.7 12.6 86 34.4 7.9 7.4 14.7 15.6 20.4 24.4 2 3.1 5.9 4.4 9.3 3.2 17.6-6.1 36.2-10.4 55.3-12.4 5.6-.6 8.8-6.6 6.3-11.6-32.5-64.3-98.9-108.7-175.7-109.9-110.8-1.7-203.2 89.2-203.2 200 0 62.8 28.9 118.8 74.2 155.5-31.8 14.7-61.1 35-86.5 60.4-54.8 54.7-85.8 126.9-87.8 204a8 8 0 0 0 8 8.2h56.1c4.3 0 7.9-3.4 8-7.7 1.9-58 25.4-112.3 66.7-153.5 29.4-29.4 65.4-49.8 104.7-59.7 3.8-1.1 6.4-4.8 5.9-8.8zM824 472c0-109.4-87.9-198.3-196.9-200C516.3 270.3 424 361.2 424 472c0 62.8 29 118.8 74.2 155.5a300.95 300.95 0 0 0-86.4 60.4C357 742.6 326 814.8 324 891.8a8 8 0 0 0 8 8.2h56c4.3 0 7.9-3.4 8-7.7 1.9-58 25.4-112.3 66.7-153.5C505.8 695.7 563 672 624 672c110.4 0 200-89.5 200-200zm-109.5 90.5C690.3 586.7 658.2 600 624 600s-66.3-13.3-90.5-37.5a127.26 127.26 0 0 1-37.5-91.8c.3-32.8 13.4-64.5 36.3-88 24-24.6 56.1-38.3 90.4-38.7 33.9-.3 66.8 12.9 91 36.6 24.8 24.3 38.4 56.8 38.4 91.4-.1 34.2-13.4 66.3-37.6 90.5z"></path></svg></i></span></span></span><span
+                                                                                                class="ant-select-search__field__mirror">&nbsp;</span></div></li></ul></div><span
+                                                                                                unselectable="on"
+                                                                                                class="ant-select-arrow"
+                                                                                                style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></div></div><div
+                                                                                                class="global-search-wrapper"><!----></div></div></span>
+                                                                            <!----></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-06054248=""
+                                                                 class="ant-col ant-col-4"
+                                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                                <div data-v-06054248=""
+                                                                     class="ant-row ant-form-item">
+                                                                    <div class="ant-col ant-form-item-label">
+                                                                        <label title="销售类型"
+                                                                               class="">销售类型</label></div>
+                                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                                        <div class="ant-form-item-control">
+                                                                                        <span class="ant-form-item-children"><div
+                                                                                                data-v-06054248=""
+                                                                                                yydirection="direction_1_0"><div
+                                                                                                tabindex="0"
+                                                                                                class="width_100 ant-select ant-select-enabled"
+                                                                                                id="selBillType"
+                                                                                                add-event="true"><div
+                                                                                                role="combobox"
+                                                                                                aria-autocomplete="list"
+                                                                                                aria-haspopup="true"
+                                                                                                aria-controls="d5a185f3-2187-41b3-d038-927d587acb38"
+                                                                                                class="ant-select-selection ant-select-selection--single"><div
+                                                                                                class="ant-select-selection__rendered"><div
+                                                                                                title="批发"
+                                                                                                class="ant-select-selection-selected-value"
+                                                                                                style="display: block; opacity: 1;"> 批发 </div></div><span
+                                                                                                unselectable="on"
+                                                                                                class="ant-select-arrow"
+                                                                                                style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></div></div></div></span>
+                                                                            <!----></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-06054248=""
+                                                                 class="ant-col ant-col-4"
+                                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                                <div data-v-06054248=""
+                                                                     class="ant-row ant-form-item">
+                                                                    <div class="ant-col ant-form-item-label">
+                                                                        <label title="单据编号"
+                                                                               class="">单据编号</label></div>
+                                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                                        <div class="ant-form-item-control">
+                                                                                        <span class="ant-form-item-children"><input
+                                                                                                data-v-06054248=""
+                                                                                                placeholder="单据编号"
+                                                                                                type="text"
+                                                                                                maxlength="30"
+                                                                                                id="txtBillNo"
+                                                                                                class="ant-input"
+                                                                                                yydirection="direction_2_0"
+                                                                                                add-event="true"></span>
+                                                                            <!----></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-06054248=""
+                                                                 class="ant-col ant-col-4"
+                                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                                <div data-v-06054248=""
+                                                                     class="ant-row ant-form-item">
+                                                                    <div class="ant-col ant-form-item-label">
+                                                                        <label title="经手人"
+                                                                               class="">经手人</label></div>
+                                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                                        <div class="ant-form-item-control">
+                                                                                        <span class="ant-form-item-children"><div
+                                                                                                data-v-06054248=""
+                                                                                                yydirection="direction_3_0"><div><div
+                                                                                                tabindex="0"
+                                                                                                class="width_100 ant-select ant-select-enabled"
+                                                                                                id="selBusiUser"
+                                                                                                add-event="true"><div
+                                                                                                role="combobox"
+                                                                                                aria-autocomplete="list"
+                                                                                                aria-haspopup="true"
+                                                                                                aria-controls="5beab07c-bdab-4e6d-8647-8140b4d42bcf"
+                                                                                                class="ant-select-selection ant-select-selection--single"><div
+                                                                                                class="ant-select-selection__rendered"><div
+                                                                                                unselectable="on"
+                                                                                                class="ant-select-selection__placeholder"
+                                                                                                style="display: none; user-select: none;">请选择经手人</div><div
+                                                                                                title="老板"
+                                                                                                class="ant-select-selection-selected-value"
+                                                                                                style="display: block; opacity: 1;">老板</div></div><span
+                                                                                                unselectable="on"
+                                                                                                class="ant-select-arrow"
+                                                                                                style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></div></div>
+                                                                                            <!----><!----></div><!---->
+                                                                                            <!----><!----></div></span>
+                                                                            <!----></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div data-v-06054248=""
+                                                                 class="ant-col ant-col-4"
+                                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                                <div data-v-06054248=""
+                                                                     class="ant-row ant-form-item">
+                                                                    <div class="ant-col ant-form-item-label">
+                                                                        <label title="业务日期"
+                                                                               class="">业务日期</label></div>
+                                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                                        <div class="ant-form-item-control">
+                                                                                        <span class="ant-form-item-children"><div
+                                                                                                data-v-06054248=""><!----><div><!----><span
+                                                                                                class="ant-calendar-picker"
+                                                                                                id="dataPicEndDate"
+                                                                                                style="min-width: 195px; width: 100%;"><div
+                                                                                                class=""><input
+                                                                                                readonly="true"
+                                                                                                placeholder="请选择"
+                                                                                                class="ant-calendar-picker-input ant-input"><i
+                                                                                                aria-label="图标: close-circle"
+                                                                                                class="anticon anticon-close-circle ant-calendar-picker-clear"
+                                                                                                tabindex="-1"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="close-circle"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 0 1-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"></path></svg></i><i
+                                                                                                aria-label="图标: calendar"
+                                                                                                class="anticon anticon-calendar ant-calendar-picker-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="calendar"
+                                                                                                width="1em" height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></i></div></span></div>
+                                                                                            <!----><!----><!----><!---->
+                                                                                            <!----><div class=""
+                                                                                                        style="display: none;"><div
+                                                                                                    style="display: none;">业务时间</div><span
+                                                                                                    class="width_100 ant-calendar-picker"
+                                                                                                    id="dataPicStartDate"><div
+                                                                                                    class=""><input
+                                                                                                    readonly="true"
+                                                                                                    placeholder="请选择"
+                                                                                                    class="ant-calendar-picker-input ant-input"><i
+                                                                                                    aria-label="图标: close-circle"
+                                                                                                    class="anticon anticon-close-circle ant-calendar-picker-clear"
+                                                                                                    tabindex="-1"><svg
+                                                                                                    viewBox="64 64 896 896"
+                                                                                                    data-icon="close-circle"
+                                                                                                    width="1em"
+                                                                                                    height="1em"
+                                                                                                    fill="currentColor"
+                                                                                                    aria-hidden="true"
+                                                                                                    focusable="false"
+                                                                                                    class=""><path
+                                                                                                    d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm165.4 618.2l-66-.3L512 563.4l-99.3 118.4-66.1.3c-4.4 0-8-3.5-8-8 0-1.9.7-3.7 1.9-5.2l130.1-155L340.5 359a8.32 8.32 0 0 1-1.9-5.2c0-4.4 3.6-8 8-8l66.1.3L512 464.6l99.3-118.4 66-.3c4.4 0 8 3.5 8 8 0 1.9-.7 3.7-1.9 5.2L553.5 514l130 155c1.2 1.5 1.9 3.3 1.9 5.2 0 4.4-3.6 8-8 8z"></path></svg></i><i
+                                                                                                    aria-label="图标: calendar"
+                                                                                                    class="anticon anticon-calendar ant-calendar-picker-icon"><svg
+                                                                                                    viewBox="64 64 896 896"
+                                                                                                    data-icon="calendar"
+                                                                                                    width="1em"
+                                                                                                    height="1em"
+                                                                                                    fill="currentColor"
+                                                                                                    aria-hidden="true"
+                                                                                                    focusable="false"
+                                                                                                    class=""><path
+                                                                                                    d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path></svg></i></div></span></div></div></span>
+                                                                            <!----></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div><!----></div>
+                                    <div data-v-59055fb7="">
+                                        <div data-v-7af46b62="" data-v-59055fb7=""><!----><!----></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!----></div>
+                    <div data-v-7af46b62="" class="content">
+                        <div data-v-7af46b62="" class="page-header-index-wide">
+                            <div data-v-06054248="" class="card ant-card" data-v-7af46b62="">
+                                <div class="ant-card-body">
+                                    <div data-v-06054248="" class="ant-row">
+                                        <div data-v-06054248="" class="mb16 ant-col ant-col-24">
+                                            <button data-v-06054248="" type="button"
+                                                    class="fl mr6 ant-btn ant-btn-primary"><span>选择商品</span>
+                                            </button>
+                                            <div data-v-06054248="" id="codeScanDiv" class="fl mr6"><input
+                                                    placeholder="请扫码商品编号/条形码" type="text" maxlength="50"
+                                                    class="ant-input"
+                                                    style="width: 300px; margin-right: 6px; display: none;">
+                                                <button type="button" class="ant-btn"><span>扫码录入</span>
+                                                </button>
+                                            </div>
+                                            <button data-v-06054248="" type="button" class="fl mr6 ant-btn">
+                                                <span>导入商品</span></button>
+                                            <div data-v-06054248="" class="fl mr6"><!----><!---->
+                                                <!----></div>
+                                            <button data-v-06054248="" type="button" class="fl mr6 ant-btn">
+                                                <span>选择模板</span></button>
+                                        </div>
+                                    </div>
+                                    <div data-v-06054248=""
+                                         class="vxe-table vxe-table--render-default tid_39 border--full is--header is--footer is--fixed-left">
+                                        <div class="vxe-table-slots">
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248="" lockedseting="true"></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div><!---->
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div><!---->
+                                            <div data-v-06054248=""></div><!---->
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                            <div data-v-06054248=""></div>
+                                        </div>
+                                        <div class="vxe-table--render-wrapper">
+                                            <div class="vxe-table--main-wrapper">
+                                                <div xid="39"
+                                                     class="vxe-table--header-wrapper body--wrapper">
+                                                    <div class="vxe-body--x-space"></div>
+                                                    <table xid="39" cellspacing="0" cellpadding="0"
+                                                           border="0" class="vxe-table--header"
+                                                           style="width: 1779px;">
+                                                        <colgroup>
+                                                            <col name="col_43" style="width: 70px;">
+                                                            <col name="col_44" style="width: 394px;">
+                                                            <col name="col_45" style="width: 295px;">
+                                                            <col name="col_46" style="width: 150px;">
+                                                            <col name="col_47" style="width: 120px;">
+                                                            <col name="col_48" style="width: 120px;">
+                                                            <col name="col_49" style="width: 120px;">
+                                                            <col name="col_50" style="width: 120px;">
+                                                            <col name="col_51" style="width: 150px;">
+                                                            <col name="col_52" style="width: 120px;">
+                                                            <col name="col_53" style="width: 120px;">
+                                                        </colgroup>
+                                                        <thead>
+                                                        <tr class="vxe-header--row">
+                                                            <th colid="col_43"
+                                                                class="vxe-header--column col_43 col--seq col--fixed">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title"><div
+                                                                        data-v-06054248=""><span
+                                                                        style="width: 100%; display: block; text-align: center;"><i
+                                                                        aria-label="图标: setting"
+                                                                        class="anticon anticon-setting"><svg
+                                                                        viewBox="64 64 896 896"
+                                                                        data-icon="setting" width="1em"
+                                                                        height="1em" fill="currentColor"
+                                                                        aria-hidden="true" focusable="false"
+                                                                        class=""><path
+                                                                        d="M924.8 625.7l-65.5-56c3.1-19 4.7-38.4 4.7-57.8s-1.6-38.8-4.7-57.8l65.5-56a32.03 32.03 0 0 0 9.3-35.2l-.9-2.6a443.74 443.74 0 0 0-79.7-137.9l-1.8-2.1a32.12 32.12 0 0 0-35.1-9.5l-81.3 28.9c-30-24.6-63.5-44-99.7-57.6l-15.7-85a32.05 32.05 0 0 0-25.8-25.7l-2.7-.5c-52.1-9.4-106.9-9.4-159 0l-2.7.5a32.05 32.05 0 0 0-25.8 25.7l-15.8 85.4a351.86 351.86 0 0 0-99 57.4l-81.9-29.1a32 32 0 0 0-35.1 9.5l-1.8 2.1a446.02 446.02 0 0 0-79.7 137.9l-.9 2.6c-4.5 12.5-.8 26.5 9.3 35.2l66.3 56.6c-3.1 18.8-4.6 38-4.6 57.1 0 19.2 1.5 38.4 4.6 57.1L99 625.5a32.03 32.03 0 0 0-9.3 35.2l.9 2.6c18.1 50.4 44.9 96.9 79.7 137.9l1.8 2.1a32.12 32.12 0 0 0 35.1 9.5l81.9-29.1c29.8 24.5 63.1 43.9 99 57.4l15.8 85.4a32.05 32.05 0 0 0 25.8 25.7l2.7.5a449.4 449.4 0 0 0 159 0l2.7-.5a32.05 32.05 0 0 0 25.8-25.7l15.7-85a350 350 0 0 0 99.7-57.6l81.3 28.9a32 32 0 0 0 35.1-9.5l1.8-2.1c34.8-41.1 61.6-87.5 79.7-137.9l.9-2.6c4.5-12.3.8-26.3-9.3-35zM788.3 465.9c2.5 15.1 3.8 30.6 3.8 46.1s-1.3 31-3.8 46.1l-6.6 40.1 74.7 63.9a370.03 370.03 0 0 1-42.6 73.6L721 702.8l-31.4 25.8c-23.9 19.6-50.5 35-79.3 45.8l-38.1 14.3-17.9 97a377.5 377.5 0 0 1-85 0l-17.9-97.2-37.8-14.5c-28.5-10.8-55-26.2-78.7-45.7l-31.4-25.9-93.4 33.2c-17-22.9-31.2-47.6-42.6-73.6l75.5-64.5-6.5-40c-2.4-14.9-3.7-30.3-3.7-45.5 0-15.3 1.2-30.6 3.7-45.5l6.5-40-75.5-64.5c11.3-26.1 25.6-50.7 42.6-73.6l93.4 33.2 31.4-25.9c23.7-19.5 50.2-34.9 78.7-45.7l37.9-14.3 17.9-97.2c28.1-3.2 56.8-3.2 85 0l17.9 97 38.1 14.3c28.7 10.8 55.4 26.2 79.3 45.8l31.4 25.8 92.8-32.9c17 22.9 31.2 47.6 42.6 73.6L781.8 426l6.5 39.9zM512 326c-97.2 0-176 78.8-176 176s78.8 176 176 176 176-78.8 176-176-78.8-176-176-176zm79.2 255.2A111.6 111.6 0 0 1 512 614c-29.9 0-58-11.7-79.2-32.8A111.6 111.6 0 0 1 400 502c0-29.9 11.7-58 32.8-79.2C454 401.6 482.1 390 512 390c29.9 0 58 11.6 79.2 32.8A111.6 111.6 0 0 1 624 502c0 29.9-11.7 58-32.8 79.2z"></path></svg></i></span>
+                                                                    <!----></div></span></div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_44"
+                                                                class="vxe-header--column col_44 col--fixed">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">商品名称/规格</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_45"
+                                                                class="vxe-header--column col_45">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">商品编号</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_46"
+                                                                class="vxe-header--column col_46">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">属性</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_47"
+                                                                class="vxe-header--column col_47">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">数量</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_48"
+                                                                class="vxe-header--column col_48">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">单位</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_49"
+                                                                class="vxe-header--column col_49">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">单价（元）</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_50"
+                                                                class="vxe-header--column col_50">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">折扣率</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_51"
+                                                                class="vxe-header--column col_51">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">折后单价（元）</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_52"
+                                                                class="vxe-header--column col_52">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">金额（元）</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                            <th colid="col_53"
+                                                                class="vxe-header--column col_53 col--last">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--title">备注</span>
+                                                                </div>
+                                                                <div class="vxe-resizable"></div>
+                                                            </th>
+                                                        </tr>
+                                                        </thead>
+                                                    </table>
+                                                    <div class="vxe-table--header-border-line"
+                                                         style="width: 1779px;"></div>
+                                                </div>
+                                                <div xid="39" class="vxe-table--body-wrapper body--wrapper"
+                                                     style="max-height: 542px;">
+                                                    <div class="vxe-body--x-space"></div>
+                                                    <div class="vxe-body--y-space"></div>
+                                                    <table xid="39" cellspacing="0" cellpadding="0"
+                                                           border="0" class="vxe-table--body"
+                                                           style="width: 1779px;">
+                                                        <colgroup>
+                                                            <col name="col_43" style="width: 70px;">
+                                                            <col name="col_44" style="width: 394px;">
+                                                            <col name="col_45" style="width: 295px;">
+                                                            <col name="col_46" style="width: 150px;">
+                                                            <col name="col_47" style="width: 120px;">
+                                                            <col name="col_48" style="width: 120px;">
+                                                            <col name="col_49" style="width: 120px;">
+                                                            <col name="col_50" style="width: 120px;">
+                                                            <col name="col_51" style="width: 150px;">
+                                                            <col name="col_52" style="width: 120px;">
+                                                            <col name="col_53" style="width: 120px;">
+                                                        </colgroup>
+                                                        <tbody>
+                                                        <tr rowid="row_40" class="vxe-body--row">
+                                                            <td colid="col_43"
+                                                                class="vxe-body--column col_43 col--seq col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 68px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="vxe-tablePull"><span
+                                                                            data-v-06054248=""
+                                                                            class="serialNumber">1</span>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: plus"
+                                                                               class="anticon anticon-plus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="plus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+                                                                                    <path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll  ml6 ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: minus"
+                                                                               class="anticon anticon-minus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="minus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button><!----></div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_44"
+                                                                class="vxe-body--column col_44 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 392px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="add-select-product">
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-name showOff">
+                                                                            <div data-v-06054248=""
+                                                                                 class="global-search-wrapper"
+                                                                                 yydirection="direction_0_1">
+                                                                                <div class="global-search width_100 ant-select ant-select-combobox ant-select-enabled ant-select-show-search ant-select-auto-complete"
+                                                                                     id="txtProductName"
+                                                                                     add-event="true">
+                                                                                    <div role="combobox"
+                                                                                         aria-autocomplete="list"
+                                                                                         aria-haspopup="true"
+                                                                                         aria-controls="cda313c8-762a-42b7-98e1-6a9c0846c258"
+                                                                                         class="ant-select-selection ant-select-selection--single">
+                                                                                        <div class="ant-select-selection__rendered">
+                                                                                            <ul>
+                                                                                                <li class="ant-select-search ant-select-search--inline">
+                                                                                                    <div class="ant-select-search__field__wrap">
+                                                                                                        <input type="text"
+                                                                                                               value=""
+                                                                                                               class="ant-input ant-select-search__field"
+                                                                                                               add-event="true"><span
+                                                                                                            class="ant-select-search__field__mirror">&nbsp;</span>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <span unselectable="on"
+                                                                                              class="ant-select-arrow"
+                                                                                              style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em"
+                                                                                                height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-button showOff">
+                                                                            <a data-v-06054248=""
+                                                                               style="line-height: 32px;">选择商品</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_45"
+                                                                class="vxe-body--column col_45 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 293px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_46"
+                                                                class="vxe-body--column col_46 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_47"
+                                                                class="vxe-body--column col_47 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_48"
+                                                                class="vxe-body--column col_48 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_49"
+                                                                class="vxe-body--column col_49 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_50"
+                                                                class="vxe-body--column col_50 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_51"
+                                                                class="vxe-body--column col_51 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"></div>
+                                                            </td>
+                                                            <td colid="col_52"
+                                                                class="vxe-body--column col_52 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_53"
+                                                                class="vxe-body--column col_53 col--last col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr rowid="row_41" class="vxe-body--row">
+                                                            <td colid="col_43"
+                                                                class="vxe-body--column col_43 col--seq col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 68px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="vxe-tablePull"><span
+                                                                            data-v-06054248=""
+                                                                            class="serialNumber">2</span>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: plus"
+                                                                               class="anticon anticon-plus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="plus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+                                                                                    <path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll  ml6 ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: minus"
+                                                                               class="anticon anticon-minus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="minus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button><!----></div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_44"
+                                                                class="vxe-body--column col_44 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 392px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="add-select-product">
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-name showOff">
+                                                                            <div data-v-06054248=""
+                                                                                 class="global-search-wrapper"
+                                                                                 yydirection="direction_0_2">
+                                                                                <div class="global-search width_100 ant-select ant-select-combobox ant-select-enabled ant-select-show-search ant-select-auto-complete"
+                                                                                     id="txtProductName"
+                                                                                     add-event="true">
+                                                                                    <div role="combobox"
+                                                                                         aria-autocomplete="list"
+                                                                                         aria-haspopup="true"
+                                                                                         aria-controls="851a7843-9823-4992-deea-af77d8d4f98f"
+                                                                                         class="ant-select-selection ant-select-selection--single">
+                                                                                        <div class="ant-select-selection__rendered">
+                                                                                            <ul>
+                                                                                                <li class="ant-select-search ant-select-search--inline">
+                                                                                                    <div class="ant-select-search__field__wrap">
+                                                                                                        <input type="text"
+                                                                                                               value=""
+                                                                                                               class="ant-input ant-select-search__field"
+                                                                                                               add-event="true"><span
+                                                                                                            class="ant-select-search__field__mirror">&nbsp;</span>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <span unselectable="on"
+                                                                                              class="ant-select-arrow"
+                                                                                              style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em"
+                                                                                                height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-button showOff">
+                                                                            <a data-v-06054248=""
+                                                                               style="line-height: 32px;">选择商品</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_45"
+                                                                class="vxe-body--column col_45 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 293px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_46"
+                                                                class="vxe-body--column col_46 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_47"
+                                                                class="vxe-body--column col_47 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_48"
+                                                                class="vxe-body--column col_48 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_49"
+                                                                class="vxe-body--column col_49 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_50"
+                                                                class="vxe-body--column col_50 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_51"
+                                                                class="vxe-body--column col_51 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"></div>
+                                                            </td>
+                                                            <td colid="col_52"
+                                                                class="vxe-body--column col_52 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_53"
+                                                                class="vxe-body--column col_53 col--last col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr rowid="row_42" class="vxe-body--row">
+                                                            <td colid="col_43"
+                                                                class="vxe-body--column col_43 col--seq col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 68px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="vxe-tablePull"><span
+                                                                            data-v-06054248=""
+                                                                            class="serialNumber">3</span>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: plus"
+                                                                               class="anticon anticon-plus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="plus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+                                                                                    <path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button>
+                                                                        <button data-v-06054248=""
+                                                                                type="button"
+                                                                                class="showOff pull-minus-samll  ml6 ant-btn ant-btn-sm ant-btn-icon-only">
+                                                                            <i aria-label="图标: minus"
+                                                                               class="anticon anticon-minus">
+                                                                                <svg viewBox="64 64 896 896"
+                                                                                     data-icon="minus"
+                                                                                     width="1em"
+                                                                                     height="1em"
+                                                                                     fill="currentColor"
+                                                                                     aria-hidden="true"
+                                                                                     focusable="false"
+                                                                                     class="">
+                                                                                    <path d="M872 474H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h720c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path>
+                                                                                </svg>
+                                                                            </i></button><!----></div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_44"
+                                                                class="vxe-body--column col_44 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 392px;">
+                                                                    <div data-v-06054248=""
+                                                                         class="add-select-product">
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-name showOff">
+                                                                            <div data-v-06054248=""
+                                                                                 class="global-search-wrapper"
+                                                                                 yydirection="direction_0_3">
+                                                                                <div class="global-search width_100 ant-select ant-select-combobox ant-select-enabled ant-select-show-search ant-select-auto-complete"
+                                                                                     id="txtProductName"
+                                                                                     add-event="true">
+                                                                                    <div role="combobox"
+                                                                                         aria-autocomplete="list"
+                                                                                         aria-haspopup="true"
+                                                                                         aria-controls="ba388fa1-f819-4425-bd33-c8fa7f6b6a36"
+                                                                                         class="ant-select-selection ant-select-selection--single">
+                                                                                        <div class="ant-select-selection__rendered">
+                                                                                            <ul>
+                                                                                                <li class="ant-select-search ant-select-search--inline">
+                                                                                                    <div class="ant-select-search__field__wrap">
+                                                                                                        <input type="text"
+                                                                                                               value=""
+                                                                                                               class="ant-input ant-select-search__field"
+                                                                                                               add-event="true"><span
+                                                                                                            class="ant-select-search__field__mirror">&nbsp;</span>
+                                                                                                    </div>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                        <span unselectable="on"
+                                                                                              class="ant-select-arrow"
+                                                                                              style="user-select: none;"><i
+                                                                                                aria-label="图标: down"
+                                                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                                                viewBox="64 64 896 896"
+                                                                                                data-icon="down"
+                                                                                                width="1em"
+                                                                                                height="1em"
+                                                                                                fill="currentColor"
+                                                                                                aria-hidden="true"
+                                                                                                focusable="false"
+                                                                                                class=""><path
+                                                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div data-v-06054248=""
+                                                                             class="add-select-product-button showOff">
+                                                                            <a data-v-06054248=""
+                                                                               style="line-height: 32px;">选择商品</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_45"
+                                                                class="vxe-body--column col_45 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 293px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_46"
+                                                                class="vxe-body--column col_46 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"><span
+                                                                        class="vxe-cell--label">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_47"
+                                                                class="vxe-body--column col_47 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_48"
+                                                                class="vxe-body--column col_48 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_49"
+                                                                class="vxe-body--column col_49 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_50"
+                                                                class="vxe-body--column col_50 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_51"
+                                                                class="vxe-body--column col_51 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 148px;"></div>
+                                                            </td>
+                                                            <td colid="col_52"
+                                                                class="vxe-body--column col_52 col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                            <td colid="col_53"
+                                                                class="vxe-body--column col_53 col--last col--ellipsis">
+                                                                <div class="vxe-cell c--tooltip"
+                                                                     style="width: 118px;"></div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <div class="vxe-table--checkbox-range"></div>
+                                                    <div class="vxe-table--empty-block"
+                                                         style="width: 1779px;">
+                                                        <div class="vxe-table--empty-content">暂无数据</div>
+                                                    </div>
+                                                </div>
+                                                <div xid="39"
+                                                     class="vxe-table--footer-wrapper body--wrapper"
+                                                     style="margin-top: -1px;">
+                                                    <div class="vxe-body--x-space"></div>
+                                                    <table xid="39" cellspacing="0" cellpadding="0"
+                                                           border="0" class="vxe-table--footer"
+                                                           style="width: 1779px;">
+                                                        <colgroup>
+                                                            <col name="col_43" style="width: 70px;">
+                                                            <col name="col_44" style="width: 394px;">
+                                                            <col name="col_45" style="width: 295px;">
+                                                            <col name="col_46" style="width: 150px;">
+                                                            <col name="col_47" style="width: 120px;">
+                                                            <col name="col_48" style="width: 120px;">
+                                                            <col name="col_49" style="width: 120px;">
+                                                            <col name="col_50" style="width: 120px;">
+                                                            <col name="col_51" style="width: 150px;">
+                                                            <col name="col_52" style="width: 120px;">
+                                                            <col name="col_53" style="width: 120px;">
+                                                        </colgroup>
+                                                        <tfoot>
+                                                        <tr class="vxe-footer--row rowTotalClass fontBold">
+                                                            <td colid="col_43"
+                                                                class="vxe-footer--column col_43 col--seq">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">合计</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_44"
+                                                                class="vxe-footer--column col_44">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_45"
+                                                                class="vxe-footer--column col_45">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_46"
+                                                                class="vxe-footer--column col_46">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_47"
+                                                                class="vxe-footer--column col_47">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">0</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_48"
+                                                                class="vxe-footer--column col_48">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_49"
+                                                                class="vxe-footer--column col_49">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_50"
+                                                                class="vxe-footer--column col_50">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_51"
+                                                                class="vxe-footer--column col_51">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_52"
+                                                                class="vxe-footer--column col_52">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">0.00</span>
+                                                                </div>
+                                                            </td>
+                                                            <td colid="col_53"
+                                                                class="vxe-footer--column col_53 col--last">
+                                                                <div class="vxe-cell"><span
+                                                                        class="vxe-cell--item">　</span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="vxe-table--fixed-wrapper"><!----><!----></div>
+                                        </div>
+                                        <div class="vxe-table--empty-placeholder"
+                                             style="top: 42px; height: 164px;">
+                                            <div class="vxe-table--empty-content">暂无数据</div>
+                                        </div>
+                                        <div class="vxe-table--border-line"></div>
+                                        <div class="vxe-table--resizable-bar"></div>
+                                        <div class="vxe-table--loading vxe-loading">
+                                            <div class="vxe-loading--spinner"></div>
+                                        </div><!----><!----><!----><!----><!----></div>
+                                </div>
+                            </div>
+                            <div data-v-06054248="" class="ant-card ant-card-bordered" data-v-7af46b62="">
+                                <div class="ant-card-body">
+                                    <form data-v-06054248="" class="form ant-form ant-form-horizontal">
+                                        <div data-v-06054248="" class="form-row ant-row"
+                                             style="margin-left: -8px; margin-right: -8px;">
+                                            <div data-v-06054248="" class="ant-col ant-col-4"
+                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                <div data-v-06054248="" class="ant-row ant-form-item">
+                                                    <div class="ant-col ant-form-item-label"><label
+                                                            title="整单折扣" class="">整单折扣</label></div>
+                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                        <div class="ant-form-item-control"><span
+                                                                class="ant-form-item-children"><span
+                                                                data-v-06054248=""
+                                                                class="ant-input-group-wrapper"><span
+                                                                class="ant-input-wrapper ant-input-group"><span
+                                                                class="ant-input-group-addon"><div
+                                                                tabindex="0"
+                                                                class="ant-select ant-select-enabled"
+                                                                yydirection="direction_0_1000"
+                                                                add-event="true" style="width: 90px;"><div
+                                                                role="combobox" aria-autocomplete="list"
+                                                                aria-haspopup="true"
+                                                                aria-controls="dc79dc56-25f3-49d8-dc2c-582b5adcfeb2"
+                                                                class="ant-select-selection ant-select-selection--single"><div
+                                                                class="ant-select-selection__rendered"><div
+                                                                title="折扣率"
+                                                                class="ant-select-selection-selected-value"
+                                                                style="display: block; opacity: 1;">折扣率</div></div><span
+                                                                unselectable="on" class="ant-select-arrow"
+                                                                style="user-select: none;"><i
+                                                                aria-label="图标: down"
+                                                                class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                viewBox="64 64 896 896" data-icon="down"
+                                                                width="1em" height="1em" fill="currentColor"
+                                                                aria-hidden="true" focusable="false"
+                                                                class=""><path
+                                                                d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></div></div></span><input
+                                                                type="text" yydirection="direction_1_1000"
+                                                                class="ant-input" add-event="true"><span
+                                                                class="ant-input-group-addon">%</span></span></span></span>
+                                                            <!----></div>
+                                                    </div>
+                                                </div>
+                                            </div><!---->
+                                            <div data-v-06054248="" class="ant-col ant-col-4"
+                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                <div data-v-06054248="" class="ant-row ant-form-item">
+                                                    <div class="ant-col ant-form-item-label"><label
+                                                            title="其他费用" class="">其他费用</label></div>
+                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                        <div class="ant-form-item-control"><span
+                                                                class="ant-form-item-children"><div
+                                                                data-v-06054248=""
+                                                                class="width_100 ant-input-number"
+                                                                placeholder="请输入"
+                                                                yydirection="direction_3_1000"><span
+                                                                class="width_100 ant-input-group-wrapper"><span
+                                                                class="ant-input-wrapper ant-input-group"><input
+                                                                placeholder="" type="text"
+                                                                yydirection="direction_3_1000"
+                                                                class="ant-input" add-event="true"><span
+                                                                class="ant-input-group-addon">元</span></span></span>
+                                                            <!----></div></span><!----></div>
+                                                    </div>
+                                                </div>
+                                            </div><!---->
+                                            <div data-v-06054248="" class="ant-col ant-col-4"
+                                                 style="padding-left: 8px; padding-right: 8px;">
+                                                <div data-v-06054248=""
+                                                     class="ant-form-item-no-prompt ant-form-item-no-prompt-content-fontOrange ant-row ant-form-item">
+                                                    <div class="ant-col ant-form-item-label"><label title=""
+                                                                                                    class=""><span
+                                                            data-v-06054248=""
+                                                            class="fontOrange">总计金额</span></label></div>
+                                                    <div class="ant-col ant-form-item-control-wrapper">
+                                                        <div class="ant-form-item-control"><span
+                                                                class="ant-form-item-children"><span
+                                                                data-v-06054248=""
+                                                                class="ant-input-group-wrapper"><span
+                                                                class="ant-input-wrapper ant-input-group"><input
+                                                                placeholder="请输入" type="text"
+                                                                disabled="disabled"
+                                                                class="ant-input ant-input-disabled"><span
+                                                                class="ant-input-group-addon">元</span></span></span></span>
+                                                            <!----></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div data-v-624dba80="" data-v-06054248="">
+                                            <form data-v-624dba80=""
+                                                  class="form ant-form ant-form-horizontal">
+                                                <div data-v-624dba80="" class="form-row ant-row"
+                                                     style="margin-left: -8px; margin-right: -8px;">
+                                                    <div data-v-624dba80="" class="ant-col ant-col-4"
+                                                         style="padding-left: 8px; padding-right: 8px;">
+                                                        <div data-v-624dba80=""
+                                                             class="ant-row ant-form-item"
+                                                             yydirection="direction_0_1001">
+                                                            <div class="ant-col ant-form-item-label"><label
+                                                                    title="结算账户" class="">结算账户</label></div>
+                                                            <div class="ant-col ant-form-item-control-wrapper">
+                                                                <div class="ant-form-item-control"><span
+                                                                        class="ant-form-item-children"><div
+                                                                        data-v-624dba80="" tabindex="0"
+                                                                        class="width_100 ant-select ant-select-enabled"
+                                                                        add-event="true"><div
+                                                                        role="combobox"
+                                                                        aria-autocomplete="list"
+                                                                        aria-haspopup="true"
+                                                                        aria-controls="5f5b953f-6aa6-48b0-a412-05491791199f"
+                                                                        class="ant-select-selection ant-select-selection--single"><div
+                                                                        class="ant-select-selection__rendered"><div
+                                                                        unselectable="on"
+                                                                        class="ant-select-selection__placeholder"
+                                                                        style="display: none; user-select: none;">请选择</div><div
+                                                                        title="现金"
+                                                                        class="ant-select-selection-selected-value"
+                                                                        style="display: block; opacity: 1;">现金</div><div
+                                                                        class="ant-select-search ant-select-search--inline"
+                                                                        style="display: none;"><div
+                                                                        class="ant-select-search__field__wrap"><input
+                                                                        autocomplete="off" value=""
+                                                                        class="ant-select-search__field"
+                                                                        add-event="true"><span
+                                                                        class="ant-select-search__field__mirror">&nbsp;</span></div></div></div><span
+                                                                        unselectable="on"
+                                                                        class="ant-select-arrow"
+                                                                        style="user-select: none;"><i
+                                                                        aria-label="图标: down"
+                                                                        class="anticon anticon-down ant-select-arrow-icon"><svg
+                                                                        viewBox="64 64 896 896"
+                                                                        data-icon="down" width="1em"
+                                                                        height="1em" fill="currentColor"
+                                                                        aria-hidden="true" focusable="false"
+                                                                        class=""><path
+                                                                        d="M884 256h-75c-5.1 0-9.9 2.5-12.9 6.6L512 654.2 227.9 262.6c-3-4.1-7.8-6.6-12.9-6.6h-75c-6.5 0-10.3 7.4-6.5 12.7l352.6 486.1c12.8 17.6 39 17.6 51.7 0l352.6-486.1c3.9-5.3.1-12.7-6.4-12.7z"></path></svg></i></span></div></div></span>
+                                                                    <!----></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div data-v-624dba80="" class="ant-col ant-col-4"
+                                                         style="padding-left: 8px; padding-right: 8px;">
+                                                        <div data-v-624dba80=""
+                                                             class="ant-form-item-no-prompt ant-form-item-no-prompt-content-fontOrange ant-row ant-form-item">
+                                                            <div class="ant-col ant-form-item-label"><label
+                                                                    title="" class=""><span
+                                                                    data-v-624dba80=""
+                                                                    class="fontOrange">订金(F8)</span></label>
+                                                            </div>
+                                                            <div class="ant-col ant-form-item-control-wrapper">
+                                                                <div class="ant-form-item-control"><span
+                                                                        class="ant-form-item-children"><div
+                                                                        data-v-624dba80=""
+                                                                        class="width_100 ant-input-number"
+                                                                        placeholder="请输入"
+                                                                        yydirection="direction_1_1001"><span
+                                                                        class="width_100 ant-input-group-wrapper"><span
+                                                                        class="ant-input-wrapper ant-input-group"><input
+                                                                        placeholder="" type="text"
+                                                                        yydirection="direction_1_1001"
+                                                                        class="ant-input"
+                                                                        add-event="true"><span
+                                                                        class="ant-input-group-addon">元</span></span></span>
+                                                                    <!----></div></span><!----></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div data-v-624dba80="" class="ant-col ant-col-4"
+                                                         style="padding-left: 8px; padding-right: 8px;">
+                                                        <div data-v-624dba80=""
+                                                             class="ant-form-item-no-prompt ant-form-item-no-prompt-content-fontOrange ant-row ant-form-item"
+                                                             style="margin-top: 38px;">
+                                                            <div class="ant-col ant-form-item-control-wrapper">
+                                                                <div class="ant-form-item-control"><span
+                                                                        class="ant-form-item-children"><button
+                                                                        data-v-624dba80=""
+                                                                        yydirection="direction_6_1001"
+                                                                        type="button"
+                                                                        class="ant-btn ant-btn-link ant-btn-sm"
+                                                                        add-event="true"><span>添加</span></button></span>
+                                                                    <!----></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div data-v-3f80a5df="" data-v-624dba80="" id="Key_Listener">
+                                                基于Vue的组合键盘监听事件 封装组件
+                                            </div>
+                                        </div><!----></form>
+                                </div>
+                            </div>
+                            <div data-v-06054248="" class="mt8 ant-card ant-card-bordered"
+                                 data-v-7af46b62="">
+                                <div class="ant-card-head">
+                                    <div class="ant-card-head-wrapper">
+                                        <div class="ant-card-head-title">其他信息</div>
+                                    </div>
+                                </div>
+                                <div class="ant-card-body">
+                                    <div data-v-06054248="">
+                                        <div data-v-06054248="" yydirection="direction_0_1010"><label
+                                                data-v-06054248="" class="ant-checkbox-wrapper"><span
+                                                class="ant-checkbox"><input type="checkbox"
+                                                                            class="ant-checkbox-input"
+                                                                            value="" add-event="true"><span
+                                                class="ant-checkbox-inner"></span></span><span>送货</span></label>
+                                        </div><!----></div>
+                                    <div data-v-06054248="" class="ant-row ant-form-item">
+                                        <div class="ant-col ant-form-item-label"><label title="备注"
+                                                                                        class="">备注</label>
+                                        </div>
+                                        <div class="ant-col ant-form-item-control-wrapper">
+                                            <div class="ant-form-item-control"><span
+                                                    class="ant-form-item-children"><textarea
+                                                    data-v-06054248="" placeholder="备注信息" maxlength="500"
+                                                    class="ant-input" yydirection="direction_0_1013"
+                                                    add-event="true"
+                                                    style="height: 52px; min-height: 52px; max-height: 94px; overflow-y: hidden;"></textarea></span>
+                                                <!----></div>
+                                        </div>
+                                    </div>
+                                    <div data-v-2468558e="" data-v-06054248="" class="clearfix"><!---->
+                                        <div data-v-2468558e="" yydirection="direction_10_1015"><span
+                                                data-v-2468558e=""
+                                                class="product-img ant-upload-picture-card-wrapper"><div
+                                                class="ant-upload-list ant-upload-list-picture-card"></div><div
+                                                class="ant-upload ant-upload-select ant-upload-select-picture-card"><span
+                                                role="button" tabindex="0" class="ant-upload"><input
+                                                type="file" accept=".jpg,.jpeg,.png" multiple="multiple"
+                                                add-event="true" style="display: none;"><div
+                                                data-v-2468558e=""><i data-v-2468558e=""
+                                                                      aria-label="图标: plus"
+                                                                      class="anticon anticon-plus"><svg
+                                                viewBox="64 64 896 896" data-icon="plus" width="1em"
+                                                height="1em" fill="currentColor" aria-hidden="true"
+                                                focusable="false" class=""><path
+                                                d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path><path
+                                                d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path></svg></i><div
+                                                data-v-2468558e=""
+                                                class="ant-upload-text">图片</div></div></span></div></span>
+                                        </div>
+                                        <div data-v-2468558e="" style="display: none;"><i data-v-2468558e=""
+                                                                                          aria-label="图标: plus"
+                                                                                          class="anticon anticon-plus">
+                                            <svg viewBox="64 64 896 896" data-icon="plus" width="1em"
+                                                 height="1em" fill="currentColor" aria-hidden="true"
+                                                 focusable="false" class="">
+                                                <path d="M482 152h60q8 0 8 8v704q0 8-8 8h-60q-8 0-8-8V160q0-8 8-8z"></path>
+                                                <path d="M176 474h672q8 0 8 8v60q0 8-8 8H176q-8 0-8-8v-60q0-8 8-8z"></path>
+                                            </svg>
+                                        </i>
+                                            <div data-v-2468558e="" class="ant-upload-text">图片</div>
+                                        </div><!----><!---->
+                                        <div data-v-2468558e=""
+                                             class="font45 fontSize-12 product-img-text-summary">支持扩展名：.jpg
+                                            .jpeg .png 最多上传5张
+                                        </div><!----><!----><!----></div>
+                                </div>
+                            </div>
+                            <div data-v-500fd3d3="" data-v-06054248="" data-v-7af46b62="">
+                                <div data-v-500fd3d3="" class="ant-card ant-card-bordered mt8 mb128">
+                                    <div class="ant-card-head">
+                                        <div class="ant-card-head-wrapper">
+                                            <div class="ant-card-head-title">内部沟通</div>
+                                        </div>
+                                    </div>
+                                    <div class="ant-card-body"><span data-v-500fd3d3="" class="fr "
+                                                                     style="line-height: 40px;">0/500</span>
+                                        <div data-v-500fd3d3="" class="ant-row ant-form-item">
+                                            <div class="ant-col ant-form-item-label"><label title="备注"
+                                                                                            class="">备注</label>
+                                            </div>
+                                            <div class="ant-col ant-form-item-control-wrapper">
+                                                <div class="ant-form-item-control"><span
+                                                        class="ant-form-item-children"><textarea
+                                                        data-v-500fd3d3="" placeholder="填写备注信息，客户不可见"
+                                                        maxlength="500" class="ant-input"
+                                                        style="height: 52px; min-height: 52px; max-height: 94px; overflow-y: hidden;"></textarea></span>
+                                                    <!----></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-v-06054248="" class="global-search-wrapper" data-v-7af46b62="">
+                                <!----></div>
+                            <div data-v-06054248="" class="global-search-wrapper" data-v-7af46b62="">
+                                <!----></div><!----><!----><!---->
+                            <div data-v-4ea7eeef="" data-v-06054248="" class="ant-pro-footer-toolbar"
+                                 data-v-7af46b62="">
+                                <div data-v-4ea7eeef="" style="float: left;"></div>
+                                <div data-v-4ea7eeef="" style="float: right;">
+                                    <div data-v-06054248="" yydirection="direction_0_1020" class="ml8 fl"
+                                         data-v-4ea7eeef=""><label class="ant-checkbox-wrapper"><span
+                                            class="ant-checkbox"><input id="chkPrint" type="checkbox"
+                                                                        class="ant-checkbox-input" value=""
+                                                                        add-event="true"><span
+                                            class="ant-checkbox-inner"></span></span><span>保存后打印</span></label>
+                                    </div>
+                                    <button data-v-06054248="" yydirection="direction_1_1020" type="button"
+                                            class="ml8 ant-btn" data-v-4ea7eeef="" add-event="true">
+                                        <span>取 消</span>
+                                    </button>
+                                    <button data-v-06054248="" yydirection="direction_2_1020" type="button"
+                                            class="ml8 ant-btn" data-v-4ea7eeef="" add-event="true">
+                                        <span>保存并审核</span>
+                                    </button>
+                                    <button data-v-06054248="" yydirection="direction_3_1020" type="button"
+                                            class="ml8 ant-btn" data-v-4ea7eeef="" add-event="true">
+                                        <span>保存并新增（F9）</span>
+                                    </button>
+                                    <button data-v-06054248="" yydirection="direction_4_1020" type="button"
+                                            class="ml8 ant-btn ant-btn-primary" data-v-4ea7eeef=""
+                                            add-event="true"><i aria-label="图标: save"
+                                                                class="anticon anticon-save">
+                                        <svg viewBox="64 64 896 896" data-icon="save" width="1em"
+                                             height="1em" fill="currentColor" aria-hidden="true"
+                                             focusable="false" class="">
+                                            <path d="M893.3 293.3L730.7 130.7c-7.5-7.5-16.7-13-26.7-16V112H144c-17.7 0-32 14.3-32 32v736c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V338.5c0-17-6.7-33.2-18.7-45.2zM384 184h256v104H384V184zm456 656H184V184h136v136c0 17.7 14.3 32 32 32h320c17.7 0 32-14.3 32-32V205.8l136 136V840zM512 442c-79.5 0-144 64.5-144 144s64.5 144 144 144 144-64.5 144-144-64.5-144-144-144zm0 224c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z"></path>
+                                        </svg>
+                                    </i><span>保存（Ctrl+S）</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+            <footer class="ant-layout-footer">
+                <div data-v-299e3b63=""></div>
+            </footer><!----></section>
+    </section>
+</div>
+</body>
+</html>

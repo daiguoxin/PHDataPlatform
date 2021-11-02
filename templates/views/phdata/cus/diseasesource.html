@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-row">
+                    <div class="layui-col-md1" style="border-right: 1px solid #eee;">
+                        <div class="layui-card">
+                            <div class="site-tree">
+                                <ul class="layui-tree">
+                                    <li class="site-tree-noicon ">
+                                        <a href="/phdata/cus/index/">
+                                            <cite>适应证可审核范围</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                    <li><h2 style="margin:0px;">诊断拆分特殊人群</h2></li>
+                                    <li class="site-tree-noicon ">
+                                        <a href="/phdata/cus/frequenry/">
+                                            <cite>给药频率字典</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                    <li class="site-tree-noicon ">
+                                        <a href="/phdata/cus/drugspecpackage/">
+                                            <cite>药品规格包装</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md11">
+                        <div class="layui-card">
+                            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">原诊断拆分特殊人群</li>
+                                    <li>原诊断拆分非特殊人群</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <div class="layui-card">
+                                            <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                                 style="padding:0px;">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline">
+                                                        <label class="layui-form-label"
+                                                               style="width:80px;">原诊断名称</label>
+                                                        <div class="layui-input-inline">
+                                                            <input type="text" name="drug_name" placeholder="请输入"
+                                                                   autocomplete="off"
+                                                                   class="layui-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <button class="layui-btn layui-btn-sm" lay-submit=""
+                                                                lay-filter="LAY-app-contlist-search">
+                                                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-card-body" style="padding:10px 0px 0px 0px;">
+                                                <div class="layui-form layui-border-box layui-table-view"
+                                                     lay-filter="LAY-table-1" lay-id="data_list"
+                                                     style=" border-bottom-width:0px; ">
+                                                    <div class="layui-table-tool">
+                                                        <div class="layui-table-tool-temp">
+                                                            <div class="layui-btn-container">
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">
+                                                                    新增拆分
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">
+                                                                    停用
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add"
+                                                                        id="import_data2">
+                                                                    批量新增向导
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">下载导入模板
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">数据导入日志
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="layui-hide" id="data_list2"
+                                                       lay-filter="data_list"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <div class="layui-card">
+                                            <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                                 style="padding:0px;">
+                                                <div class="layui-form-item">
+                                                    <div class="layui-inline">
+                                                        <label class="layui-form-label"
+                                                               style="width:80px;">原诊断名称</label>
+                                                        <div class="layui-input-inline">
+                                                            <input type="text" name="drug_name" placeholder="请输入"
+                                                                   autocomplete="off"
+                                                                   class="layui-input">
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <button class="layui-btn layui-btn-sm" lay-submit=""
+                                                                lay-filter="LAY-app-contlist-search">
+                                                            <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="layui-card-body" style="padding:10px 0px 0px 0px;">
+                                                <div class="layui-form layui-border-box layui-table-view"
+                                                     lay-filter="LAY-table-1" lay-id="data_list"
+                                                     style=" border-bottom-width:0px; ">
+                                                    <div class="layui-table-tool">
+                                                        <div class="layui-table-tool-temp">
+                                                            <div class="layui-btn-container">
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">
+                                                                    新增拆分
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">
+                                                                    停用
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add"
+                                                                        id="import_data3">
+                                                                    批量新增向导
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">下载导入模板
+                                                                </button>
+                                                                <button class="layui-btn layui-btn-sm"
+                                                                        lay-event="batch_add">数据导入日志
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <table class="layui-hide" id="data_list3"
+                                                       lay-filter="data_list"></table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb2 = table.render({
+            elem: '#data_list2'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '原诊断', title: '原诊断'}
+                , {field: '特殊人群', title: '特殊人群'}
+                , {field: '状态', title: '状态', width: 150, sort: true}
+                , {field: '操作人', title: '操作人', width: 150, sort: true}
+                , {field: '操作时间', title: '操作时间', width: 150, sort: true}
+            ]]
+            ,data:[
+                    {"原诊断":"感冒","特殊人群":"哺乳期","状态":"<span style='color: green;'>启用</span>"}
+                    ,{"原诊断":"感冒","特殊人群":"妊娠期","状态":"<span style='color: green;'>启用</span>"}
+            ]
+            , page: true
+        });
+
+        var drugs_tb3 = table.render({
+            elem: '#data_list3'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+               , {field: '原诊断', title: '原诊断'}
+                , {field: '非特殊人群', title: '非特殊人群'}
+                , {field: '状态', title: '状态', width: 150, sort: true}
+                , {field: '操作人', title: '操作人', width: 150, sort: true}
+                , {field: '操作时间', title: '操作时间', width: 150, sort: true}
+            ]]
+            ,data:[
+                    {"原诊断":"感冒","非特殊人群":"哺乳期","状态":"<span style='color: green;'>启用</span>"}
+                    ,{"原诊断":"感冒","非特殊人群":"妊娠期","状态":"<span style='color: green;'>启用</span>"}
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'rules') {
+                newTab('/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')
+            } else if (obj.event === 'manual') {
+
+            }
+        });
+
+        //监听提交
+      form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+      });
+
+      $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
+
+    $("#btn_search_more").click(function(){
+        $("#div_search_more").toggle();
+    });
+
+
+    $("#import_data").on('click', function(){
+            step1();
+        });
+
+    $("#update_data").on('click', function(){
+            step1();
+    });
+
+        function step1(){
+              //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '批量新增规则向导'
+            ,area: ['80%', '90%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['下一步', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+                step2();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        };
+
+        function step2(){
+            layer.open({
+                type: 2 //此处以iframe举例
+                ,title: '批量新增规则向导'
+                ,area: ['80%', '90%']
+        <!--        ,shade: 0-->
+                ,shadeClose: false
+                ,maxmin: false
+                ,offset: 'auto'
+                ,scrollbar: false
+                ,content: '/rule/cus/module/upload_table/'
+                ,btn: ['下一步', '取消', '上一步'] //只是为了演示
+                ,yes: function(){
+                    layer.closeAll();
+                    step3();
+                }
+                ,btn2: function(){
+                    layer.closeAll();
+                }
+                ,btn3: function(){
+                    step1();
+                }
+                ,zIndex: layer.zIndex //重点1
+                ,success: function(layero){
+                  layer.setTop(layero); //重点2
+                }
+              });
+        }
+
+        function step3(){
+            layer.open({
+                type: 2 //此处以iframe举例
+                ,title: '批量新增规则向导'
+                ,area: ['80%', '90%']
+        <!--        ,shade: 0-->
+                ,shadeClose: false
+                ,maxmin: false
+                ,offset: 'auto'
+                ,scrollbar: false
+                ,content: '/rule/cus/module/upload_rules/'
+                ,btn: ['保存', '取消', '上一步'] //只是为了演示
+                ,yes: function(){
+                    layer.closeAll();
+                    layer.msg('上传数据150条，成功导入：100条，已存在50条。');
+                }
+                ,btn2: function(){
+                    layer.closeAll();
+                }
+                ,btn3: function(){
+                    step2();
+                }
+                ,zIndex: layer.zIndex //重点1
+                ,success: function(layero){
+                  layer.setTop(layero); //重点2
+                }
+              });
+        }
+});
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">查询相互作用
+                    <div class="layui-inline" style="float:right">
+                        <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                onclick="window.history.go(-1);">返回
+                        </button>
+                    </div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row layui-col-space10">
+                        <div class="layui-col-md6">
+                            <div id="drugbox1" class="layui-card">
+                                <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                     style="padding:0 15px;">
+                                    药品组A
+                                    <div class="layui-inline" style="float:right;">
+                                        <div class="layui-inline">
+                                            <input style="height: 30px;" class="layui-input" name="id"
+                                                   id="querydrug1"
+                                                   placeholder="HISID、药品名称或简拼" autocomplete="off">
+
+                                        </div>
+                                        <div class="layui-inline" style=" vertical-align: top;">
+                                            <button class="layui-btn layuiadmin-btn-list layui-btn-sm" lay-submit=""
+                                                    lay-filter="LAY-app-contlist-search" style=" width:40px;">
+                                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-card-body">
+                                    <table class="layui-hide" id="drug1" lay-filter="drug1"></table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="layui-col-md6">
+                            <div id="drugbox2" class="layui-card">
+                                <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                     style="padding:0 15px;">
+                                    药品组B
+                                    <div class="layui-inline" style="float:right">
+                                        <div class="layui-inline">
+                                            <input style="height: 30px;" class="layui-input" name="id"
+                                                   id="querydrug2"
+                                                   placeholder="HISID、药品名称或简拼" autocomplete="off">
+                                        </div>
+                                        <div class="layui-inline" style=" vertical-align: top;">
+                                            <button class="layui-btn layuiadmin-btn-list layui-btn-sm" lay-submit=""
+                                                    lay-filter="LAY-app-contlist-search" style=" width:40px;">
+                                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-card-body">
+                                    <table class="layui-hide" id="drug2" lay-filter="drug2"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-card-body" style="text-align: center;">
+                    <button type="button" class="layui-btn" id="submitQueryRule"
+                            onclick="newTab('/rule/cus_rules/two_obj_condi_query_result', '')">查询
+                    </button>
+                    <button class="layui-btn layui-btn-primary" onclick="window.history.go(-1);">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb = table.render({
+            elem: '#drug1'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '药品信息', title: '药品信息'}
+            ]]
+            ,data:[
+                    {"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+                    ,{"药品信息":"【HISID】ba6f2c91-9df0【通用名】格列齐特片(Ⅱ)【商品名】达美康【规格】80mg60片【包装】盒【厂家】天津华津制药有限公司"}
+            ]
+            , page: true
+        });
+
+        var drugs_tb = table.render({
+            elem: '#drug2'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '药品信息', title: '药品信息'}
+            ]]
+            ,data:[
+
+            ]
+            , page: true
+        });
+
+      $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
+
+    $("#btn_search_more").click(function(){
+        $("#div_search_more").toggle();
+    });
+
+
+    var drugs_tb2 = table.render({
+            elem: '#data_list2'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: 'HISID', title: 'HISID', width: 120, fixed: 'left'}
+                , {field: '通用名', title: '通用名', width: 150, fixed: 'left'}
+                , {field: '商品名', title: '商品名', width: 80}
+                , {field: '规格', title: '规格', width:100}
+                , {field: '包装', title: '包装', width: 100}
+                , {field: '厂家', title: '厂家', width: 200}
+            ]]
+            ,data:[
+                    {"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+                    ,{"HISID":"ba6f2c91-9df0", "通用名":"格列齐特片(Ⅱ)","商品名":"达美康","规格":"80mg60片","包装":"盒","厂家":"天津华津制药有限公司"}
+            ]
+            , page: true
+        });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

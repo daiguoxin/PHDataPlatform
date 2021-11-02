@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>面板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+<style>
+    /* 这段样式只是用于演示 */
+    #LAY-component-grid-list .demo-list .layui-card {
+        height: 267px;
+    }
+</style>
+
+<div class="layui-fluid" id="LAY-component-grid-list">
+    <blockquote class="layui-elem-quote layui-table-cell" id="customer_file">医院信息：北京宣武医院 &nbsp;
+    </blockquote>
+    <div class="layui-row layui-col-space10">
+        {% for data_item in data_list %}
+            <div class="layui-col-md4">
+                <div class="layui-card">
+                    <div class="layui-card-header">{{ data_item.data_name }}</div>
+                    <div class="layui-card-body" style="min-height: 200px;">
+                        <div class="layui-form">
+                            <table class="layui-table">
+                                <colgroup>
+                                    <col width="50%">
+                                    <col width="20%">
+                                    <col width="30%">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th>功能名称</th>
+                                    <th>数据统计</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for menu_item in data_item.data_items %}
+                                    <tr>
+                                        <td class="layui-table-cell"><a class="layui-table-link"
+                                                                        href="{{ menu_item.url }}"
+                                                                        target="{{ menu_item.target }}">{{ menu_item.data_name }}</a>
+                                        </td>
+                                        <td></td>
+                                        <td class="layui-table-cell"><a href="#" class="layui-btn layui-btn-xs">上传</a>&nbsp;<a
+                                                href="#">下载模板</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js"></script>
+
+
+<script>
+    function newTab(url, tit) {
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+</script>
+
+<script>
+        layui.use('layer', function () {
+        var layer = layui.layer;
+        var $ = layui.$;
+
+        $('#upload').click(function (data) {
+            layer.open({
+                type: 2,
+                area: ['1000px', '650px'],
+                fixed: false, //不固定
+                maxmin: true,
+                content: '/common/uploadfile'
+            });
+        });
+    });
+</script>
+</body>
+</html>

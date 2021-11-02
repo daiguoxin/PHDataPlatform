@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+    <style>
+        .layui-form-label{ width:120px; }
+        .layui-input-inline { margin-left: 10px; padding-top: 3px}
+
+
+    </style>
+</head>
+<body>
+<div class="layui-fluid" style="margin-bottom: 50px;">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-inline">
+                        <div class="layui-inline">
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">批准文号</label>
+                                <div class="layui-form-mid layui-word-aux">0101001</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:80px;">药品本位码</label>
+                                <div class="layui-form-mid layui-word-aux">0101001</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">通用名</label>
+                                <div class="layui-form-mid layui-word-aux">同仁大活络丸</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">剂型</label>
+                                <div class="layui-form-mid layui-word-aux">大蜜丸</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">规格</label>
+                                <div class="layui-form-mid layui-word-aux">3.6g</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">包装</label>
+                                <div class="layui-form-mid layui-word-aux">6丸/盒</div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label" style="width:60px;">厂家</label>
+                                <div class="layui-form-mid layui-word-aux">北京同仁堂股份有限公司</div>
+                            </div>
+                            <div class="layui-inline">
+                                <a class="layui-btn layui-btn-xs" lay-event="rules">标签</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="float:right">
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <!--                        <fieldset class="layui-elem-field layui-field-title">-->
+                    <!--                            <legend>基本信息</legend>-->
+                    <!--                        </fieldset>-->
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">药品说明书</label>
+                            <div class="layui-input-inline">
+                                0101001
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">通用药物</label>
+                            <div class="layui-input-inline" style=" width:410px; margin-right:0px;">
+                                阿司匹林肠溶片 片剂
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">基础药物</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                阿司匹林肠溶片 10mg/片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">成分</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                阿司匹林肠溶片 10mg/片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">分类</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                阿司匹林肠溶片 10mg/片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">规格拆分</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                            10 mg 1 片
+                                阿司匹林肠溶片 10 mg 1 片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">包装拆分</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                10mg/片
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">标签</label>
+                            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                                毒性药品、麻醉药品、精神类药品、放射性药品、血液制剂、肿瘤药品、抗菌药物
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="layer-footer"
+                 style="z-index: 10; position: fixed; text-align: center; bottom: 0; width:100%; height:50px; background-color:#fff; border-top:1px #e6e6e6 solid; display:none;">
+                <button type="button" class="layui-btn layui-btn layui-btn-normal" onclick="save()">保存</button>
+                <button type="button" class="layui-btn layui-btn layui-btn-normal" onclick="save_add()">保存并继续添加</button>
+                <button type="button" class="layui-btn layui-btn-primary" onclick="window.history.go(-1);">返回</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script src="/static/layuiadmin/layui_exts/selectPlus/selectPlus.js" charset="utf-8"></script>
+
+<script>
+layui.use(['form', 'layedit', 'laydate'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate;
+
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //表单赋值
+  layui.$('#LAY-component-form-setval').on('click', function(){
+    form.val('example', {
+      "username": "" // "name": "value"
+      ,"password": "123456"
+      ,"interest": 1
+      ,"like[write]": true //复选框选中状态
+      ,"close": true //开关状态
+      ,"sex": ""
+      ,"desc": ""
+    });
+  });
+
+  //表单取值
+  layui.$('#LAY-component-form-getval').on('click', function(){
+    var data = form.val('example');
+    alert(JSON.stringify(data));
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+     layui.config({
+      base: '/static/layuiadmin/layui_exts/selectPlus/'
+    }).extend({
+      test: 'selectPlus'
+    }).use(['selectPlus', 'jquery'], function () {
+      var $ = layui.$,
+        selectPlus = layui.selectPlus;
+      // 多选
+      selectPlus.render({
+        el: '#sex_dict',
+        data: [{
+          "name": "男",
+          "id": 1,
+          "text": "男"
+        }, {
+          "name": "女",
+          "id": 2,
+          "text": "女"
+        }, {
+          "name": "未知",
+          "id": 3,
+          "text": "未知"
+        }],
+        valueName: "name",
+        values: ['bootstrap', 'element'],
+        valueSeparator: "、"
+      });
+
+      selectPlus.render({
+        el: '#tsrq',
+        data: [{
+          "name": "哺乳期",
+          "id": 1,
+          "text": "哺乳期"
+        }, {
+          "name": "妊娠期",
+          "id": 2,
+          "text": "妊娠期"
+        }, {
+          "name": "绝经期",
+          "id": 3,
+          "text": "绝经期"
+        }, {
+          "name": "妊娠期",
+          "id": 2,
+          "text": "妊娠期"
+        }, {
+          "name": "绝经期",
+          "id": 3,
+          "text": "绝经期"
+        }],
+        valueName: "name",
+        values: ['bootstrap', 'element'],
+        valueSeparator: "、"
+      });
+
+
+      selectPlus.render({
+        el: '#gypl',
+        data: [{
+          "name": "遵医嘱",
+          "id": 1,
+          "text": "遵医嘱"
+        }, {
+          "name": "必要时",
+          "id": 2,
+          "text": "必要时"
+        }, {
+          "name": "检查用",
+          "id": 3,
+          "text": "检查用"
+        }, {
+          "name": "ST",
+          "id": 4,
+          "text": "ST"
+        }, {
+          "name": "ONCE",
+          "id": 5,
+          "text": "ONCE"
+        }],
+        valueName: "name",
+        values: ['bootstrap', 'element'],
+        valueSeparator: "、"
+      });
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+        window.location = url;
+<!--        if (top.layui.index) {-->
+<!--            top.layui.index.openTabsPage(url, tit)-->
+<!--        } else {-->
+<!--            window.open(url)-->
+<!--        }-->
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function texLength(obj, maxlength, id) {
+      var curr = obj.value.length;
+      if (curr > maxlength) {
+        layer.msg('字数在' + maxlength + '字以内');
+      } else {
+        document.getElementById(id).innerHTML = curr;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function save(){
+        layer.msg('保存成功');
+        setTimeout(goback, 1000);
+    }
+
+    function save_add(){
+        layer.msg('保存成功');
+        setTimeout(reload, 1000);
+    }
+
+    function goback(){
+        window.history.go(-1);
+    }
+
+    function reload(){
+        document.location.reload()
+    }
+
+
+layui.use('form', function () {
+            var form = layui.form;
+            var $ = layui.$;
+
+            form.on('radio(gypl_type)', function (data) {
+
+                if ($('input[name="gypl_type"]:checked ').val() == "1") {
+                    $('#gypl_dict').hide();
+                    $('#gypl_interval').show();
+                }
+                else {
+                    $('#gypl_interval').hide();
+                    $('#gypl_dict').show();
+                }
+                form.render();
+            });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+layui.use('layer', function(){ //独立版的layer无需执行这一句
+    var $ = layui.jquery, layer = layui.layer; //独立版的layer无需执行这一句
+
+    $("#hospitaldiagnosis").on('click', function(){
+        //多窗口模式，层叠置顶
+      layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '选择数据'
+        ,area: ['80%', '95%']
+<!--        ,shade: 0-->
+        ,shadeClose: false
+        ,maxmin: false
+        ,offset: 'auto'
+        ,scrollbar: false
+        ,content: '/cus_rules/dict_select'
+        ,btn: ['确定', '取消'] //只是为了演示
+        ,yes: function(){
+          layer.closeAll();
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    });
+
+    $("#department").on('click', function(){
+        //多窗口模式，层叠置顶
+      var l1 = layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '选择数据'
+        ,area: ['80%', '95%']
+<!--        ,shade: 0-->
+        ,shadeClose: false
+        ,maxmin: false
+        ,offset: 'auto'
+        ,scrollbar: false
+        ,content: '/cus_rules/dict_select'
+        ,btn: ['保存', '取消'] //只是为了演示
+        ,yes: function(){
+          layer.closeAll();
+        }
+        ,btn2: function(){
+          layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+          layer.setTop(layero); //重点2
+        }
+      });
+    });
+
+    $("#drugroute").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['80%', '95%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/cus_rules/dict_select'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+       $("#btn_add_item").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '70%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/cus_rules/add_item'
+            ,btn: ['确定', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

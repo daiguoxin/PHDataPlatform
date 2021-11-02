@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid" id="LAY-component-grid-list">
+    <div class="layui-row layui-col-space10" style="margin:0px;">
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">适宜性（影响合理性）</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">规范性（影响合理性）</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list2" lay-filter="data_list2"></table>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">提醒类（不影响合理性）</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list3" lay-filter="data_list3"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="manage">维护</a>
+</script>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+
+<script>
+    layui.use(['table','form'], function () {
+        var table = layui.table;
+
+        var t1 = table.render({
+            elem: '#data_list'
+            , title: '用户数据表'
+            , cols: [[
+                {field: '序号', title: '序号', width:60}
+                , {field: 'audit_item', title: '审核项目', width:150}
+                , {field: 'audit_item_desc', title: '说明'}
+                , {field: 'audit_item_type', title: 'audit_item_type', hide:true}
+                , {field: 'audit_item_id', title: 'audit_item_id', hide:true}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"序号":"1", "audit_item_id":"1-1", "audit_item":"适应证", "audit_item_type":"01", "audit_item_desc":"以处方诊断为依据，审核药品适应证适宜性。适应症支持临床诊断、性别、年龄、特殊人群、科室等。", "count":"123"}
+                ,{"序号":"2", "audit_item_id":"1-2", "audit_item":"人群禁忌", "audit_item_type":"01", "audit_item_desc":"药品对于性别、年龄、妊娠期、哺乳期等人群禁忌时，审核提示遴选药品人群不适宜。", "count":"123"}
+                ,{"序号":"3", "audit_item_id":"1-3", "audit_item":"禁忌症", "audit_item_type":"01", "audit_item_desc":"药品对于患有某些疾病的患者禁忌时，审核提示存在禁忌症。禁忌症支持多维规则，包括诊断、指标、性别、年龄、特殊人群。", "count":"123"}
+                ,{"序号":"4", "audit_item_id":"1-4", "audit_item":"过敏禁忌", "audit_item_type":"01", "audit_item_desc":"过敏审核支持药源（药品和成分）、过敏体质患者、其他过敏原（食物、花粉、阳光等）。", "count":"123"}
+                ,{"序号":"5", "audit_item_id":"1-5", "audit_item":"用法用量", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"6", "audit_item_id":"1-6", "audit_item":"相互作用", "audit_item_type":"02", "audit_item_desc":""}
+                ,{"序号":"7", "audit_item_id":"1-7", "audit_item":"重复用药", "audit_item_type":"02", "audit_item_desc":""}
+                ,{"序号":"8", "audit_item_id":"1-8", "audit_item":"配伍禁忌", "audit_item_type":"02", "audit_item_desc":""}
+                ,{"序号":"9", "audit_item_id":"1-9", "audit_item":"溶媒适宜性", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"10", "audit_item_id":"1-10", "audit_item":"疗程", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"11", "audit_item_id":"1-11", "audit_item":"全静脉营养液（TPN）", "audit_item_desc":""}
+                ,{"序号":"12", "audit_item_id":"1-12", "audit_item":"连续用药天数", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"13", "audit_item_id":"1-13", "audit_item":"遴选人群", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"14", "audit_item_id":"1-14", "audit_item":"限制药品不可掰服", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"15", "audit_item_id":"1-15", "audit_item":"首剂负荷用量", "audit_item_type":"01", "audit_item_desc":""}
+                ,{"序号":"16", "audit_item_id":"1-16", "audit_item":"治疗方案", "audit_item_type":"03", "audit_item_desc":""}
+                ,{"序号":"17", "audit_item_id":"1-17", "audit_item":"皮试用药", "audit_item_type":"01", "audit_item_desc":""}
+            ]
+            , page: false
+            , limit:100
+        });
+
+        var t2 = table.render({
+            elem: '#data_list2'
+            , title: '用户数据表'
+            , cols: [[
+                {field: '序号', title: '序号', width:60}
+                , {field: 'audit_item', title: '审核项目'}
+                , {field: 'audit_item_type', title: 'audit_item_type', hide:true}
+                , {field: 'audit_item_id', title: 'audit_item_id', hide:true}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"序号":"1", "audit_item_id":"2-1", "audit_item":"门七急三", "audit_item_type":"03", "audit_item_desc":"005"}
+                ,{"序号":"2", "audit_item_id":"2-2", "audit_item":"发药量", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"3", "audit_item_id":"2-3", "audit_item":"毒麻精放开药量", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"4", "audit_item_id":"2-4", "audit_item":"抗菌药物天数", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"5", "audit_item_id":"2-5", "audit_item":"药品使用限制", "audit_item_type":"03", "audit_item_desc":"005"}
+                ,{"序号":"6", "audit_item_id":"2-6", "audit_item":"医生月度开药量限制", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"7", "audit_item_id":"2-7", "audit_item":"医生月度开药金额限制", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"8", "audit_item_id":"2-8", "audit_item":"科室月度开药量限制", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"9", "audit_item_id":"科室月度开药金额限制", "audit_item":"科室月度开药金额限制", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"10", "audit_item_id":"处方药品数量限制", "audit_item":"处方药品数量限制", "audit_item_type":"03", "audit_item_desc":"005"}
+                ,{"序号":"11", "audit_item_id":"抗菌药物分级管理", "audit_item":"抗菌药物分级管理", "audit_item_type":"03", "audit_item_desc":"005"}
+                ,{"序号":"12", "audit_item_id":"2-12", "audit_item":"毒麻精放使用权限", "audit_item_type":"03", "audit_item_desc":"005"}
+            ]
+            , page: false
+            , limit: 100
+        });
+
+    var t3 = table.render({
+            elem: '#data_list3'
+            , title: '用户数据表'
+            , cols: [[
+                {field: '序号', title: '序号', width:60}
+                , {field: 'audit_item', title: '审核项目'}
+                , {field: 'audit_item_type', title: 'audit_item_type', hide:true}
+                , {field: 'audit_item_id', title: 'audit_item_id', hide:true}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            ,data:[
+                {"序号":"1", "audit_item_id":"累计用量提醒", "audit_item":"累计用量提醒", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"2", "audit_item_id":"超说明书用药", "audit_item":"超说明书用药", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"3", "audit_item_id":"过敏提醒", "audit_item":"过敏提醒", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"4", "audit_item_id":"医保限适应症", "audit_item":"医保限适应症", "audit_item_type":"01", "audit_item_desc":"005"}
+                ,{"序号":"5", "audit_item_id":"过敏风险提醒", "audit_item":"过敏风险提醒", "audit_item_type":"01", "audit_item_desc":"005"}
+            ]
+            , page: false
+            , limit: 100
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                if (data.audit_item_type === '01'){
+                    newTab('/rule/cus_rules/one_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '02'){
+                    newTab('/rule/cus_rules/two_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '03'){
+                    newTab('/rule/cus_rules/many_obj_condi_conclu/?auditItem='+data.audit_item_id, data.audit_item);
+                }
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list2)', function (obj) {
+<!--            alert('data_list2'+obj.even+);-->
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                if (data.audit_item_type === '01'){
+                    newTab('/rule/cus_rules/one_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '02'){
+                    newTab('/rule/cus_rules/two_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '03'){
+                    newTab('/rule/cus_rules/many_obj_condi_conclu/?auditItem='+data.audit_item_id, data.audit_item);
+                }
+            }
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list3)', function (obj) {
+            var data = obj.data;
+            if (obj.event === 'manage'){
+                if (data.audit_item_type === '01'){
+                    newTab('/rule/cus_rules/one_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '02'){
+                    newTab('/rule/cus_rules/two_obj/?auditItem='+data.audit_item_id, data.audit_item);
+                }else if (data.audit_item_type === '03'){
+                    newTab('/rule/cus_rules/many_obj_condi_conclu/?auditItem='+data.audit_item_id, data.audit_item);
+                }
+            }
+        });
+    });
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

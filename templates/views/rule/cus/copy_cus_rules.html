@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+    <style>
+        .layui-table-cell{
+	        height:auto;
+	        overflow:visible;
+	        text-overflow:inherit;
+	        white-space:pre-wrap;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <div class="layui-card">
+                                <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                     style="padding:0px;">
+                                    <div class="layui-form-item">
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label"
+                                                   style="width:100px;">复制规则条件</label>
+                                            <div class="layui-input-inline">
+                                                <select name="modules" lay-search="">
+<!--                                                    <option value=""></option>-->
+                                                    <option value="2" selected>相同通用名</option>
+                                                    <option value="3">相同通用名+规格</option>
+                                                    <option value="3">相同通用名+厂家</option>
+                                                </select>
+                                            </div>
+                                        </div>
+<!--                                        <div class="layui-inline">-->
+<!--                                            <label class="layui-form-label"-->
+<!--                                                   style="width:100px;">规则数量对比</label>-->
+<!--                                            <div class="layui-input-inline" style=" width:70px;">-->
+<!--                                                <select name="modules" lay-search="">-->
+<!--                                                    <option value=""></option>-->
+<!--                                                    <option value="1" selected>不同</option>-->
+<!--                                                    <option value="2">相同</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label"
+                                                   style="width:120px;">待复制药品规则数</label>
+                                            <div class="layui-input-inline" style=" width:70px;">
+                                                <select name="modules" lay-search="">
+                                                    <option value="1" selected>等于</option>
+<!--                                                    <option value="2">大于</option>-->
+<!--                                                    <option value="3">小于</option>-->
+                                                </select>
+                                            </div>
+                                            <div class="layui-input-inline" style=" width:70px;">
+                                                <input type="text" name="drug_name" placeholder="请输入"
+                                                       autocomplete="off"
+                                                       class="layui-input" value="0" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <label class="layui-form-label"
+                                                   style="width:130px;">复制来源药品规则数</label>
+                                            <div class="layui-input-inline" style=" width:70px;">
+                                                <select name="modules" lay-search="">
+<!--                                                    <option value=""></option>-->
+<!--                                                    <option value="1">等于</option>-->
+                                                    <option value="2" selected>大于</option>
+<!--                                                    <option value="3">小于</option>-->
+                                                </select>
+                                            </div>
+                                            <div class="layui-input-inline" style=" width:70px;">
+                                                <input type="text" name="drug_name" placeholder="请输入"
+                                                       autocomplete="off"
+                                                       class="layui-input" value="0" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="layui-inline">
+                                            <button class="layui-btn layui-btn-sm" lay-submit=""
+                                                    lay-filter="LAY-app-contlist-search">
+                                                <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                            </button>
+                                            <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                                    id="btn_search_more" style=" display:none; ">更多
+                                            </button>
+                                        </div>
+                                        <div class="layui-block" style=" display:none;"
+                                             id="div_search_more">
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label"
+                                                       style="width:60px;">备注</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="drug_name" placeholder="请输入"
+                                                           autocomplete="off"
+                                                           class="layui-input">
+                                                </div>
+                                            </div>
+                                            <div class="layui-inline">
+                                                <label class="layui-form-label"
+                                                       style="width:60px;">依据</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="modules" lay-search="">
+                                                        <option value=""></option>
+                                                        <option value="1">药品说明书</option>
+                                                        <option value="1">指南</option>
+                                                        <option value="2">专家共识</option>
+                                                        <option value="3">书籍</option>
+                                                        <option value="4">文献</option>
+                                                        <option value="5">院内药事会</option>
+                                                        <option value="6">其他</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="layui-card-body" style="padding:10px 0px 0px 0px;">
+                                    <div class="layui-form layui-border-box layui-table-view"
+                                         lay-filter="LAY-table-1" lay-id="data_list"
+                                         style=" border-bottom-width:0px; ">
+                                        <div class="layui-table-tool">
+                                            <div class="layui-table-tool-temp">
+                                                <div class="layui-btn-container">
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="batch_add"
+                                                            id="import_data4">
+                                                        开始复制
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="batch_add"
+                                                             onclick="newTab('/rule/cus/copy_tasks/', '用户规则复制任务')">
+                                                        查看复制任务
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <table class="layui-hide" id="data_list"
+                                           lay-filter="data_list"></table>
+                                    <script type="text/html" id="barDemo">
+                                        <a class="layui-btn layui-btn-xs" lay-event="copy_drug">从药品复制</a>
+                                        <a class="layui-btn layui-btn-xs" lay-event="copy_module">按模块复制</a>
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb = table.render({
+            elem: '#data_list'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', rowspan:2}
+                , {field: '商品药物信息', width: 300, title: '商品药物信息', rowspan:2}
+                , {field: '规则数', title: '规则数', width: 80, rowspan:2}
+                , {field: '复制进度', title: '复制进度', width: 90, rowspan:2}
+                , {field: '可复制规则来源', title: '可复制规则来源', width: 300, rowspan:2}
+                , {field: '规则总数', title: '规则总数', width: 110, sort: true, colspan:4}
+                , {field: '启用规则数', title: '启用规则数', width: 120, sort: true, colspan:4}
+                , {field: '停用规则数', title: '停用规则数', width: 120, sort: true, colspan:4}
+            ],[
+                {field: '全部', title: '全部'}
+                , {field: '提示', title: '提示'}
+                , {field: '警告', title: '警告'}
+                , {field: '强制', title: '强制'}
+
+                , {field: '全部', title: '全部'}
+                , {field: '提示', title: '提示'}
+                , {field: '警告', title: '警告'}
+                , {field: '强制', title: '强制'}
+
+                , {field: '全部', title: '全部'}
+                , {field: '提示', title: '提示'}
+                , {field: '警告', title: '警告'}
+                , {field: '强制', title: '强制'}
+            ]]
+            ,data:[
+                    {"商品药物信息":"【ID】0101001【通】大活络丸【规】10mg【包】12片/盒【厂】避风塘","规则数":"0","可复制规则来源":"【ID】0101002【通】大活络丸【规】10mg【包】12片/盒【厂】<span style='color:red;'>北京同仁堂</span>"
+                    ,"可复制规则数":"100", "复制任务":"-"}
+                    ,{"商品药物信息":"【ID】0101002【通】大活络丸【规】10mg【包】12片/盒【厂】避风塘","规则数":"0","可复制规则来源":"【ID】0101003【通】大活络丸【规】10mg【包】12片/盒【厂】<span style='color:red;'>北京同仁堂</span>"
+                    ,"可复制规则数":"100", "复制进度":"进行中"}
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'rules') {
+                newTab('/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')
+            } else if (obj.event === 'manual') {
+
+            }
+        });
+
+        //监听提交
+      form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+      });
+
+      $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
+
+    $("#btn_search_more").click(function(){
+        $("#div_search_more").toggle();
+    });
+
+    $("#import_data2").on('click', function(){
+            copy_rules();
+    });
+
+    function copy_rules(){
+              //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '批量新增规则向导'
+            ,area: ['80%', '90%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['下一步', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+                step2();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        };
+
+
+    $("#import_data").on('click', function(){
+            step1();
+    });
+
+    $("#update_data").on('click', function(){
+            step1();
+    });
+
+        function step1(){
+              //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '批量新增规则向导'
+            ,area: ['80%', '90%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['下一步', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+                step2();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        };
+
+        function step2(){
+            layer.open({
+                type: 2 //此处以iframe举例
+                ,title: '批量新增规则向导'
+                ,area: ['80%', '90%']
+        <!--        ,shade: 0-->
+                ,shadeClose: false
+                ,maxmin: false
+                ,offset: 'auto'
+                ,scrollbar: false
+                ,content: '/rule/cus/module/upload_table/'
+                ,btn: ['下一步', '取消', '上一步'] //只是为了演示
+                ,yes: function(){
+                    layer.closeAll();
+                    step3();
+                }
+                ,btn2: function(){
+                    layer.closeAll();
+                }
+                ,btn3: function(){
+                    step1();
+                }
+                ,zIndex: layer.zIndex //重点1
+                ,success: function(layero){
+                  layer.setTop(layero); //重点2
+                }
+              });
+        }
+
+        function step3(){
+            layer.open({
+                type: 2 //此处以iframe举例
+                ,title: '批量新增规则向导'
+                ,area: ['80%', '90%']
+        <!--        ,shade: 0-->
+                ,shadeClose: false
+                ,maxmin: false
+                ,offset: 'auto'
+                ,scrollbar: false
+                ,content: '/rule/cus/module/upload_rules/'
+                ,btn: ['保存', '取消', '上一步'] //只是为了演示
+                ,yes: function(){
+                    layer.closeAll();
+                    layer.msg('上传数据150条，成功导入：100条，已存在50条。');
+                }
+                ,btn2: function(){
+                    layer.closeAll();
+                }
+                ,btn3: function(){
+                    step2();
+                }
+                ,zIndex: layer.zIndex //重点1
+                ,success: function(layero){
+                  layer.setTop(layero); //重点2
+                }
+              });
+        }
+
+    $("#import_data4").on('click', function(){
+            layer.open({
+                type: 1
+                ,title: '提示'
+                ,content: '<div style="margin:10px;">复制规则操作执行时间长，影响服务器性能，应在周末或工作日下午业务不繁忙时执行。<br>复制内容以实际执行时可复制内容为准。</div>'
+<!--                ,area: ['80%', '90%']-->
+        <!--        ,shade: 0-->
+                ,shadeClose: false
+                ,maxmin: false
+                ,offset: 'auto'
+                ,scrollbar: false
+                ,btn: ['确定执行', '取消'] //只是为了演示
+                ,yes: function(){
+                    layer.closeAll();
+                    layer.msg('已加入复制任务，详细进展可以查看复制任务。');
+                }
+                ,btn2: function(){
+                    layer.closeAll();
+                }
+                ,zIndex: layer.zIndex //重点1
+                ,success: function(layero){
+                  layer.setTop(layero); //重点2
+                }
+              });
+    });
+
+});
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+
+</script>
+</body>
+</html>

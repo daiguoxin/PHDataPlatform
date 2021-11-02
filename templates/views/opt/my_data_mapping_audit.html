@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>开始运营工作</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card" style=" display:none;">
+                <div class="layui-card-header">数据生产范围</div>
+                <div class="layui-card-body">
+                    <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                         style="padding:0px;">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label"
+                                       style="width:90px;">上传日期</label>
+                                <div class="layui-input-inline">
+                                    <select name="modules" lay-search="">
+                                        <option value=""></option>
+                                        <option value="1">2021-03-01</option>
+                                        <option value="0">2021-01-01</option>
+                                    </select>
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="drug_name"
+                                           placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="drug_name"
+                                           placeholder="请输入"
+                                           autocomplete="off"
+                                           class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label"
+                                       style="width:90px;">标签</label>
+                                <div class="layui-input-inline">
+                                    <select name="modules" lay-search="">
+                                        <option value=""></option>
+                                        <option value="1">宣武2021-02-01</option>
+                                        <option value="0">儿童2021-02-01</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <button class="layui-btn layui-btn-sm"
+                                        lay-submit=""
+                                        lay-filter="LAY-app-contlist-search">
+                                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                </button>
+                                <button class="layui-btn layui-btn-sm">保存搜索条件</button>
+                                <button class="layui-btn layui-btn-sm">选择历史搜索条件</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-row">
+                    <div class="layui-col-md1" style="border-right: 1px solid #eee;">
+                        <div class="layui-card">
+                            <div class="site-tree">
+                                <ul class="layui-tree">
+                                    <li><h2 style="margin:0px;">西药、中成药</h2></li>
+                                    <li class="site-tree-noicon ">
+                                        <a href="/opt/my_data_mapping_disease/">
+                                            <cite>诊断</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                    <li class="site-tree-noicon ">
+                                        <a href="/opt/my_data_mapping_dict/">
+                                            <cite>其他字典</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                    <li class="site-tree-noicon ">
+                                        <a href="/opt/my_data_mapping/">
+                                            <cite>饮片</cite>
+                                            <em></em>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md11">
+                        <div class="layui-card">
+                            <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                                <ul class="layui-tab-title">
+                                    <li class="layui-this">待审核数据</li>
+                                    <li>已审核数据</li>
+                                </ul>
+                                <div class="layui-tab-content">
+                                    <div class="layui-tab-item layui-show">
+                                        <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                             style="padding:0px;">
+                                            <div class="layui-form-item">
+                                                <div class="layui-inline">
+                                                    <label class="layui-form-label"
+                                                           style="width:90px;">关联结果类型</label>
+                                                    <div class="layui-input-inline">
+                                                        <select name="modules" lay-search="">
+                                                            <option value=""></option>
+                                                            <option value="1">关联药品</option>
+                                                            <option value="0">问题数据</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-inline">
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-submit=""
+                                                            lay-filter="LAY-app-contlist-search">
+                                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                                            id="btn_search_more">更多
+                                                    </button>
+                                                </div>
+                                                <div class="layui-block" style=" display:none;"
+                                                     id="div_search_more">
+                                                    <div class="layui-form-item">
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label"
+                                                                   style="width:90px;">客户名称</label>
+                                                            <div class="layui-input-inline" style=" width:800px;">
+                                                                <input type="text" name="drug_name" placeholder="点击选择医院"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <button class="layui-btn layui-btn-sm"
+                                                                    lay-filter="LAY-app-contlist-search"
+                                                                    style=" width:40px;"
+                                                                    id="set_data">
+                                                                <i class="layui-icon">&#xe642;</i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label"
+                                                                   style="width:90px;">上传日期</label>
+                                                            <div class="layui-input-inline">
+                                                                <select name="modules" lay-search="">
+                                                                    <option value=""></option>
+                                                                    <option value="1">2021-03-01</option>
+                                                                    <option value="0">2021-01-01</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="drug_name"
+                                                                       placeholder="请输入"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="drug_name"
+                                                                       placeholder="请输入"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-card-body"
+                                             style="padding:10px 0px 0px 0px;">
+                                            <div class="layui-form layui-border-box layui-table-view"
+                                                 lay-filter="LAY-table-1" lay-id="data_list"
+                                                 style=" border-bottom-width:0px; ">
+                                                <div class="layui-table-tool">
+                                                    <div class="layui-table-tool-temp">
+                                                        <div class="layui-btn-container">
+                                                            <button class="layui-btn layui-btn-sm"
+                                                                    onclick="newTab('/opt/my_data_mapping_relation_opt/', '药品关联')">
+                                                                审核通过
+                                                            </button>
+                                                            <button class="layui-btn layui-btn-sm"
+                                                                    onclick="newTab('/opt/my_data_mapping_relation_opt/', '药品关联')">
+                                                                驳回
+                                                            </button>
+                                                            <button class="layui-btn layui-btn-sm">导出人工审核表</button>
+                                                            <button class="layui-btn layui-btn-sm">导入人工审核表</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="layui-hide" id="data_list"
+                                                   lay-filter="data_list"></table>
+
+                                        </div>
+                                    </div>
+                                    <div class="layui-tab-item">
+                                        <div class="layui-form layui-card-header layuiadmin-card-header-auto"
+                                             style="padding:0px;">
+                                            <div class="layui-form-item">
+
+                                                <div class="layui-inline">
+                                                    <label class="layui-form-label"
+                                                           style="width:90px;">审核进度</label>
+                                                    <div class="layui-input-inline">
+                                                        <select name="modules" lay-search="">
+                                                            <option value=""></option>
+                                                            <option value="0">未审核</option>
+                                                            <option value="1">已审核</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-inline">
+                                                    <label class="layui-form-label"
+                                                           style="width:90px;">审核结果</label>
+                                                    <div class="layui-input-inline">
+                                                        <select name="modules" lay-search="">
+                                                            <option value=""></option>
+                                                            <option value="1">审核通过</option>
+                                                            <option value="0">审核不通过</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-inline">
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-submit=""
+                                                            lay-filter="LAY-app-contlist-search">
+                                                        <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-primary layui-btn-sm"
+                                                            id="btn_search_more2">更多
+                                                    </button>
+                                                </div>
+                                                <div class="layui-block" style=" display:none;"
+                                                     id="div_search_more2">
+                                                    <div class="layui-form-item">
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label"
+                                                                   style="width:90px;">客户名称</label>
+                                                            <div class="layui-input-inline" style=" width:800px;">
+                                                                <input type="text" name="drug_name" placeholder="点击选择医院"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <button class="layui-btn layui-btn-sm"
+                                                                    lay-filter="LAY-app-contlist-search"
+                                                                    style=" width:40px;"
+                                                                    id="set_data2">
+                                                                <i class="layui-icon">&#xe642;</i>
+                                                            </button>
+                                                        </div>
+                                                        <div class="layui-inline">
+                                                            <label class="layui-form-label"
+                                                                   style="width:90px;">上传日期</label>
+                                                            <div class="layui-input-inline">
+                                                                <select name="modules" lay-search="">
+                                                                    <option value=""></option>
+                                                                    <option value="1">2021-03-01</option>
+                                                                    <option value="0">2021-01-01</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="drug_name"
+                                                                       placeholder="请输入"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="drug_name"
+                                                                       placeholder="请输入"
+                                                                       autocomplete="off"
+                                                                       class="layui-input">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="layui-card-body"
+                                             style="padding:10px 0px 0px 0px;">
+                                            <div class="layui-form layui-border-box layui-table-view"
+                                                 lay-filter="LAY-table-1" lay-id="data_list"
+                                                 style=" border-bottom-width:0px; ">
+                                                <div class="layui-table-tool">
+                                                    <div class="layui-table-tool-temp">
+                                                        <div class="layui-btn-container">
+                                                            <button class="layui-btn layui-btn-sm"
+                                                                    onclick="newTab('/opt/my_data_mapping_relation_opt/', '药品关联')">
+                                                                退回至待关联
+                                                            </button>
+                                                            <button class="layui-btn layui-btn-sm">提交复核</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="layui-hide" id="data_list2"
+                                                   lay-filter="data_list"></table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb = table.render({
+            elem: '#data_list'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '医院', title: '医院', width:120}
+                , {field: '上传时间', title: '上传时间', width: 120}
+                , {field: '药品HISID', title: '药品HISID', width:120}
+                , {field: '商品名', title: '商品名', width: 80}
+                , {field: '通用名', title: '通用名', width: 150}
+                , {field: '厂家', title: '厂家', width: 200}
+                , {field: '规格', title: '规格', width: 100}
+                , {field: '包装', title: '包装', width: 100}
+                , {field: '批准文号', title: '批准文号', width: 100}
+
+                , {field: '最后操作时间', title: '最后操作时间', width: 150}
+                , {field: '关联人', title: '关联人', width: 120}
+                , {field: '关联结果类型', title: '关联结果类型', width: 120, fixed:'right'}
+            ]]
+            ,data:[
+                    {"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","关联商品药物":"【通用名】【商品名】【规格】【包装】【厂家】","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "处理进度":"已处理", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"饮片"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"错误数据"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射-->已映射", "原因":"缺少厂家-->忽略厂家关联"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"非药品"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"错误数据"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'batch_add':
+                    var data = checkStatus.data;
+                    layer.alert(JSON.stringify(data));
+                    break;
+                case 'batch_edit':
+                    var data = checkStatus.data;
+                    layer.msg('选中了：' + data.length + ' 个');
+                    break;
+                case 'batch_del':
+                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                    break;
+
+                //自定义头工具栏右侧图标 - 提示
+                case 'LAYTABLE_TIPS':
+                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                    break;
+            }
+            ;
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+            //console.log(obj)
+            if (obj.event === 'rules') {
+                newTab('/customer_data/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')
+            } else if (obj.event === 'manual') {
+
+            }
+        });
+
+        //监听提交
+      form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+      });
+
+      $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
+
+    $("#btn_search_more").click(function(){
+        $("#div_search_more").toggle();
+    });
+
+
+    var drugs_tb2 = table.render({
+            elem: '#data_list2'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '医院', title: '医院', width:120}
+                , {field: '上传时间', title: '上传时间', width: 120}
+                , {field: '药品HISID', title: '药品HISID', width:120}
+                , {field: '商品名', title: '商品名', width: 80}
+                , {field: '通用名', title: '通用名', width: 150}
+                , {field: '厂家', title: '厂家', width: 200}
+                , {field: '规格', title: '规格', width: 100}
+                , {field: '包装', title: '包装', width: 100}
+                , {field: '批准文号', title: '批准文号', width: 100}
+
+                , {field: '最后操作时间', title: '最后操作时间', width: 150}
+                , {field: '最后操作人', title: '最后操作人', width: 120}
+                , {field: '关联进度', title: '关联进度', width: 120, fixed:'right'}
+                , {field: '关联结果类型', title: '关联结果类型', width: 120, fixed:'right'}
+                , {field: '审核进度', title: '审核进度', width: 120, fixed:'right'}
+                , {field: '审核结果', title: '审核结果', width: 120, fixed:'right'}
+            ]]
+            ,data:[
+                    {"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","关联商品药物":"【通用名】【商品名】【规格】【包装】【厂家】","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "处理进度":"已处理", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"饮片"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"错误数据"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射-->已映射", "原因":"缺少厂家-->忽略厂家关联"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"非药品"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"未映射", "原因":"错误数据"}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+                    ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","创建时间":"2020-02-01","创建人":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "映射结果":"已映射", "原因":""}
+
+            ]
+            , page: true
+        });
+
+        $("#uploadfile").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['80%', '95%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+        $("#set_check_result").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '50%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/set_check_result/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+        $("#add_opt_task").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '50%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/add_opt_task/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+        $("#opt_sys_tasks").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '系统任务进度表'
+            ,area: ['90%', '90%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/opt_sys_tasks/'
+            ,btn: ['关闭'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+
+
+    $("#set_data").on('click', function(){
+            //多窗口模式，层叠置顶
+          layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['80%', '90%']
+    <!--        ,shade: 0-->
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/prod/dict_opt_taks/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+              layer.closeAll();
+            }
+            ,btn2: function(){
+              layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+              layer.setTop(layero); //重点2
+            }
+          });
+        });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+</script>
+</body>
+</html>

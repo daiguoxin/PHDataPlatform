@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>面板</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+<style>
+    /* 这段样式只是用于演示 */
+    #LAY-component-grid-list .demo-list .layui-card {
+        height: 267px;
+    }
+</style>
+
+<div class="layui-fluid" id="LAY-component-grid-list">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">西药/中成药规则模块</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-col-md4">
+            <div class="layui-card">
+                <div class="layui-card-header">饮片规则模块</div>
+                <div class="layui-card-body" style="min-height: 200px;">
+                    <table class="layui-hide" id="data_list2" lay-filter="data_list2"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js"></script>
+
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" lay-event="detail">查看</a>
+</script>
+
+<script>
+    layui.use('table', function () {
+        var table = layui.table;
+
+        table.render({
+            elem: '#data_list'
+            , title: '用户数据表'
+            , url: '/rules_data/module/data/zhongxi'
+            , cols: [[
+                {field: 'audit_item', title: '审核项目'}
+                , {field: 'count', title: '审核依据数量', width: 120}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            {#, page: true#}
+        });
+
+        table.render({
+            elem: '#data_list2'
+            , title: '用户数据表'
+            , url: '/rules_data/module/data/yinpian'
+            , cols: [[
+                {field: 'audit_item', title: '审核项目'}
+                , {field: 'audit_item_code', title: '审核项目编码'}
+                , {field: 'count', title: '审核依据数量', width: 120}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
+            ]]
+            {#, page: true#}
+        });
+
+        //监听行工具事件
+        table.on('tool(data_list)', function (obj) {
+            var data = obj.data;
+
+            if (obj.event === 'detail'){
+                newTab('/rules_data/module/objects/'+data.audit_item_code, data.audit_item+'-药品列表')
+            }
+        });
+    });
+
+    function newTab(url, tit) {
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+</script>
+</body>
+</html>

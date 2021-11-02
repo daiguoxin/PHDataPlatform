@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+</head>
+<body>
+<div class="layui-fluid" style=" min-width:400px; min-height:200px;">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">选择标签</label>
+                                <div class="layui-inline">
+                                    <select name="modules" lay-verify="required" lay-search="" lay-filter="item_sel">
+                                        <option value="">直接选择或搜索选择</option>
+                                        <option value="1">北京宣武医院20210401</option>
+                                        <option value="2">北京宣武医院20210301</option>
+                                        <option value="3">北京宣武医院20210201</option>
+                                    </select>
+                                </div>
+                            </div>
+<!--                            <div class="layui-inline">-->
+<!--                                <button class="layui-btn layui-btn-sm layui-btn-normal" id="add_task">新建运营任务</button>-->
+<!--                                按客户名称+日期自动创建，不允许人工编辑。-->
+<!--                            </div>-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="layui-card" style=" display:none;">
+                <div class="layui-card-header">
+                    示例
+                </div>
+                <div class="layui-card-body">
+                    <form class="layui-form" action="">
+                        <div class="layui-form-item">
+                            <div class="layui-inline" style=" display:none; " id="div_selected_item">
+                                <label class="layui-form-label">诊断(组2)</label>
+                                <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                    <textarea placeholder="" class="layui-textarea"
+                                              name="desc"></textarea>
+                                </div>
+                                <div class="layui-input-inline" style=" width:40px;">
+                                    <button type="button" class="layui-btn layui-btn-sm" id="hospitaldiagnosis">
+                                        <i class="layui-icon">&#xe642;</i>
+                                    </button>
+                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                                           lay-filter="" value="0">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<script>
+layui.use(['form', 'layedit', 'laydate', 'layer'], function(){
+  var form = layui.form
+  ,layer = layui.layer
+  ,layedit = layui.layedit
+  ,laydate = layui.laydate
+  , $=layui.$;
+
+  //日期
+  laydate.render({
+    elem: '#date'
+  });
+  laydate.render({
+    elem: '#date1'
+  });
+
+  //创建一个编辑器
+  var editIndex = layedit.build('LAY_demo_editor');
+
+  //自定义验证规则
+  form.verify({
+    title: function(value){
+      if(value.length < 5){
+        return '标题至少得5个字符啊';
+      }
+    }
+    ,pass: [
+      /^[\S]{6,12}$/
+      ,'密码必须6到12位，且不能出现空格'
+    ]
+    ,content: function(value){
+      layedit.sync(editIndex);
+    }
+  });
+
+  //监听指定开关
+  form.on('switch(switchTest)', function(data){
+    layer.msg('开关checked：'+ (this.checked ? 'true' : 'false'), {
+      offset: '6px'
+    });
+    layer.tips('温馨提示：请注意开关状态的文字可以随意定义，而不仅仅是ON|OFF', data.othis)
+  });
+
+  //监听提交
+  form.on('submit(demo1)', function(data){
+    layer.alert(JSON.stringify(data.field), {
+      title: '最终的提交信息'
+    })
+    return false;
+  });
+
+  //表单赋值
+  layui.$('#LAY-component-form-setval').on('click', function(){
+    form.val('example', {
+      "username": "" // "name": "value"
+      ,"password": "123456"
+      ,"interest": 1
+      ,"like[write]": true //复选框选中状态
+      ,"close": true //开关状态
+      ,"sex": ""
+      ,"desc": ""
+    });
+  });
+
+  //表单取值
+  layui.$('#LAY-component-form-getval').on('click', function(){
+    var data = form.val('example');
+    alert(JSON.stringify(data));
+  });
+
+  form.on('select(item_sel)', function(data){
+    if (data.value == 6){
+        $('#div_selected_item').show();
+    }    else{
+        $('#div_selected_item').hide();
+    }
+  });
+});
+
+
+</script>
+</body>
+</html>

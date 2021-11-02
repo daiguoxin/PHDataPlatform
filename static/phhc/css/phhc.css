@@ -1,0 +1,66 @@
+
+html{background-color: #f2f2f2; color: #333;}
+.layui-table{color: #333;}
+
+.layui-text em, .layui-word-aux {
+    color: #333!important;
+}
+
+.layui-form-label{ padding:5px; width:60px; }
+.layui-form-mid{ padding: 5px 0px !important; }
+.layui-input, .layui-select, .layui-textarea { height: 31px;}
+
+/*.layui-fluid { padding:0px;}*/
+.layui-form-item { margin-bottom: 5px;}
+
+.layui-card {margin-bottom: 10px;}
+
+.layui-field-title{margin: 10px 0 10px;}
+
+.tab-content {
+    padding: 10px;
+}
+.layui-card-header.layuiadmin-card-header-auto {padding:0px;}
+
+.layui-form-radio { margin: 0;}
+
+.layui-table-tool{border-width: 0px;}
+
+.layui-fluid { min-width:1200px;}
+
+.layui-form-switch{ margin-top:4px;}
+.layui-form-onswitch{border-color: #393D49; background-color: #393D49;}
+
+.phhc-collapse{
+    border-color: #e6e6e6;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 2px;
+}
+
+.phhc-colla-item:first-child {
+    border-top: none;
+}
+
+.phhc-colla-title {
+    position: relative;
+    height: 42px;
+    line-height: 42px;
+    padding: 0 15px 0 15px;
+    color: #333;
+    background-color: #dddddd;
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.phhc-colla-content {
+    display: none;
+    padding: 10px 15px;
+    line-height: 22px;
+    color: #666;
+}
+.phhc-colla-content, .phhc-colla-item {
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-color: #e6e6e6;
+}
