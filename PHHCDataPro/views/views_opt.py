@@ -274,6 +274,63 @@ def dict_check_item(request):
     return render(request, 'views/opt/my/prod/dict_check_item.html', {})
 
 
+def customer_data_customer_list(request):
+    """
+        客户数据管理首页：医院列表
+    """
+    return render(request, 'views/opt/customer_data/customer_list.html', {})
+
+
+def customer_data_data_acquisition(request):
+    """
+        客户数据采集
+    """
+    return render(request, 'views/opt/customer_data/data_acquisition.html', {})
+
+
+def customer_data_drug_relation_checked(request):
+    """
+        药品关联校验
+    """
+    return render(request, 'views/opt/customer_data/drug_relation_checked.html', {})
+
+
+def customer_data_relation_customer_list(request):
+    """
+        客户数据关联首页：医院列表
+    """
+    return render(request, 'views/opt/customer_data_relation/customer_list.html', {})
+
+
+def customer_data_relation_data_mapping_drug(request):
+    """
+        客户数据关联首页：医院数据关联
+    """
+    return render(request, 'views/opt/customer_data_relation/data_mapping_drug.html', {})
+
+
+def customer_data_relation_data_mapping_disease(request):
+    """
+        客户数据关联首页：医院数据关联
+    """
+    return render(request, 'views/opt/customer_data_relation/data_mapping_disease.html', {})
+
+
+def customer_data_relation_data_mapping_dict(request):
+    """
+        客户数据关联首页：医院数据关联
+    """
+    return render(request, 'views/opt/customer_data_relation/data_mapping_dict.html', {})
+
+
+def customer_data_relation_data_mapping_piece(request):
+    """
+        客户数据关联首页：医院数据关联
+    """
+    return render(request, 'views/opt/customer_data_relation/data_mapping_piece.html', {})
+
+
+
 
 
 

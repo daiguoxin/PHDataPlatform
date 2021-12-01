@@ -6,7 +6,7 @@ html{background-color: #f2f2f2; color: #333;}
     color: #333!important;
 }
 
-.layui-form-label{ padding:5px; width:60px; }
+.layui-form-label{ padding:5px; width:70px; }
 .layui-form-mid{ padding: 5px 0px !important; }
 .layui-input, .layui-select, .layui-textarea { height: 31px;}
 
@@ -23,8 +23,6 @@ html{background-color: #f2f2f2; color: #333;}
 .layui-card-header.layuiadmin-card-header-auto {padding:0px;}
 
 .layui-form-radio { margin: 0;}
-
-.layui-table-tool{border-width: 0px;}
 
 .layui-fluid { min-width:1200px;}
 
@@ -63,4 +61,8 @@ html{background-color: #f2f2f2; color: #333;}
     border-top-width: 1px;
     border-top-style: solid;
     border-color: #e6e6e6;
+}
+
+.layui-textarea{
+    min-height: 60px;
 }

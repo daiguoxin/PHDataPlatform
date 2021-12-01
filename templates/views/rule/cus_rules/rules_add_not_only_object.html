@@ -12,522 +12,792 @@
     <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
 </head>
 <body>
-<div class="layui-fluid" style="margin-bottom: 50px;">
+<div class="layui-fluid" style="margin-bottom: 50px; min-width: 1000px;">
     <div class="layui-row">
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body">
                     <form class="layui-form" action="">
                         <fieldset class="layui-elem-field layui-field-title">
-                            <legend>规则基本信息</legend>
+                            <legend>规则主体</legend>
                         </fieldset>
-                        <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">审核依据</label>
-                                <div class="layui-input-inline">
-                                    <select name="modules" lay-verify="required" lay-search="">
-                                        <option value="">直接选择或搜索选择</option>
-                                        <option value="1">说明书</option>
-                                        <option value="2">指南</option>
-                                        <option value="3">超说明书用药</option>
-                                        <option value="4">院内药事会</option>
-                                        <option value="5">国家处方集</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">结果</label>
-                                <div class="layui-input-inline">
-                                    <select name="modules" lay-verify="required" lay-search="">
-                                        <option value="1">适宜</option>
-                                        <option value="2">不适宜</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">提示级别</label>
-                                <div class="layui-input-inline">
-                                    <select name="modules" lay-verify="required" lay-search="">
-                                        <option value="">直接选择或搜索选择</option>
-                                        <option value="1">提示</option>
-                                        <option value="2">警告</option>
-                                        <option value="3">强制</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="layui-form-item layui-form-text">
-                            <label class="layui-form-label">备注</label>
-                            <div class="layui-input-inline" style="  width:839px;">
-                                <textarea name="content" class="layui-textarea" id="area" maxlength="200"
-                                          placeholder="请输入内容"
-                                          onkeyup="javascript:texLength(this, 200, 'textarea_length');"
-                                          style="height: 60px; min-height: 60px;"></textarea>
-                            </div>
-<!--                            <div class="layui-input-inline" style="  width:40px;">-->
-<!--                                <span class="red" id="textarea_length">0</span>/<span class="num_count">200</span>-->
-<!--                            </div>-->
+                        <div class="layui-form-item" id="rule_object_list">
                         </div>
                         <fieldset class="layui-elem-field layui-field-title">
-                            <legend>规则条件</legend>
+                            <legend>触发条件</legend>
                         </fieldset>
+                        <div class="layui-form-item" id="rule_condition_list">
+                        </div>
                         <div class="layui-form-item">
-                            <div class="layui-inline">
-                                <label class="layui-form-label">性别</label>
-                                <div class="layui-input-inline" id="sex_dict" style=" width:410px; margin-right:0px;">
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">年龄</label>
-                                <div class="layui-input-inline" style="width:410px; margin-right:0px;">
-                                    <div class="layui-input-inline" style="width:410px;">
-                                        <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 10px; line-height: 30px; height:30px;">
-                                            -
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                            <select name="city" lay-verify="">
-                                                <option value="1" selected>岁</option>
-                                                <option value="1">月</option>
-                                                <option value="1">周</option>
-                                                <option value="1">天</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">特殊人群</label>
-                                <div class="layui-input-inline" id="tsrq" style=" width:410px; margin-right:0px;">
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px; ">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <br>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">体重</label>
-                                <div class="layui-input-inline" style="width:410px; margin-right:0px;">
-                                    <div class="layui-input-inline" style="width:410px;">
-                                        <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 10px; line-height: 30px; height:30px;">
-                                            -
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                            <select name="city" lay-verify="">
-                                                <option value="1" selected>kg</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">体表面积</label>
-                                <div class="layui-input-inline" style="width:410px; margin-right:0px;">
-                                    <div class="layui-input-inline" style="width:410px;">
-                                        <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 10px; line-height: 30px; height:30px;">
-                                            -
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                            <select name="city" lay-verify="">
-                                                <option value="1">m2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">诊断(组1)</label>
+                            <div class="layui-inline" style=" background-color:#dddddd;">
+                                <label class="layui-form-label">新增元素</label>
                                 <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea"
-                                              name="desc">高血压、高血压、高血压、高血压、高血压</textarea>
+                                    <div class="layui-input-inline" style=" width:80px;">
+                                        <button id="btn_add_item" type="button" class="layui-btn layui-btn-lg">
+                                            <i class="layui-icon">&#xe654;</i>
+                                        </button>
+                                    </div>
+                                    不同组之间为“与”关系。
                                 </div>
                                 <div class="layui-input-inline" style=" width:40px;">
-                                    <button type="button" class="layui-btn layui-btn-sm" id="hospitaldiagnosis">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </button>
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
                                 </div>
                             </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">诊断(组2)</label>
-                                <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea"
-                                              name="desc">高血压、高血压、高血压、高血压、高血压</textarea>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <button type="button" class="layui-btn layui-btn-sm">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </button>
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">指标</label>
-                                <div class="layui-input-inline" style="width:410px; height:100px; margin-right:0px;">
-                                    <div class="layui-inline" style="width:410px;">
-                                        <select name="modules" lay-verify="required" lay-search="">
-                                            <option value="">直接选择或搜索选择</option>
-                                            <option value="1">肌酐清除率</option>
-                                            <option value="2">ALT</option>
-                                            <option value="3">白细胞</option>
-                                        </select>
-                                    </div>
-                                    <div class="layui-inline" style="width:410px;">
-                                        <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最小值"
-                                                   autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 10px; line-height: 30px; height:30px;">
-                                            -
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                            <input type="text" name="min_values" placeholder="最大值"
-                                                   autocomplete="off"
-                                                   class="layui-input">
-                                        </div>
-                                        <div class="layui-input-inline"
-                                             style="width: 20px; line-height: 30px; height:30px;">
-                                            <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                        </div>
-                                        <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                            <select name="city" lay-verify="">
-                                                <option value="1">m2</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">预防药品<br>不良反应</label>
-                                <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea" name="desc"></textarea>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <button type="button" class="layui-btn layui-btn-sm">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </button>
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">科室</label>
-                                <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea"
-                                              name="desc"></textarea>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <button type="button" class="layui-btn layui-btn-sm" id="department">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </button>
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-inline">
-                                <label class="layui-form-label">诊断(组3)</label>
-                                <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea"
-                                              name="desc">高血压、高血压、高血压、高血压、高血压</textarea>
-                                </div>
-                                <div class="layui-input-inline" style=" width:40px;">
-                                    <button type="button" class="layui-btn layui-btn-sm">
-                                        <i class="layui-icon">&#xe642;</i>
-                                    </button>
-                                    <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
-                                           lay-filter="" value="0">
-                                </div>
-                            </div>
-                            <div class="layui-form-item">
-                                <div class="layui-inline" style=" background-color:#dddddd;">
-                                    <label class="layui-form-label">新增元素</label>
-                                    <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                        <div class="layui-input-inline" style=" width:80px;">
-                                            <button id="btn_add_item" type="button" class="layui-btn layui-btn-lg">
-                                                <i class="layui-icon">&#xe654;</i>
-                                            </button>
-                                        </div>
-                                        不同组之间为“与”关系。
-                                    </div>
-                                    <div class="layui-input-inline" style=" width:40px;">
-                                    </div>
-                                </div>
-                                <fieldset class="layui-elem-field layui-field-title">
-                                    <legend>规则结论</legend>
-                                </fieldset>
-                                <div class="layui-form-item">
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">给药途径</label>
-                                        <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
-                                    <textarea placeholder="" class="layui-textarea"
-                                              name="desc"></textarea>
-                                        </div>
-                                        <div class="layui-input-inline" style=" width:40px;">
-                                            <button type="button" class="layui-btn layui-btn-sm" id="drugroute">
-                                                <i class="layui-icon">&#xe642;</i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">给药频率</label>
-                                        <div class="layui-input-inline" style=" width:410px; height:100px; ">
-                                            <div class="layui-inline-block">
-                                                <div class="layui-inline" style=" width:410px; margin:0px;">
-                                                    <input type="radio" name="gypl_type" value="1" title="区间" checked=""
-                                                           lay-filter="gypl_type">
-                                                    <input type="radio" name="gypl_type" value="2" title="字典"
-                                                           lay-filter="gypl_type">
-                                                </div>
-                                            </div>
-                                            <div class="layui-inline-block" id="gypl_interval"
-                                                 style=" width:410px; margin-right:0px;">
-                                                <div class="layui-inline" style=" width:410px; margin-right:0px;">
-                                                    <div class="layui-input-inline"
-                                                         style="width: 100px; margin-right:1px;">
-                                                        <input type="text" name="min_values" placeholder="最小值"
-                                                               autocomplete="off"
-                                                               class="layui-input">
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 20px; line-height: 30px; height:30px;">
-                                                        <input type="checkbox" name="" title="" lay-skin="primary"
-                                                               checked>
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 10px; line-height: 30px; height:30px;">
-                                                        -
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 100px;margin-right:1px;">
-                                                        <input type="text" name="min_values" placeholder="最大值"
-                                                               autocomplete="off"
-                                                               class="layui-input">
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 20px; line-height: 30px; height:30px;">
-                                                        <input type="checkbox" name="" title="" lay-skin="primary"
-                                                               checked>
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 128px; margin-right:0px;">
-                                                        <select name="city" lay-verify="">
-                                                            <option value="1" selected>次/日</option>
-                                                            <option value="1">次/周</option>
-                                                            <option value="1">次/月</option>
-                                                            <option value="1">次/年</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="layui-inline" style=" width:410px; margin-right:0px;">
-                                                    <div class="layui-input-inline"
-                                                         style="width: 100px; margin-right:1px;">
-                                                        <input type="text" name="min_values" placeholder="最小值"
-                                                               autocomplete="off"
-                                                               class="layui-input">
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 20px; line-height: 30px; height:30px;">
-                                                        <input type="checkbox" name="" title="" lay-skin="primary"
-                                                               checked>
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 10px; line-height: 30px; height:30px;">
-                                                        -
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 100px;margin-right:1px;">
-                                                        <input type="text" name="min_values" placeholder="最大值"
-                                                               autocomplete="off"
-                                                               class="layui-input">
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 20px; line-height: 30px; height:30px;">
-                                                        <input type="checkbox" name="" title="" lay-skin="primary"
-                                                               checked>
-                                                    </div>
-                                                    <div class="layui-input-inline"
-                                                         style="width: 128px; margin-right:0px;">
-                                                        <select name="city" lay-verify="">
-                                                            <option value="1">分钟</option>
-                                                            <option value="2" selected>小时</option>
-                                                            <option value="3">天</option>
-                                                            <option value="4">周</option>
-                                                            <option value="5">月</option>
-                                                            <option value="6">年</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="layui-inline-block" id="gypl_dict" style="display:none;">
-                                                <div class="layui-inline" id="gypl"
-                                                     style=" width:410px; margin-right:0px;"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">单次用量</label>
-                                        <div class="layui-input-inline" style="width:410px; margin-right:0px;">
-                                            <div class="layui-input-inline" style="width:410px;">
-                                                <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                                    <input type="text" name="min_values" placeholder="最小值"
-                                                           autocomplete="off"
-                                                           class="layui-input">
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 20px; line-height: 30px; height:30px;">
-                                                    <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 10px; line-height: 30px; height:30px;">
-                                                    -
-                                                </div>
-                                                <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                                    <input type="text" name="min_values" placeholder="最大值"
-                                                           autocomplete="off"
-                                                           class="layui-input">
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 20px; line-height: 30px; height:30px;">
-                                                    <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                                </div>
-                                                <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                                    <select name="city" lay-verify="">
-                                                        <option value="1" selected>kg</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="layui-input-inline" style=" width:40px;">
-                                        </div>
-                                    </div>
-                                    <div class="layui-inline">
-                                        <label class="layui-form-label">单日用量</label>
-                                        <div class="layui-input-inline" style="width:410px; margin-right:0px;">
-                                            <div class="layui-input-inline" style="width:410px;">
-                                                <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
-                                                    <input type="text" name="min_values" placeholder="最小值"
-                                                           autocomplete="off"
-                                                           class="layui-input">
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 20px; line-height: 30px; height:30px;">
-                                                    <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 10px; line-height: 30px; height:30px;">
-                                                    -
-                                                </div>
-                                                <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
-                                                    <input type="text" name="min_values" placeholder="最大值"
-                                                           autocomplete="off"
-                                                           class="layui-input">
-                                                </div>
-                                                <div class="layui-input-inline"
-                                                     style="width: 20px; line-height: 30px; height:30px;">
-                                                    <input type="checkbox" name="" title="" lay-skin="primary" checked>
-                                                </div>
-                                                <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
-                                                    <select name="city" lay-verify="">
-                                                        <option value="1">m2</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="layui-input-inline" style=" width:40px;">
-                                        </div>
-                                    </div>
-                                </div>
+                        </div>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>判断因素</legend>
+                        </fieldset>
+                        <div class="layui-form-item" id="rule_judgment_element_list">
+                        </div>
+                        <fieldset class="layui-elem-field layui-field-title">
+                            <legend>结论</legend>
+                        </fieldset>
+                        <div class="layui-form-item" id="rule_result_list">
+                        </div>
                     </form>
                 </div>
             </div>
             <div class="layer-footer"
                  style="z-index: 10; position: fixed; text-align: center; bottom: 0; width:100%; height:50px; background-color:#fff; border-top:1px #e6e6e6 solid;">
-                <button type="button" class="layui-btn layui-btn layui-btn-normal" onclick="save()">保存</button>
+                <button type="button" class="layui-btn layui-btn layui-btn-normal" style=" display:none;">草稿</button>
+                <button type="button" class="layui-btn layui-btn layui-btn-normal" onclick="save()">保存（Ctrl+S）</button>
                 <button type="button" class="layui-btn layui-btn layui-btn-normal" onclick="save_add()">保存并继续添加</button>
-                <button type="button" class="layui-btn layui-btn-primary" onclick="window.history.go(-1);">返回</button>
+                <button type="button" class="layui-btn layui-btn-primary">关闭（ESC）</button>
             </div>
         </div>
     </div>
 </div>
+<input type="hidden" id="hid_rule_object_list" value="{{rule_object_list}}"/>
+<input type="hidden" id="hid_rule_condition_list" value="{{rule_condition_list}}"/>
+<input type="hidden" id="hid_rule_judgment_element_list" value="{{rule_judgment_element_list}}"/>
+<input type="hidden" id="hid_rule_result_list" value="{{rule_result_list}}"/>
+
+<div style=" display:none;">
+    <div id="抗菌药物分级">
+        <div class="layui-inline">
+            <label class="layui-form-label">抗菌药物分级<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:810px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">特殊使用级</option>
+                    <option value="2">限制级</option>
+                    <option value="3">非限制级</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="本院药品通用名">
+        <div class="layui-inline">
+            <label class="layui-form-label">本院药品通用名<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:810px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">阿司匹林肠溶片</option>
+                    <option value="2">阿奇霉素分散片</option>
+                    <option value="3">注射用万古霉素</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="本院药品通用名规格">
+        <div class="layui-inline">
+            <label class="layui-form-label">通用名规格<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:810px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">阿司匹林肠溶片20mg</option>
+                    <option value="2">阿奇霉素分散片10mg</option>
+                    <option value="3">注射用万古霉素5mg</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="本院药品通用名规格厂家">
+        <div class="layui-inline">
+            <label class="layui-form-label">通用名规格厂家<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:810px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">阿司匹林肠溶片20mg拜耳</option>
+                    <option value="2">阿奇霉素分散片10mg拜耳</option>
+                    <option value="3">注射用万古霉素5mg拜耳</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="本院药品编码">
+        <div class="layui-inline">
+            <label class="layui-form-label">本院药品编码<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:810px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">0101001阿司匹林肠溶片20mg拜耳</option>
+                    <option value="2">0101001阿奇霉素分散片10mg拜耳</option>
+                    <option value="3">0101001注射用万古霉素5mg拜耳</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="药品分类">
+        <div class="layui-inline">
+            <label class="layui-form-label">药品分类<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style=" width:410px; margin-right:0px;">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">特殊使用级</option>
+                    <option value="2">限制级</option>
+                    <option value="3">非限制级</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="性别">
+        <div class="layui-inline">
+            <label class="layui-form-label">性别</label>
+            <div class="layui-input-inline" id="sex_dict" style=" width:410px; margin-right:0px;">
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="年龄">
+        <div class="layui-inline">
+            <label class="layui-form-label">年龄</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-input-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1" selected>岁</option>
+                            <option value="1">月</option>
+                            <option value="1">周</option>
+                            <option value="1">天</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="特殊人群">
+        <div class="layui-inline">
+            <label class="layui-form-label">特殊人群</label>
+            <div class="layui-input-inline" id="tsrq" style=" width:410px; margin-right:0px;">
+            </div>
+            <div class="layui-input-inline" style=" width:40px; ">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="体重">
+        <div class="layui-inline">
+            <label class="layui-form-label">体重</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-input-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1" selected>kg</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="体表面积">
+        <div class="layui-inline">
+            <label class="layui-form-label">体表面积</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-input-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值" autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1">m2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="诊断">
+        <div class="layui-inline">
+            <label class="layui-form-label">诊断</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc">高血压、高血压、高血压、高血压、高血压</textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="hospitaldiagnosis">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="病原学送检">
+        <div class="layui-inline">
+            <label class="layui-form-label">病原学送检<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-inline" style="width:100px;">
+                    <select name="modules" lay-verify="required" lay-search="">
+                        <option value="1" selected>含有</option>
+                        <option value="2">等于</option>
+<!--                        <option value="3">开始于</option>-->
+<!--                        <option value="4">结束于</option>-->
+                    </select>
+                </div>
+                <div class="layui-inline" style="width:200px;">
+                    <input type="text" placeholder="请输入" autocomplete="off" style=" width:150px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="指标">
+        <div class="layui-inline">
+            <label class="layui-form-label">指标</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-inline" style="width:410px;">
+                    <select name="modules" lay-verify="required" lay-search="">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="1">肌酐清除率</option>
+                        <option value="2">ALT</option>
+                        <option value="3">白细胞</option>
+                    </select>
+                </div>
+                <div class="layui-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1">m2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="预防药品不良反应">
+        <div class="layui-inline">
+            <label class="layui-form-label">预防药品<br>不良反应</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                <textarea placeholder="" class="layui-textarea" name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="科室">
+        <div class="layui-inline">
+            <label class="layui-form-label">科室</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="department">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="就诊类别">
+        <div class="layui-inline">
+            <label class="layui-form-label">就诊类别</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="department2">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="病区">
+        <div class="layui-inline">
+            <label class="layui-form-label">病区</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="department3">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="给药途径">
+        <div class="layui-inline">
+            <label class="layui-form-label">给药途径</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                    <textarea placeholder="" class="layui-textarea"
+                                              name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="drugroute">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="给药频率">
+        <div class="layui-inline">
+            <label class="layui-form-label">给药频率</label>
+            <div class="layui-input-inline" style=" width:410px; height:100px; ">
+                <div class="layui-inline-block">
+                    <div class="layui-inline" style=" width:410px; margin:0px;">
+                        <input type="radio" name="gypl_type" value="1" title="区间" checked=""
+                               lay-filter="gypl_type">
+                        <input type="radio" name="gypl_type" value="2" title="字典"
+                               lay-filter="gypl_type">
+                    </div>
+                </div>
+                <div class="layui-inline-block" id="gypl_interval"
+                     style=" width:410px; margin-right:0px;">
+                    <div class="layui-inline" style=" width:410px; margin-right:0px;">
+                        <div class="layui-input-inline"
+                             style="width: 100px; margin-right:1px;">
+                            <input type="text" name="min_values" placeholder="最小值"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 20px; line-height: 30px; height:30px;">
+                            <input type="checkbox" name="" title="" lay-skin="primary"
+                                   checked>
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 10px; line-height: 30px; height:30px;">
+                            -
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 100px;margin-right:1px;">
+                            <input type="text" name="min_values" placeholder="最大值"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 20px; line-height: 30px; height:30px;">
+                            <input type="checkbox" name="" title="" lay-skin="primary"
+                                   checked>
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 128px; margin-right:0px;">
+                            <select name="city" lay-verify="">
+                                <option value="1" selected>次/日</option>
+                                <option value="1">次/周</option>
+                                <option value="1">次/月</option>
+                                <option value="1">次/年</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="layui-inline" style=" width:410px; margin-right:0px;">
+                        <div class="layui-input-inline"
+                             style="width: 100px; margin-right:1px;">
+                            <input type="text" name="min_values" placeholder="最小值"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 20px; line-height: 30px; height:30px;">
+                            <input type="checkbox" name="" title="" lay-skin="primary"
+                                   checked>
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 10px; line-height: 30px; height:30px;">
+                            -
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 100px;margin-right:1px;">
+                            <input type="text" name="min_values" placeholder="最大值"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 20px; line-height: 30px; height:30px;">
+                            <input type="checkbox" name="" title="" lay-skin="primary"
+                                   checked>
+                        </div>
+                        <div class="layui-input-inline"
+                             style="width: 128px; margin-right:0px;">
+                            <select name="city" lay-verify="">
+                                <option value="1">分钟</option>
+                                <option value="2" selected>小时</option>
+                                <option value="3">天</option>
+                                <option value="4">周</option>
+                                <option value="5">月</option>
+                                <option value="6">年</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-inline-block" id="gypl_dict" style="display:none;">
+                    <div class="layui-inline" id="gypl"
+                         style=" width:410px; margin-right:0px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="单次用量">
+        <div class="layui-inline">
+            <label class="layui-form-label">单次用量</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-input-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1" selected>kg</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+            </div>
+        </div>
+    </div>
+    <div id="单日用量">
+        <div class="layui-inline">
+            <label class="layui-form-label">单日用量</label>
+            <div class="layui-input-inline" style="width:410px; margin-right:0px;">
+                <div class="layui-input-inline" style="width:410px;">
+                    <div class="layui-input-inline" style="width: 100px; margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最小值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 10px; line-height: 30px; height:30px;">
+                        -
+                    </div>
+                    <div class="layui-input-inline" style="width: 100px;margin-right:1px;">
+                        <input type="text" name="min_values" placeholder="最大值"
+                               autocomplete="off"
+                               class="layui-input">
+                    </div>
+                    <div class="layui-input-inline"
+                         style="width: 20px; line-height: 30px; height:30px;">
+                        <input type="checkbox" name="" title="" lay-skin="primary" checked>
+                    </div>
+                    <div class="layui-input-inline" style="width: 128px; margin-right:0px;">
+                        <select name="city" lay-verify="">
+                            <option value="1">m2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+            </div>
+        </div>
+    </div>
+    <div id="审核依据">
+        <div class="layui-inline">
+            <label class="layui-form-label">审核依据<span style="color:red;">*</span></label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">说明书</option>
+                    <option value="2">指南</option>
+                    <option value="3">超说明书用药</option>
+                    <option value="4">院内药事会</option>
+                    <option value="5">国家处方集</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="审核结果">
+        <div class="layui-inline">
+            <label class="layui-form-label">结果<span style="color:red;">*</span></label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="1">适宜</option>
+                    <option value="2">不适宜</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="提醒结果">
+        <div class="layui-inline">
+            <label class="layui-form-label">结果<span style="color:red;">*</span></label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="1">提醒</option>
+                    <option value="2">不提醒</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="规范结果">
+        <div class="layui-inline">
+            <label class="layui-form-label">结果<span style="color:red;">*</span></label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="1">合规</option>
+                    <option value="2">不合规</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="提示级别">
+        <div class="layui-inline">
+            <label class="layui-form-label">提示级别<span style="color:red;">*</span></label>
+            <div class="layui-input-inline">
+                <select name="modules" lay-verify="required" lay-search="">
+                    <option value="">直接选择或搜索选择</option>
+                    <option value="1">提示</option>
+                    <option value="2">警告</option>
+                    <option value="3">强制</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="提示信息">
+        <div class="layui-inline">
+            <label class="layui-form-label">提示信息<span style="color:red;">*</span></label>
+            <div class="layui-input-inline" style="  width:839px;">
+                                <textarea name="content" class="layui-textarea" id="area" maxlength="200"
+                                          placeholder="请输入内容"
+                                          onkeyup="javascript:texLength(this, 200, 'textarea_length');"
+                                          style="height: 60px; min-height: 60px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="用法用量">
+        <div class="layui-inline">
+            <label class="layui-form-label">用法用量</label>
+            <div class="layui-input-inline" style="  width:839px;">
+                <textarea name="content" class="layui-textarea" id="用法用量" maxlength="200"
+                          placeholder="请输入内容"
+                          onkeyup="javascript:texLength(this, 200, 'textarea_length');"
+                          style="height: 60px; min-height: 60px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="提示原因">
+        <div class="layui-inline">
+            <label class="layui-form-label">提示原因</label>
+            <div class="layui-input-inline" style="  width:839px;">
+                                <textarea name="content" class="layui-textarea" id="area2" maxlength="200"
+                                          placeholder="请输入内容"
+                                          onkeyup="javascript:texLength(this, 200, 'textarea_length');"
+                                          style="height: 60px; min-height: 60px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="备注">
+        <div class="layui-inline">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-inline" style="  width:839px;">
+                                <textarea name="content" class="layui-textarea" id="area3" maxlength="200"
+                                          placeholder="请输入内容"
+                                          onkeyup="javascript:texLength(this, 200, 'textarea_length');"
+                                          style="height: 60px; min-height: 60px;"></textarea>
+            </div>
+        </div>
+    </div>
+    <div id="医生职称">
+        <div class="layui-inline">
+            <label class="layui-form-label">医生职称</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="医生职称">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="医生">
+        <div class="layui-inline">
+            <label class="layui-form-label">医生</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="医生">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="会诊记录">
+        <div class="layui-inline">
+            <label class="layui-form-label">会诊记录</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                                                                <textarea placeholder="" class="layui-textarea"
+                                                                          name="desc"></textarea>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <button type="button" class="layui-btn layui-btn-sm" id="会诊记录">
+                    <i class="layui-icon">&#xe642;</i>
+                </button>
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+    <div id="生效时间">
+        <div class="layui-inline">
+            <label class="layui-form-label">生效时间</label>
+            <div class="layui-input-inline" style=" width:410px;margin-right: 0px">
+                <div class="layui-input-inline" style=" width:200px;margin-right: 0px">
+                    <input type="text" placeholder="请输入" autocomplete="off" style=" width:150px;" class="layui-input">
+                </div>
+                <div class="layui-input-inline" style=" width:200px;margin-right: 0px">
+                    <input type="text" placeholder="请输入" autocomplete="off" style=" width:150px;" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-input-inline" style=" width:40px;">
+                <input type="checkbox" name="switch" lay-skin="switch" lay-text="非|是"
+                       lay-filter="" value="0">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script src="/static/layuiadmin/layui_exts/selectPlus/selectPlus.js" charset="utf-8"></script>
@@ -600,32 +870,78 @@ layui.use(['form', 'layedit', 'laydate'], function(){
     var data = form.val('example');
     alert(JSON.stringify(data));
   });
+
+  init();
+
+  function init(){
+    if (layui.$('#hid_rule_object_list').val() === 'None'){
+        layer.msg('配置错误：无规则主体');
+        return;
+    }
+    var hid_rule_object_list = eval(layui.$('#hid_rule_object_list').val());
+    var hid_rule_condition_list = eval(layui.$('#hid_rule_condition_list').val());
+    var hid_rule_judgment_element_list = eval(layui.$('#hid_rule_judgment_element_list').val());
+    var hid_rule_result_list = eval(layui.$('#hid_rule_result_list').val());
+
+    if (hid_rule_object_list!=undefined){
+        for(var i=0; i<hid_rule_object_list.length; i++){
+            if (hid_rule_object_list[i].name === '换行'){
+                layui.$('#rule_object_list').append('<br >');
+            }
+            else{
+                layui.$('#rule_object_list').append(layui.$('#'+hid_rule_object_list[i].name).html());
+            }
+        }
+    }
+
+    if (hid_rule_condition_list!=undefined){
+        for(var i=0; i<hid_rule_condition_list.length; i++){
+            if (hid_rule_condition_list[i].name === '换行'){
+                layui.$('#rule_condition_list').append('<br >');
+            }
+            else{
+                layui.$('#rule_condition_list').append(layui.$('#'+hid_rule_condition_list[i].name).html());
+            }
+        }
+    }
+
+    if (hid_rule_judgment_element_list!=undefined){
+        for(var i=0; i<hid_rule_judgment_element_list.length; i++){
+            if (hid_rule_judgment_element_list[i].name === '换行'){
+                layui.$('#rule_judgment_element_list').append('<br >');
+            }
+            else{
+                layui.$('#rule_judgment_element_list').append(layui.$('#'+hid_rule_judgment_element_list[i].name).html());
+            }
+        }
+    }
+
+    if (hid_rule_result_list!=undefined){
+        for(var i=0; i<hid_rule_result_list.length; i++){
+            if (hid_rule_result_list[i].name === '换行'){
+                layui.$('#rule_result_list').append('<br >');
+            }
+            else{
+                layui.$('#rule_result_list').append(layui.$('#'+hid_rule_result_list[i].name).html());
+            }
+        }
+    }
+
+    layui.form.render();
+  }
+
+
+    function myFunction(){
+        alert("保存草稿");
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 83 && (navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey)) {
+            e.preventDefault();
+            myFunction();
+        }
+    });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -762,6 +1078,29 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 <script>
     function newTab(url, tit) {
@@ -772,6 +1111,29 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 <!--            window.open(url)-->
 <!--        }-->
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -865,6 +1227,29 @@ layui.use(['form', 'layedit', 'laydate'], function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </script>
 <script>
     function save(){
@@ -903,6 +1288,29 @@ layui.use('form', function () {
                 form.render();
             });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1044,6 +1452,29 @@ layui.use('layer', function(){ //独立版的layer无需执行这一句
         });
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

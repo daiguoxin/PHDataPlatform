@@ -16,22 +16,6 @@
     <div class="layui-row layui-col-space10" style="margin:0px;">
         <div class="layui-col-md4">
             <div class="layui-card">
-                <div class="layui-card-header">适宜性（影响合理性）</div>
-                <div class="layui-card-body" style="min-height: 200px;">
-                    <table class="layui-hide" id="data_list" lay-filter="data_list"></table>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md4">
-            <div class="layui-card">
-                <div class="layui-card-header">规范性（影响合理性）</div>
-                <div class="layui-card-body" style="min-height: 200px;">
-                    <table class="layui-hide" id="data_list2" lay-filter="data_list2"></table>
-                </div>
-            </div>
-        </div>
-        <div class="layui-col-md4">
-            <div class="layui-card">
                 <div class="layui-card-header">提醒类（不影响合理性）</div>
                 <div class="layui-card-body" style="min-height: 200px;">
                     <table class="layui-hide" id="data_list3" lay-filter="data_list3"></table>
@@ -56,7 +40,8 @@
             , title: '用户数据表'
             , cols: [[
                 {field: '序号', title: '序号', width:60}
-                , {field: 'audit_item', title: '审核项目'}
+                , {field: 'audit_item', title: '审核项目', width:150}
+                , {field: 'audit_item_desc', title: '说明'}
                 , {field: 'audit_item_type', title: 'audit_item_type', hide:true}
                 , {field: 'audit_item_id', title: 'audit_item_id', hide:true}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 80}
@@ -183,7 +168,6 @@
 
 
 
-
 </script>
 <script>
     function newTab(url, tit) {
@@ -194,7 +178,6 @@
             window.open(url)
         }
     }
-
 
 
 

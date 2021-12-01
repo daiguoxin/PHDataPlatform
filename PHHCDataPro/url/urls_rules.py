@@ -1,5 +1,4 @@
 from django.urls import re_path, path, include
-
 from PHHCDataPro.views import views_rules, views_rules_pro, views_rules_data
 
 urlpatterns = [
@@ -69,4 +68,7 @@ urlpatterns = [
 
     re_path(r'data/many_obj_condi_conclu/', views_rules_data.many_obj_condi_conclu),
     path('cus_rules/rules_add_not_only_object/', views_rules.rules_add_not_only_object),
+    path('cus_rules/rules_detail_not_only_object/', views_rules.rules_detail_not_only_object),
+
+    path('dict/manage_dict/', views_rules.dict_manage_dict),
 ]
