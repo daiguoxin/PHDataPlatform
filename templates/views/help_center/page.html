@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+    <style>
+        .layui-table-cell{
+	        height:auto;
+	        overflow:visible;
+	        text-overflow:inherit;
+	        white-space:pre-wrap;
+        }
+    </style>
+</head>
+<body>
+<div class="layui-fluid" style=" width:400px; min-width:400px;">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    功能简介
+                </div>
+                <div class="layui-card-body">
+                    1、功能简介
+                    2、流程
+                    3、详细说明
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    流程
+                </div>
+                <div class="layui-card-body">
+                    1、功能简介
+                    2、流程
+                    3、详细说明
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-card-header">
+                    详细说明
+                </div>
+                <div class="layui-card-body">
+                    1、功能简介
+                    2、流程
+                    3、详细说明
+                    <a href="javascript:void(0)" onclick="showTips()">显示</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb = table.render({
+            elem: '#data_list'
+<!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
+            , toolbar: '#table-toolbar' //开启头部工具栏，并为其绑定左侧模板
+            , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+                title: '提示'
+                , layEvent: 'LAYTABLE_TIPS'
+                , icon: 'layui-icon-tips'
+            }]
+            , even:true
+            , title: '用户数据表'
+            , cols: [[
+                {type: 'checkbox'}
+                , {field: '商品药物信息', title: '商品药物信息'}
+                , {field: '规则数', title: '规则数', width: 80}
+                , {field: '可复制规则来源', title: '可复制规则来源'}
+                , {field: '可复制规则数', title: '可复制规则数', width: 120}
+                , {field: '启用规则数', title: '启用规则数', width: 100}
+                , {field: '停用规则数', title: '停用规则数', width: 100}
+                , {field: '1级规则数', title: '1级规则数', width: 100}
+                , {field: '2级规则数', title: '2级规则数', width: 100}
+                , {field: '3级规则数', title: '3级规则数', width: 100}
+                , {field: '复制进度', title: '复制进度', width: 90}
+            ]]
+            ,data:[
+                    {"商品药物信息":"【通】大活络丸【规】10mg【包】12片/盒【厂】避风塘","规则数":"0","可复制规则来源":"【通】大活络丸【规】10mg【包】12片/盒【厂】<span style='color:red;'>北京同仁堂</span>"
+                    ,"可复制规则数":"100", "复制任务":"-"}
+                    ,{"商品药物信息":"【通】大活络丸【规】10mg【包】12片/盒【厂】避风塘","规则数":"0","可复制规则来源":"【通】大活络丸【规】10mg【包】12片/盒【厂】<span style='color:red;'>北京同仁堂</span>"
+                    ,"可复制规则数":"100", "复制进度":"进行中"}
+            ]
+            , page: true
+        });
+
+        //头工具栏事件
+        table.on('toolbar(data_list)', function (obj) {
+            var checkStatus = table.checkStatus(obj.config.id);
+            switch (obj.event) {
+                case 'get_copy_tasks':
+                    newTab('/rule/cus/copy_tasks/', '系统规则复制任务');
+                    break;
+            };
+        });
+
+<!--        //监听行工具事件-->
+<!--        table.on('tool(data_list)', function (obj) {-->
+<!--            var data = obj.data;-->
+<!--            //console.log(obj)-->
+<!--            if (obj.event === 'rules') {-->
+<!--                newTab('/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')-->
+<!--            } else if (obj.event === 'manual') {-->
+
+<!--            }-->
+<!--        });-->
+
+<!--        //监听提交-->
+<!--      form.on('submit(LAY-app-contlist-search)', function(data){-->
+<!--        drugs_tb.reload({-->
+<!--            where:{-->
+<!--                drug_name: data.field.drug_name-->
+<!--            }-->
+<!--            ,page: {-->
+<!--                curr: 1 //重新从第 1 页开始-->
+<!--            }-->
+<!--        });-->
+<!--        return false;-->
+<!--      });-->
+
+      $(document).on("click", ".layui-table-body table.layui-table tbody tr", function () {
+        var index = $(this).attr('data-index');
+        var tableBox = $(this).parents('.layui-table-box');
+        //存在固定列
+        if (tableBox.find(".layui-table-fixed.layui-table-fixed-l").length > 0) {
+            tableDiv = tableBox.find(".layui-table-fixed.layui-table-fixed-l");
+        } else {
+            tableDiv = tableBox.find(".layui-table-body.layui-table-main");
+        }
+        var checkCell = tableDiv.find("tr[data-index=" + index + "]").find("td div.laytable-cell-checkbox div.layui-form-checkbox I");
+        if (checkCell.length > 0) {
+            checkCell.click();
+        }
+    });
+
+    //对td的单击事件进行拦截停止，防止事件冒泡再次触发上述的单击事件（Table的单击行事件不会拦截，依然有效）
+    $(document).on("click", "td div.laytable-cell-checkbox div.layui-form-checkbox", function (e) {
+        e.stopPropagation();
+    });
+});
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+    function showTips(){
+        parent.layui.layer.tips('上', '#import_data4', {
+          tips: [1, '#000']
+        });
+    }
+</script>
+</body>
+</html>

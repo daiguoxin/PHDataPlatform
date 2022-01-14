@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>审核依据</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+
+
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+                        <legend style="font-size: inherit">相同商品药物审核重复用药配置：就诊类型</legend>
+                        <div class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <div class="layui-input-inline" style=" width:500px;">
+                                        <input type="text" name="config1" placeholder="仅支持录入门诊、急诊、住院，多个配置英文逗号分隔"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-input-inline" style=" width:500px;">
+                                        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    说明:
+                                    只支持配置（门诊,急诊,住院），英文逗号分隔。处方中传入的就诊类型必须关联核心字典(门诊,急诊,住院)，否则配置不生效。
+                                    若配置，则认为需要审核。未配置，认为不审核。
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="layui-elem-field site-demo-button" style="margin-top: 10px;">
+                        <legend style="font-size: inherit">相同商品药物审核重复用药配置：医嘱类型</legend>
+                        <div class="layui-form">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <div class="layui-input-inline" style=" width:500px;">
+                                        <input type="text" name="config1" placeholder="仅支持录入“长期-长期”、“长期-临时”、“临时-临时”，多个配置英文逗号分隔"
+                                               autocomplete="off" class="layui-input">
+                                    </div>
+                                    <div class="layui-input-inline" style=" width:500px;">
+                                        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    说明:
+                                    若配置认为需要审核相同药品重复用药，若未配置，则认为无需审核。
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+
+});
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+
+</script>
+</body>
+</html>

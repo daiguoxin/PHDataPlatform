@@ -53,11 +53,15 @@ urlpatterns = [
 
     path('cus/sys_rule_manage/', views_rules.cus_sys_rule_manage),
     path('cus/copy_rules/', views_rules.cus_copy_rules),
+    path('cus/copy_sys_rules/', views_rules.copy_sys_rules),
+
     path('cus/copy_cus_rules/', views_rules.cus_copy_cus_rules),
+
     path('cus/copy_tasks/', views_rules.copy_tasks),
     path('cus/copy_from_drug/', views_rules.copy_from_drug),
 
     path('service_opt/service_opt_index/', views_rules.service_opt_index),
+    path('service_opt/service_config/', views_rules.service_config),
 
     re_path(r'cus_rules/many_obj_condi_conclu/', views_rules.many_obj_condi_conclu),
     re_path(r'cus_rules/many_obj_condi_conclu_class/', views_rules.many_obj_condi_conclu_class),
@@ -71,4 +75,11 @@ urlpatterns = [
     path('cus_rules/rules_detail_not_only_object/', views_rules.rules_detail_not_only_object),
 
     path('dict/manage_dict/', views_rules.dict_manage_dict),
+
+    path('cus/copy/index/', views_rules.cus_copy_index),
+    path('cus/copy/index2/', views_rules.cus_copy_index2),
+    path('cus/copy/copy_sys_rules/', views_rules.cus_copy_copy_sys_rules),
+    path('cus/copy/copy_cus_rules/', views_rules.cus_copy_copy_cus_rules),
+    path('cus/copy/copy_sys_cus_rules/', views_rules.cus_copy_copy_sys_cus_rules),
+    path('dict/drug_select/', views_rules.dict_drug_select),
 ]

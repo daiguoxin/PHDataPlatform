@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>开始运营工作</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
+    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/static/phhc/css/global.css" media="all">
+    <link rel="stylesheet" href="/static/phhc/css/phhc.css" media="all">
+    <style>
+        .layui-form-mid{ width:150px;}
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">患者基本情况</div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">患者姓名：</label>
+                            <div class="layui-form-mid layui-word-aux">2271811511</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">病历号：</label>
+                            <div class="layui-form-mid layui-word-aux">同仁大活络丸</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">年龄：</label>
+                            <div class="layui-form-mid layui-word-aux">无</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">入院日期</label>
+                            <div class="layui-form-mid layui-word-aux">3.6g</div>
+                        </div>
+                    </div>
+                    <div class="layui-row">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">包装：</label>
+                            <div class="layui-form-mid layui-word-aux">6丸/盒</div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">厂家：</label>
+                            <div class="layui-form-mid layui-word-aux">北京同仁堂股份有</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-card">
+                <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+                    <ul class="layui-tab-title">
+                        <li class="layui-this">药师工作站</li>
+                        <li>检验</li>
+                        <li>检查</li>
+                        <li>手术</li>
+                    </ul>
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show" style=" height:1000px;">
+                            <iframe name="body1" src="/mi/temp2/" frameborder="0"
+                                    class="layadmin-iframe" style="position: relative; min-height:600px;"></iframe>
+                        </div>
+                        <div class="layui-tab-item">
+                            <iframe name="body2" src="/mi/temp3/" frameborder="0" class="layadmin-iframe"
+                                    style="position: relative; min-height:600px;"></iframe>
+                        </div>
+                        <div class="layui-tab-item">
+                            <iframe name="body3" src="/mi/temp4/" frameborder="0" class="layadmin-iframe"
+                                    style="position: relative; min-height:600px;"></iframe>
+                        </div>
+                        <div class="layui-tab-item">
+                            <iframe name="body4" src="/mi/temp5/" frameborder="0" class="layadmin-iframe"
+                                    style="position: relative; min-height:600px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+<script>
+layui.use(['table', 'element','jquery'], function(){
+    var $ = layui.$;
+    var element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+    var table = layui.table;
+    var form = layui.form;
+
+    var drugs_tb = table.render({
+        elem: '#data_list'
+        , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title: '提示'
+            , layEvent: 'LAYTABLE_TIPS'
+            , icon: 'layui-icon-tips'
+        }]
+        , toolbar: '#table-toolbar'
+        , even:true
+        , title: '用户数据表'
+        , cols: [[
+            {type: 'checkbox', fixed: 'left'}
+            , {field: '药品HISID', title: '药品HISID', width:120}
+            , {field: '通用名', title: '通用名', width: 150}
+            , {field: '商品名', title: '商品名', width: 100}
+            , {field: '规格', title: '规格', width: 100}
+            , {field: '包装', title: '包装', width: 100}
+            , {field: '厂家', title: '厂家', width: 200}
+            , {field: '剂型', title: '剂型', width: 200}
+            , {field: '批准文号', title: '批准文号', width: 100}
+            , {field: '上传时间', title: '上传时间', width: 120}
+            , {field: '上传人员', title: '上传人员', width: 100}
+            , {field: '最后操作时间', title: '最后操作时间', width: 150}
+            , {field: '最后操作人', title: '最后操作人', width: 150}
+            , {field: '校验结果', title: '校验结果', width: 150, fixed: 'right'}
+            , {field: '原因', title: '原因', width: 200, fixed: 'right'}
+            , {field: '操作', title: '操作', toolbar:'#table-toolbar-col', width: 80, fixed: 'right'}
+        ]]
+        ,data:[
+            {"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"存在重复HISID<a class='layui-btn layui-btn-xs' href='javascript:void(0)' onclick='showdiff()'>查看</a>"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"HISID已入库<a class='layui-btn layui-btn-xs' href='javascript:void(0)' onclick='showdiff()'>查看</a>"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过-->通过", "原因":"缺少厂家-->忽略厂家关联"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"缺少规格"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"缺少包装"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+        ]
+        , page: true
+    });
+
+    //头工具栏事件
+    table.on('toolbar(data_list)', function (obj) {
+        var checkStatus = table.checkStatus(obj.config.id);
+        switch (obj.event) {
+            case 'batch_add':
+                var data = checkStatus.data;
+                layer.alert(JSON.stringify(data));
+                break;
+            case 'batch_edit':
+                var data = checkStatus.data;
+                layer.msg('选中了：' + data.length + ' 个');
+                break;
+            case 'batch_del':
+                layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                break;
+            case 'drug_relation_checked':
+                layer.msg('正在执行关联校验', {icon: 16}, function(){
+                    newTab('/opt/customer_data/drug_relation_checked/', '药品关联校验');
+                });
+                break;
+            case 'del_repeat_data':
+                layer.confirm('确定删除重复数据吗？（随机删除一条）', function(){
+                    layer.msg('正在删除', {icon: 16}, function(){
+                       layer.msg('成功删除');
+                    });
+                });
+                break;
+            //自定义头工具栏右侧图标 - 提示
+            case 'LAYTABLE_TIPS':
+                layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                break;
+        };
+    });
+
+    //监听行工具事件
+    table.on('tool(data_list)', function (obj) {
+        var data = obj.data;
+        //console.log(obj)
+        if (obj.event === 'rules') {
+            newTab('/customer_data/cus_rules/one_obj_condi/?module={{ module }}&object_id=' + data.druginfo_commercial_id, data.aliascn+'-{{ module_desc }}')
+        } else if (obj.event === 'manual') {
+        }
+    });
+
+    $('#del_repeat_data').on('click', function(){
+        layer.confirm('确定要对所有采集数据按内容去重吗？（重复数据保留一条）', function(){
+            layer.msg('正在去重', {icon: 16}, function(){
+                layer.open({
+                    title:'去重后结果'
+                    ,type: 1
+                    //,skin: 'layui-layer-rim'
+                    ,shadeClose: true
+    <!--                ,area: admin.screen() < 2 ? ['80%', '300px'] : ['700px', '500px']-->
+                    ,area: ['500px', '400px']
+                    ,content: '<div style="padding: 20px;">药品：总数100条， 去重20条，剩余80条。<br>诊断：总数100条， 去重20条，剩余80条。<br>给药途径：总数100条， 去重20条，剩余80条。<br>给药频率：总数100条， 去重20条，剩余80条。</div>'
+                    ,btn: ['关闭'] //只是为了演示
+                    ,yes: function(){
+                        table.reload('data_list');
+                        layer.closeAll();
+                    }
+                });
+            });
+        });
+    });
+
+    // 增量校验所有采集数据
+    $('#check_all_data').on('click', function(){
+       layer.msg('正在执行数据校验，请稍等', {icon: 16}, function(){
+            layer.msg('校验完成', {icon: 6, time:2000},  function(){
+                table.reload('data_list');
+                layer.closeAll();
+            });
+       });
+    });
+
+    // 下载错误数据
+    $('#download_error_data').on('click', function(){
+        layer.msg('下载中', {icon: 16}, function(){
+            layer.closeAll();
+        });
+    });
+
+    // 入库校验已通过数据
+    $('#input_all_data_checked').on('click', function(){
+        layer.confirm('确定将所有校验通过的采集数据提交入库吗？', function(){
+            layer.msg('正在入库', {icon: 16}, function(){
+                layer.open({
+                title:'入库数据量'
+                ,type: 1
+                //,skin: 'layui-layer-rim'
+                ,shadeClose: true
+<!--                ,area: admin.screen() < 2 ? ['80%', '300px'] : ['700px', '500px']-->
+                ,area: ['500px', '400px']
+                ,content: '<div style="padding: 20px;">药品：校验通过数80条，入库80条。<br>诊断：校验通过数80条，入库80条。<br>给药途径：校验通过数80条，入库80条。<br>给药频率：校验通过数80条，入库80条。</div>'
+                ,btn: ['关闭'] //只是为了演示
+                ,yes: function(){
+                    table.reload('data_list');
+                    table.reload('data_list2');
+                    layer.closeAll();
+                }
+                });
+            });
+        });
+    });
+
+    //监听搜索
+    form.on('submit(LAY-app-contlist-search)', function(data){
+        drugs_tb.reload({
+            where:{
+                drug_name: data.field.drug_name
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+        return false;
+    });
+
+    var drugs_tb2 = table.render({
+        elem: '#data_list2'
+        , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title: '提示'
+            , layEvent: 'LAYTABLE_TIPS'
+            , icon: 'layui-icon-tips'
+        }]
+        , even:true
+        , title: '用户数据表'
+        , cols: [[
+            {type: 'checkbox', fixed: 'left'}
+            , {field: '药品HISID', title: '药品HISID', width:100, sort: true}
+            , {field: '通用名', title: '通用名', width: 150, sort: true}
+            , {field: '商品名', title: '商品名', width: 100}
+            , {field: '规格', title: '规格', width: 100}
+            , {field: '包装', title: '包装', width: 100}
+            , {field: '厂家', title: '厂家', width: 200}
+            , {field: '批准文号', title: '批准文号', width: 100}
+            , {field: '标签', title: '标签', width: 100, sort: true}
+            , {field: '生产进度', title: '生产进度', width: 100, sort: true}
+            , {field: '上传时间', title: '上传时间', width: 120, sort: true}
+            , {field: '上传人员', title: '上传人员', width: 100, sort: true}
+            , {field: '最后操作时间', title: '最后操作时间', width: 150, sort: true}
+            , {field: '最后操作人', title: '最后操作人', width: 120, sort: true}
+            , {field: '校验结果', title: '校验结果', width: 150, sort: true}
+            , {field: '原因', title: '原因', width: 200, sort: true}
+        ]]
+        ,data:[
+            {"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","生产进度":"<a style='color:green;'>已完成</a>","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","生产进度":"<a style='color:red;'>未完成</a>","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"存在重复HISID<a class='layui-btn layui-btn-xs' href='javascript:void(0)' onclick='showdiff()'>查看</a>"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"HISID已入库<a class='layui-btn layui-btn-xs' href='javascript:void(0)' onclick='showdiff()'>查看</a>"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过-->通过", "原因":"缺少厂家-->忽略厂家关联"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"缺少规格"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"不通过", "原因":"缺少包装"}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+            ,{"运营任务":"北京宣武医院20180201", "药品HISID":"01010101011", "通用名":"通用名", "商品名":"商品名", "规格":"规格","包装":"包装","厂家":"厂家","上传时间":"2020-02-01","上传人员":"张三","最后操作时间":"2020-02-01","最后操作人":"张三", "校验结果":"通过", "原因":""}
+        ]
+        , page: true
+    });
+
+    var drugs_tb3 = table.render({
+        elem: '#data_list3'
+        , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
+            title: '提示'
+            , layEvent: 'LAYTABLE_TIPS'
+            , icon: 'layui-icon-tips'
+        }]
+        , even:true
+        , title: '用户数据表'
+        , cols: [[
+            {type: 'checkbox', fixed: 'left'}
+            , {field: '文件名', title: '文件名', sort: true}
+            , {field: '备注', title: '备注', sort: true}
+            , {field: '上传时间', title: '上传时间', width: 200, sort: true}
+            , {field: '上传人员', title: '上传人员', width: 120, sort: true}
+        ]]
+        ,data:[
+            {"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+            ,{"文件名":"北京宣武医院20180201", "上传时间":"2020-02-01 09:10:00","上传人员":"张三"}
+        ]
+        , page: true
+    });
+
+    $("#btn_search_more").click(function(){
+        $("#div_search_more").toggle();
+    });
+
+    $("#btn_search_more2").click(function(){
+        $("#div_search_more2").toggle();
+    });
+
+    $("#uploadfile").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['80%', '95%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+
+    $("#upload_all").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['80%', '95%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/common/uploadfile/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+
+    $("#set_check_result").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '50%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/set_check_result/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+
+    $("#add_opt_task").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '50%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/add_opt_task/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+
+    $("#add_opt_task_all").on('click', function(){
+        //多窗口模式，层叠置顶
+        layer.open({
+            type: 2 //此处以iframe举例
+            ,title: '选择数据'
+            ,area: ['50%', '50%']
+            ,shadeClose: false
+            ,maxmin: false
+            ,offset: 'auto'
+            ,scrollbar: false
+            ,content: '/opt/my/add_opt_task/'
+            ,btn: ['保存', '取消'] //只是为了演示
+            ,yes: function(){
+                layer.closeAll();
+            }
+            ,btn2: function(){
+                layer.closeAll();
+            }
+            ,zIndex: layer.zIndex //重点1
+            ,success: function(layero){
+                layer.setTop(layero); //重点2
+            }
+        });
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+    function newTab(url, tit) {
+<!--        window.location = url;-->
+        if (top.layui.index) {
+            top.layui.index.openTabsPage(url, tit)
+        } else {
+            window.open(url)
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+function showdiff(){
+    //多窗口模式，层叠置顶
+    layer.open({
+        type: 2 //此处以iframe举例
+        ,title: '选择数据'
+        ,area: ['80%', '50%']
+        ,shadeClose: false
+        ,maxmin: false
+        ,offset: 'auto'
+        ,scrollbar: false
+        ,content: '/opt/my/check_detail/'
+        ,btn: ['关闭'] //只是为了演示
+        ,yes: function(){
+            layer.closeAll();
+        }
+        ,btn2: function(){
+            layer.closeAll();
+        }
+        ,zIndex: layer.zIndex //重点1
+        ,success: function(layero){
+            layer.setTop(layero); //重点2
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

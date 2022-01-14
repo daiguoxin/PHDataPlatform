@@ -136,6 +136,9 @@
                         <dl class="layui-nav-child">
                             <dd><a lay-href="/rule/service_opt/service_opt_index/">规则结构与缓存管理</a></dd>
                         </dl>
+                        <dl class="layui-nav-child">
+                            <dd><a lay-href="/rule/service_opt/service_config/">算法配置</a></dd>
+                        </dl>
                     </li>
                     <li data-name="rules-data" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="用户规则管理" lay-direction="2">
@@ -143,8 +146,11 @@
                             <cite>数据运营工具</cite>
                         </a>
                         <dl class="layui-nav-child">
-                            <dd><a lay-href="/rule/cus/module/statistics/">用户规则批量维护</a></dd>
-                            <dd><a lay-href="/rule/cus/sys_rule_manage/">系统规则批量维护</a></dd>
+                            <dd><a lay-href="/rule/cus/module/statistics/">按模块复制用户规则</a></dd>
+                            <dd><a lay-href="/rule/cus/module/statistics/">按模块复制系统规则</a></dd>
+                            <dd><a lay-href="/rule/cus/copy/index/">按药品复制规则（医院用户）</a></dd>
+                            <dd><a lay-href="/rule/cus/copy/index2/">按药品复制规则2（医院用户）</a></dd>
+<!--                            <dd><a lay-href="/rule/cus/copy_sys_rules/">复制系统规则（运营）</a></dd>-->
                             <dd><a lay-href="/phdata/cus/index/">适应症可审核药品范围</a></dd>
                             <dd><a lay-href="/phdata/cus/xy_disease/">适应症西药可审核诊断范围</a></dd>
                             <dd><a lay-href="/phdata/cus/zy_disease/">适应症中成药可审核诊断范围</a></dd>
@@ -199,22 +205,7 @@
     }).extend({
         index: 'lib/index' //主入口模块
     }).use('index');
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </script>
-
 </body>
 </html>
 

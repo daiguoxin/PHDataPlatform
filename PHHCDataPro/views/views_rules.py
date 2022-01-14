@@ -264,6 +264,15 @@ def cus_copy_cus_rules(request):
     return render(request, 'views/rule/cus/copy_cus_rules.html', {})
 
 
+def copy_sys_rules(request):
+    """
+    复制系统规则
+    :param request:
+    :return:
+    """
+    return render(request, 'views/rule/cus/copy_sys_rules.html', {})
+
+
 def copy_tasks(request):
     """
     新增规则
@@ -289,6 +298,15 @@ def service_opt_index(request):
     :return:
     """
     return render(request, 'views/rule/service_opt/service_opt_index.html', {})
+
+
+def service_config(request):
+    """
+    service_opt_index
+    :param request:
+    :return:
+    """
+    return render(request, 'views/rule/service_opt/service_config.html', {})
 
 
 def dict_select(request):
@@ -815,3 +833,34 @@ def rules_detail_not_only_object(request):
 
 def dict_manage_dict(request):
     return render(request, 'views/rule/dict/manage_dict.html', {})
+
+
+def cus_copy_index(request):
+    """复制个性化规则：首页"""
+    return render(request, 'views/rule/cus/copy/index.html', {})
+
+
+def cus_copy_index2(request):
+    """复制个性化规则：首页，版本2"""
+    return render(request, 'views/rule/cus/copy/index2.html', {})
+
+
+def cus_copy_copy_sys_rules(request):
+    """复制规则操作页：复制系统规则"""
+    return render(request, 'views/rule/cus/copy/copy_sys_rules.html', {})
+
+
+def cus_copy_copy_cus_rules(request):
+    """复制规则操作页：复制用户规则"""
+    return render(request, 'views/rule/cus/copy/copy_cus_rules.html', {})
+
+
+def cus_copy_copy_sys_cus_rules(request):
+    """复制规则操作页：复制用户规则"""
+    return render(request, 'views/rule/cus/copy/copy_sys_cus_rules.html', {})
+
+
+def dict_drug_select(request):
+    """选择药品：单选"""
+    return render(request, 'views/rule/dict/drug_select.html', {})
+

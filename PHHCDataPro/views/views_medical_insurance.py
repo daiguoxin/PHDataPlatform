@@ -19,3 +19,18 @@ def getStandardDict(request):
     return HttpResponse('[{"id":"001", "value":"门诊挂号费门诊挂号费门诊挂号费门诊挂号费门诊挂号费门诊挂号费门诊挂号费门诊挂号费门诊挂号费"}, {"id":"002", "value":"住院挂号费"}]')
 
 
+def temp(request):
+    """首页"""
+    return render(request, 'views/medical_insurance/temp4.html', {})
+
+
+def temp2(request):
+    """首页"""
+    return render(request, 'views/medical_insurance/temp2.html', {})
+
+
+def temp3(request):
+    """首页"""
+    return render(request, 'views/medical_insurance/temp3.html', {})
+
+

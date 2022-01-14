@@ -72,19 +72,19 @@ WSGI_APPLICATION = 'PHHCDataPro.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'core_rules_production',
-    #     'USER': 'root',
-    #     'PASSWORD': 'root',
-    #     'HOST': '192.168.3.60',
-    #     'PORT': '3308',
-    # }
-
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'phdatapro',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '192.168.3.60',
+        'PORT': '3308',
     }
+
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
 }
 
 # Password validation

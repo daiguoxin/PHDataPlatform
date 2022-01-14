@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from PHHCDataPro.url import urls_rules, urls_phdata, urls_drug, urls_medical_insurance, urls_input, urls_opt
+from PHHCDataPro.url import urls_rules, urls_phdata, urls_drug, urls_medical_insurance, urls_input, urls_opt, \
+    urls_help_center
 from PHHCDataPro.views import views, views_opt, views_basic, views_object, views_common
 
 urlpatterns = [
@@ -52,4 +53,6 @@ urlpatterns = [
     path('input/', include(urls_input.urlpatterns)),
 
     path('opt/', include(urls_opt.urlpatterns)),
+
+    path('help_center/', include(urls_help_center.urlpatterns))
 ]

@@ -19,45 +19,41 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-row">
-                    <div class="layui-col-md1" style="border-right: 1px solid #eee;">
+                    <div class="layui-col-md1" style="border-right: 1px solid #eee; display:none;">
                         <div class="layui-card">
                             <div class="site-tree">
                                 <ul class="layui-tree">
-                                    <li><h2 style="margin:0px;">药品规则</h2></li>
-<!--                                    <li class="site-tree-noicon ">-->
-<!--                                        <a href="/customer_data/cus_rules/one_obj_condi2">-->
-<!--                                            <cite>基础药物规则</cite>-->
-<!--                                            <em></em>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="site-tree-noicon ">-->
-<!--                                        <a href="/customer_data/cus_rules/one_obj_condi2">-->
-<!--                                            <cite>通用药物规则</cite>-->
-<!--                                            <em></em>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
-<!--                                    <li class="site-tree-noicon ">-->
-<!--                                        <a href="/customer_data/cus_rules/one_obj_condi2">-->
-<!--                                            <cite>分类规则</cite>-->
-<!--                                            <em></em>-->
-<!--                                        </a>-->
-<!--                                    </li>-->
+                                    <li><h2 style="margin:0px;">医院药品编码</h2></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="layui-col-md11">
+                    <div class="layui-col-md12">
                         <div class="layui-card">
                             <div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
                                 <ul class="layui-tab-title">
-                                    <li class="layui-this">药品规则</li>
+                                    <li class="layui-this">按”医院药品编码“复制规则数据
+                                    </li>
                                 </ul>
+                                <div style=" width:30px; position: absolute;top: 12px;right: 0px; ">
+                                    <a href="javascript:void(0)" onclick="get_help('按”医院药品编码“复制规则数据')"><i
+                                            class="layui-icon layui-icon-help"></i></a>
+                                </div>
                                 <div class="layui-tab-content">
                                     <div class="layui-tab-item layui-show">
                                         <div class="layui-card">
                                             <div class="layui-form layui-card-header layuiadmin-card-header-auto"
                                                  style="padding:0px;">
                                                 <div class="layui-form-item">
+                                                    <div class="layui-inline">
+                                                        <label class="layui-form-label"
+                                                               style="width:100px;">医院药品编码</label>
+                                                        <div class="layui-input-inline">
+                                                            <input type="text" name="drug_name" placeholder="请输入"
+                                                                   autocomplete="off"
+                                                                   class="layui-input">
+                                                        </div>
+                                                    </div>
                                                     <div class="layui-inline">
                                                         <label class="layui-form-label"
                                                                style="width:100px;">通用名/商品名</label>
@@ -69,11 +65,22 @@
                                                     </div>
                                                     <div class="layui-inline">
                                                         <label class="layui-form-label"
-                                                               style="width:120px;">是否存在规则</label>
+                                                               style="width:120px;">是否存在系统规则</label>
                                                         <div class="layui-input-inline">
                                                             <select name="modules" lay-search="">
                                                                 <option value=""></option>
-                                                                <option value="1" selected>是</option>
+                                                                <option value="1">是</option>
+                                                                <option value="0" selected>否</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="layui-inline">
+                                                        <label class="layui-form-label"
+                                                               style="width:120px;">是否存在用户规则</label>
+                                                        <div class="layui-input-inline">
+                                                            <select name="modules" lay-search="">
+                                                                <option value=""></option>
+                                                                <option value="1">是</option>
                                                                 <option value="0">否</option>
                                                             </select>
                                                         </div>
@@ -83,9 +90,9 @@
                                                                 lay-filter="LAY-app-contlist-search">
                                                             <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
                                                         </button>
-<!--                                                        <button class="layui-btn layui-btn-primary layui-btn-sm"-->
-<!--                                                                id="btn_search_more">更多-->
-<!--                                                        </button>-->
+                                                        <!--                                                        <button class="layui-btn layui-btn-primary layui-btn-sm"-->
+                                                        <!--                                                                id="btn_search_more">更多-->
+                                                        <!--                                                        </button>-->
                                                     </div>
                                                     <div class="layui-block" style=" display:none;"
                                                          id="div_search_more">
@@ -118,47 +125,32 @@
                                                 </div>
                                             </div>
                                             <div class="layui-card-body" style="padding:10px 0px 0px 0px;">
-                                                <div class="layui-form layui-border-box layui-table-view"
-                                                     lay-filter="LAY-table-1" lay-id="data_list"
-                                                     style=" border-bottom-width:0px; ">
-                                                    <div class="layui-table-tool">
-                                                        <div class="layui-table-tool-temp">
-                                                            <div class="layui-btn-container">
-                                                                <button class="layui-btn layui-btn-sm"
-                                                                        lay-event="batch_add"
-                                                                        id="btn_copy_rules">
-                                                                    复制规则操作向导
-                                                                </button>
-<!--                                                                <button class="layui-btn layui-btn-sm"-->
-<!--                                                                        lay-event="batch_add"-->
-<!--                                                                        id="import_data3">-->
-<!--                                                                    按药品选择复制-->
-<!--                                                                </button>-->
-<!--                                                                <button class="layui-btn layui-btn-sm"-->
-<!--                                                                        lay-event="batch_add"-->
-<!--                                                                        id="import_data">-->
-<!--                                                                    批量新增规则向导-->
-<!--                                                                </button>-->
-<!--                                                                <button class="layui-btn layui-btn-sm"-->
-<!--                                                                        lay-event="batch_add"-->
-<!--                                                                        id="update_data">-->
-<!--                                                                    批量编辑（或停用）规则向导-->
-<!--                                                                </button>-->
-<!--                                                                <button class="layui-btn layui-btn-sm"-->
-<!--                                                                        lay-event="batch_add">下载导入模板-->
-<!--                                                                </button>-->
-<!--                                                                <button class="layui-btn layui-btn-sm"-->
-<!--                                                                        lay-event="batch_add">数据导入日志-->
-<!--                                                                </button>-->
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <table class="layui-hide" id="data_list"
                                                        lay-filter="data_list"></table>
-                                                <script type="text/html" id="barDemo">
+                                                <script type="text/html" id="table-col-toolbar">
                                                     <a class="layui-btn layui-btn-xs" lay-event="copy_drug">从药品复制</a>
                                                     <a class="layui-btn layui-btn-xs" lay-event="copy_module">按模块复制</a>
+                                                </script>
+                                                <script type="text/html" id="table-toolbar">
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="btn_copy_sys_cus_rules"
+                                                            id="btn_copy_sys_cus_rules">
+                                                        复制系统规则和用户规则
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="btn_copy_sys_rules"
+                                                            id="btn_copy_sys_rules">
+                                                        仅复制系统规则
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="btn_copy_cus_rules"
+                                                            id="btn_copy_cus_rules">
+                                                        仅复制用户规则
+                                                    </button>
+                                                    <button class="layui-btn layui-btn-sm"
+                                                            lay-event="get_copy_tasks">
+                                                        查看复制任务进展
+                                                    </button>
                                                 </script>
                                             </div>
                                         </div>
@@ -172,9 +164,9 @@
         </div>
     </div>
 </div>
-</div>
 
 <script src="/static/layuiadmin/layui/layui.js" charset="utf-8"></script>
+<script src="/static/phhc/js/phhc.js" charset="utf-8"></script>
 <!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 layui.use(['table', 'element','jquery'], function(){
@@ -187,7 +179,7 @@ layui.use(['table', 'element','jquery'], function(){
     var drugs_tb = table.render({
             elem: '#data_list'
 <!--            , url: '/rules_data/module/objects_data/{{ module }}'-->
-<!--            , toolbar: '#toolbarDemo' //开启头部工具栏，并为其绑定左侧模板-->
+            , toolbar: '#table-toolbar' //开启头部工具栏，并为其绑定左侧模板
             , defaultToolbar: ['filter', 'exports', 'print', { //自定义头部工具栏右侧图标。如无需自定义，去除该参数即可
                 title: '提示'
                 , layEvent: 'LAYTABLE_TIPS'
@@ -196,29 +188,24 @@ layui.use(['table', 'element','jquery'], function(){
             , even:true
             , title: '用户数据表'
             , cols: [[
-                {type: 'checkbox', fixed: 'left', hide:true}
-                , {field: '商品药物ID', title: '商品药物ID', width: 100}
+                {type: 'checkbox', fixed: 'left'}
+                , {field: '药品编码', title: '药品编码', width: 100}
                 , {field: '通用名', title: '通用名'}
                 , {field: '商品名', title: '商品名', width: 100}
                 , {field: '规格', title: '规格', width: 150}
                 , {field: '包装', title: '包装', width: 150}
                 , {field: '厂家', title: '厂家', width: 150}
                 , {field: '系统规则数', title: '系统规则数', width: 120}
+                , {field: '用户规则数', title: '用户规则数', width: 120}
+                , {field: '复制任务', title: '复制任务', width: 200, fixed:'right'}
             ]]
             ,data:[
-                    {"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
-                    ,{"商品药物ID":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"500","个性化规则数":"20"}
+                    {"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","用户规则数":"20", "复制任务":"复制系统规则中"}
+                    ,{"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"8000","用户规则数":"0", "复制任务":"复制用户规则中"}
+                    ,{"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","用户规则数":"20", "复制任务":"复制系统规则中"}
+                    ,{"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","用户规则数":"20"}
+                    ,{"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","用户规则数":"20"}
+                    ,{"药品编码":"0101001", "通用名":"大活络丸", "规格":"10mg", "包装":"12片/盒", "厂家":"北京同仁堂","系统规则数":"0","用户规则数":"20"}
             ]
             , page: true
         });
@@ -227,21 +214,71 @@ layui.use(['table', 'element','jquery'], function(){
         table.on('toolbar(data_list)', function (obj) {
             var checkStatus = table.checkStatus(obj.config.id);
             switch (obj.event) {
-                case 'batch_add':
-                    var data = checkStatus.data;
-                    layer.alert(JSON.stringify(data));
+                case 'btn_copy_sys_rules':
+                    layer.open({
+                        type: 2 //此处以iframe举例
+                        ,title: '仅复制系统规则'
+                        ,area: ['90%', '90%']
+                <!--        ,shade: 0-->
+                        ,shadeClose: false
+                        ,maxmin: false
+                        ,offset: 'auto'
+                        ,scrollbar: false
+                        ,content: '/rule/cus/copy/copy_sys_rules/'
+                        ,btn: ['关闭'] //只是为了演示
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                        ,zIndex: layer.zIndex //重点1
+                        ,success: function(layero){
+                          layer.setTop(layero); //重点2
+                        }
+                      });
                     break;
-                case 'batch_edit':
-                    var data = checkStatus.data;
-                    layer.msg('选中了：' + data.length + ' 个');
+                case 'btn_copy_cus_rules':
+                    layer.open({
+                        type: 2 //此处以iframe举例
+                        ,title: '仅用户系统规则'
+                        ,area: ['90%', '90%']
+                <!--        ,shade: 0-->
+                        ,shadeClose: false
+                        ,maxmin: false
+                        ,offset: 'auto'
+                        ,scrollbar: false
+                        ,content: '/rule/cus/copy/copy_cus_rules/'
+                        ,btn: ['关闭'] //只是为了演示
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                        ,zIndex: layer.zIndex //重点1
+                        ,success: function(layero){
+                          layer.setTop(layero); //重点2
+                        }
+                      });
                     break;
-                case 'batch_del':
-                    layer.msg(checkStatus.isAll ? '全选' : '未全选');
+                case 'btn_copy_sys_cus_rules':
+                    layer.open({
+                        type: 2 //此处以iframe举例
+                        ,title: '复制系统规则和用户规则'
+                        ,area: ['90%', '90%']
+                <!--        ,shade: 0-->
+                        ,shadeClose: false
+                        ,maxmin: false
+                        ,offset: 'auto'
+                        ,scrollbar: false
+                        ,content: '/rule/cus/copy/copy_sys_cus_rules/'
+                        ,btn: ['关闭'] //只是为了演示
+                        ,yes: function(){
+                            layer.closeAll();
+                        }
+                        ,zIndex: layer.zIndex //重点1
+                        ,success: function(layero){
+                          layer.setTop(layero); //重点2
+                        }
+                      });
                     break;
-
-                //自定义头工具栏右侧图标 - 提示
-                case 'LAYTABLE_TIPS':
-                    layer.alert('这是工具栏右侧自定义的一个图标按钮');
+                case 'get_copy_tasks':
+                    newTab('/rule/cus/copy_tasks/', '规则复制任务');
                     break;
             }
             ;
@@ -291,36 +328,6 @@ layui.use(['table', 'element','jquery'], function(){
         e.stopPropagation();
     });
 
-    $("#btn_search_more").click(function(){
-        $("#div_search_more").toggle();
-    });
-
-    $("#btn_copy_rules").on('click', function(){
-            copy_rules();
-    });
-
-    function copy_rules(){
-              //多窗口模式，层叠置顶
-          layer.open({
-            type: 2 //此处以iframe举例
-            ,title: '复制规则向导'
-            ,area: ['90%', '90%']
-    <!--        ,shade: 0-->
-            ,shadeClose: false
-            ,maxmin: false
-            ,offset: 'auto'
-            ,scrollbar: false
-            ,content: '/rule/cus/copy_sys_rules/'
-            ,btn: ['关闭'] //只是为了演示
-            ,yes: function(){
-                layer.closeAll();
-            }
-            ,zIndex: layer.zIndex //重点1
-            ,success: function(layero){
-              layer.setTop(layero); //重点2
-            }
-          });
-    };
 });
 
 </script>
@@ -333,6 +340,7 @@ layui.use(['table', 'element','jquery'], function(){
             window.open(url)
         }
     }
+
 
 </script>
 </body>
